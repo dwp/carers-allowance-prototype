@@ -2,84 +2,19 @@
 
 {% set pageName="Home" %}
 
-{% block header %}
-{{ govukHeader({
-  homepageUrl: "#",
-  serviceName: "Carer's Allowance",
-  serviceUrl: "#",
-  navigation: [
-    {
-      href: "#1",
-      text: "Apply for Carer's Allowance",
-      active: true
-    },
-    {
-      href: "layouts/change-of-circs/index-cofc.html",
-      text: "Change of circs"
-    },
-    {
-      href: "layouts/agent-facing/index-agent.html",
-      text: "Agent-facing service"
-    }
-  ]
-}) }}
-{% endblock %}
-
 {% block content %}
-
-
-
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    
+    {% include "govuk-prototype-kit/includes/homepage-top.njk" %}
 
-    <h1 class="govuk-heading-l">
-      Apply for Carer's Allowance 
+    <h1 class="govuk-heading-xl">
+      {{ serviceName }}
     </h1>
 
-      <h2 class="govuk-heading-m">
-        <a href="/layouts/apply/short-journeys-index.html" class="govuk-link--no-visited-state">
-          Shorter journeys
-          </a>
-      </h2>
-       <p>Improvements or changes to specific pages or short journeys within the application service. For example, payment details or 35 hours of care 
-        eligiblity deflection journey.</p>
-
-       <h2 class="govuk-heading-m">
-        <a href="/layouts/apply/long-journeys-index.html" class="govuk-link--no-visited-state">
-          Longer journeys
-          </a>
-      </h2>
-       <p>Improvements or changes to larger or end-to-end journeys. For example, date of claim or education.</p>
-
-
-      
-
-       
-
-   
+    {% include "govuk-prototype-kit/includes/homepage-bottom.njk" %}
   </div>
 </div>
 
-{% endblock %}
-
-{% block footer %}
- {{ govukFooter({
-   meta: {
-     items: [
-       
-       {
-         href: "/manage-prototype",
-         text: "Manage your prototype"
-       },
-       {
-         href: "/manage-prototype/clear-data",
-         text: "Clear data"
-       }
-     ],
-     visuallyHiddenTitle: "Footer links"
-   }
- }) }}
 {% endblock %}
