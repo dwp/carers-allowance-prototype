@@ -4,16 +4,41 @@
 
 {% block content %}
 
+
+
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    {% include "govuk-prototype-kit/includes/homepage-top.njk" %}
+    
 
-    <h1 class="govuk-heading-xl">
-      {{ serviceName }}
+    <h1 class="govuk-heading-l">
+      Apply for Carer's Allowance 
     </h1>
 
-    {% include "govuk-prototype-kit/includes/homepage-bottom.njk" %}
+      <h2 class="govuk-heading-m">
+        <a href="apply/tbc" class="govuk-link--no-visited-state">
+          Shorter journeys
+          </a>
+      </h2>
+       <p>Improvements or changes to specific pages or short journeys within the application service. For example, payment details or 35 hours of care 
+        eligiblity deflection journey.</p>
+
+       <h2 class="govuk-heading-m">
+        <a href="apply/tbc" class="govuk-link--no-visited-state">
+          Longer journeys
+          </a>
+      </h2>
+       <p>Improvements or changes to larger or end-to-end journeys. For example, date of claim or OIDV.</p>
+
+
+      
+
+        <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--xl">
+
+        
+        {% include "govuk-prototype-kit/includes/homepage-top.njk" %}
+
+   
   </div>
 </div>
 

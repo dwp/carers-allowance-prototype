@@ -1,0 +1,136 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="pay-frequency">
+
+        <h1 class="govuk-heading-l">
+            Where should we pay your Carer's Allowance?
+        </h1>
+
+        <p>
+            You can have your Carer's Allowance paid into a UK bank or building society account, either belonging to you or someone else.
+        </p>
+
+        <p>
+            If you choose to have it paid into someone else's account:
+        </p>
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li>you are still responsible for repaying any overpayments</li>
+          <li>you must have their permission to be paid into their account</li>
+          <li>they must use your money how you tell them to</li>
+        </ul>
+
+          
+
+<div class="govuk-form-group">
+  <label class="govuk-label">
+    Name on the account
+  </label>
+
+<input class="govuk-input" id="" name="accountHolderName" type="text" spellcheck="false" autocomplete="name">
+</div>
+
+
+          
+
+<div class="govuk-form-group">
+  <label class="govuk-label">
+    Name of the bank or building society
+  </label>
+
+<input class="govuk-input" id="" name="bankName" type="text" spellcheck="false">
+</div>
+
+
+          
+
+<div class="govuk-form-group">
+  <label class="govuk-label">
+    Sort code
+  </label>
+
+  
+  
+  <div id="undefined-hint" class="govuk-hint">
+    Must be 6 digits long.
+  </div>
+
+<input class="govuk-input govuk-input--width-5" id="" name="sortCode" type="text" spellcheck="false" aria-describedby="undefined-hint" inputmode="numeric">
+</div>
+
+
+          
+
+<div class="govuk-form-group">
+  <label class="govuk-label">
+    Account number
+  </label>
+
+  
+  
+  <div id="undefined-hint" class="govuk-hint">
+    Must be between 6 and 8 digits long.
+  </div>
+
+<input class="govuk-input govuk-input--width-10" id="" name="accountNumber" type="text" spellcheck="false" aria-describedby="undefined-hint" inputmode="numeric">
+</div>
+
+
+          
+
+<div class="govuk-form-group">
+  <label class="govuk-label">
+    Building society roll number (if you have one)
+  </label>
+
+  
+  
+  <div id="undefined-hint" class="govuk-hint">
+    You can find it on your card, statement or passbook.
+  </div>
+
+<input class="govuk-input govuk-input--width-10" id="" name="rollNumber" type="text" spellcheck="false" aria-describedby="undefined-hint">
+</div>
+
+
+          <p class="govuk-body">
+              <a href="pay-details-none" class="govuk-link">
+                  I do not have access to a bank or building society account
+              </a>
+          </p>
+
+        
+
+  
+    
+  
+
+<button class="govuk-button" data-module="govuk-button">
+  Continue
+</button>
+
+
+      </form>
+
+      
+
+    </div>
+  </div>
+
+{% endblock %}
