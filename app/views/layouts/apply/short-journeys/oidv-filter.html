@@ -1,0 +1,109 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+     
+
+<form method="post">
+
+    <div class="govuk-form-group">
+
+      <h1 class="govuk-heading-xl">Confirm your identity</h1>
+
+      <p>You will need information from <b>2 sources</b> to confirm your identity online.</p>
+
+      <p>You can choose from:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>a valid UK passport</li>
+        <li>a UK driving licence (you cannot use a Northern Ireland driving licence)</li>
+        <li>a payslip from the last 3 months</li>
+        <li>a current P60</li>
+        <li>your Self Assessment tax return - the most recent payment you made</li>
+        <li>a current tax credits claim - a payment you received in the last 3 months</li>
+        <li>your credit record - for example, the date you opened a bank account</li>
+      </ul>
+
+  <br>
+      <div class="govuk-form-group">
+<fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+  <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+    <h1 class="govuk-fieldset__heading">Do you have at least 2 of the above sources of information to confirm your identity online?
+
+</h1>
+  </legend>
+  <div id="contact-hint" class="govuk-hint">If not, we will contact you to confirm your identity before we process your claim.
+
+</div>
+  <div class="govuk-radios" data-module="govuk-radios">
+    <div class="govuk-radios__item">
+      <input class="govuk-radios__input" id="contact" name="contact" type="radio" value="email" aria-controls="conditional-contact" aria-expanded="false">
+      <label class="govuk-label govuk-radios__label" for="contact">Yes</label>
+    </div>
+   
+    <div class="govuk-radios__item">
+      <input class="govuk-radios__input" id="contact-2" name="contact" type="radio" value="phone" aria-controls="conditional-contact-2" aria-expanded="false">
+      <label class="govuk-label govuk-radios__label" for="contact-2">No</label>
+    </div>
+    
+  </div>
+</fieldset>
+</div>
+
+  </div> <!-- govuk-form-group -->
+
+  <a href="#" role="button" draggable="false" class="govuk-button" data-module="govuk-button">Continue</a>
+
+</form></div>
+</div>
+
+
+
+
+      </main>
+    </div>
+
+      
+
+
+
+
+      
+    
+  
+
+  
+ 
+
+
+
+  
+
+ 
+
+
+</body></html>
+
+
+
+
+
+
+
+{% endblock %}
