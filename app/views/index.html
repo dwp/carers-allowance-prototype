@@ -2,7 +2,31 @@
 
 {% set pageName="Home" %}
 
+{% block header %}
+{{ govukHeader({
+  homepageUrl: "#",
+  serviceName: "Carer's Allowance",
+  serviceUrl: "#",
+  navigation: [
+    {
+      href: "#1",
+      text: "Apply for Carer's Allowance",
+      active: true
+    },
+    {
+      href: "layouts/change-of-circs/index-cofc.html",
+      text: "Change of circs"
+    },
+    {
+      href: "layouts/agent-facing/index-agent.html",
+      text: "Agent-facing service"
+    }
+  ]
+}) }}
+{% endblock %}
+
 {% block content %}
+
 
 
 
@@ -16,7 +40,7 @@
     </h1>
 
       <h2 class="govuk-heading-m">
-        <a href="apply/tbc" class="govuk-link--no-visited-state">
+        <a href="/layouts/apply/short-journeys-index.html" class="govuk-link--no-visited-state">
           Shorter journeys
           </a>
       </h2>
@@ -33,13 +57,29 @@
 
       
 
-        <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--xl">
-
-        
-        {% include "govuk-prototype-kit/includes/homepage-top.njk" %}
+       
 
    
   </div>
 </div>
 
+{% endblock %}
+
+{% block footer %}
+ {{ govukFooter({
+   meta: {
+     items: [
+       
+       {
+         href: "/manage-prototype",
+         text: "Manage your prototype"
+       },
+       {
+         href: "/manage-prototype/clear-data",
+         text: "Clear data"
+       }
+     ],
+     visuallyHiddenTitle: "Footer links"
+   }
+ }) }}
 {% endblock %}
