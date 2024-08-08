@@ -1,0 +1,42 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Changes to the 35 hours eligibility question
+      </h1>
+
+      <p>
+        We are removing the initial 35 hours question and rewording the 35 hours question further in the journey to make sense based on the date of claim. For example if date of claim is today or in the past versus in the future. This allows us to correctly deflect people from the service if they do not meet the 35 hours of care criteria. </p>
+       
+
+        <p>See Jira ticket <a href="https://dwpdigital.atlassian.net/browse/ACA-2945">ACA-2945</a>.
+      </p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          <a class="govuk-link" href="35-hours-past-date.html">Date of claim today or in the past</a>
+        </li>
+
+        <li>
+          <a class="govuk-link" href="35-hours-future-date.html">Date of claim is in the future</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+{% endblock %}

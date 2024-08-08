@@ -20,8 +20,15 @@
 
       {% set inProgressStatus = {
         tag: {
-          text: "In progress",
+          text: "Ongoing",
           classes: "govuk-tag--yellow"
+        }
+      } %}
+
+      {% set liveStatus = {
+        tag: {
+          text: "In live",
+          classes: "govuk-tag--red"
         }
       } %}
 
@@ -71,7 +78,7 @@
               text: "A screen to sit in CADS that users will see if they drop out of OIDV back into the CA application journey. It's to give users information about what is happening, so that they understand they can continue applying online. "
             },
             href: "short-journeys/oidv-dropout.html",
-            status: experimentalStatus
+            status: inProgressStatus
           }
         ]
       }) }}
@@ -89,7 +96,7 @@
               text: "Jira ticket ACA-2829"
             },
             href: "short-journeys/bank-details.html",
-            status: testedStatus
+            status: liveStatus
           },
 
           {
@@ -100,6 +107,26 @@
               text: "Jira ticket ACA-2945"
             },
             href: "short-journeys/35-hours.html",
+            status: inProgressStatus
+          },
+          {
+            title: {
+              text: "Accessibility statement for WCAG 2.2"
+            },
+            hint: {
+              text: "Updating the existing accessibility statement to include failures for WCAG 2.2."
+            },
+            href: "short-journeys/accessibility.html",
+            status: inProgressStatus
+          },
+          {
+            title: {
+              text: "Scottish qualifying benefits - PADP and SADLA"
+            },
+            hint: {
+              text: "Adding the 2 new qualifying benefits being introduced in Scotland in 2024/25"
+            },
+            href: "short-journeys/scottish-qb.html",
             status: inProgressStatus
           }
         ]
