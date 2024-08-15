@@ -35,4 +35,39 @@ router.post('/layouts/apply/long-journeys/education/education-still', function(r
     } else {
         response.redirect("/layouts/apply/long-journeys/education/education-still-no")
     }
+}),
+
+router.post('/layouts/apply/long-journeys/education/education-still-yes', function(request, response) {
+
+    var educationWhere = request.session.data['inEducationWhere']
+    if (educationWhere == "school"){
+        response.redirect("/layouts/apply/long-journeys/education/education-deflection-school")
+    } 
+    if (educationWhere == "university"){
+        response.redirect("/layouts/apply/long-journeys/education/education-uni")
+    }else {
+        response.redirect("/layouts/apply/long-journeys/education/education-21-hours")
+    }
+}),
+
+router.post('/layouts/apply/long-journeys/education/education-uni', function(request, response) {
+
+    var educationUni = request.session.data['universityFullTime']
+    if (educationUni == "yes"){
+        response.redirect("/layouts/apply/long-journeys/education/education-uni-fulltime-exempt")
+    } 
+    else {
+        response.redirect("/layouts/apply/long-journeys/education/employment")
+    }
+}),
+
+router.post('/layouts/apply/long-journeys/education/education-21-hours', function(request, response) {
+
+    var hours = request.session.data['21hours']
+    if (hours == "yes"){
+        response.redirect("/layouts/apply/long-journeys/education/education-21h-break")
+    } 
+    else {
+        response.redirect("/layouts/apply/long-journeys/education/employment")
+    }
 })
