@@ -1,0 +1,84 @@
+{% extends "layouts/main.html" %}
+{% from "govuk/components/task-list/macro.njk" import govukTaskList %}
+
+{% block pageTitle %}
+  Task list template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+  
+
+      <h1 class="govuk-heading-l">Apply for Carer's Allowance - prototypes of longer journeys</h1>
+
+      
+
+      {% set inProgressStatus = {
+        tag: {
+          text: "Ongoing",
+          classes: "govuk-tag--yellow"
+        }
+      } %}
+
+      {% set liveStatus = {
+        tag: {
+          text: "In live",
+          classes: "govuk-tag--green"
+        }
+      } %}
+
+      {% set incompleteStatus = {
+        tag: {
+          text: "Incomplete",
+          classes: "govuk-tag--red"
+        }
+      } %}
+
+      {% set testedStatus = {
+        tag: {
+          text: "Tested",
+          classes: "govuk-tag--blue"
+        }
+      } %}
+
+      {% set experimentalStatus = {
+        tag: {
+          text: "Experimental",
+          classes: "govuk-tag--pink"
+        }
+      } %}
+
+      {# To switch between the completed and incomplete statues, use some inline logic within the component below, like this: "status: (completedStatus if ... else incompleteStatus)" #}
+      {% from "govuk/components/task-list/macro.njk" import govukTaskList %}
+      {{ govukTaskList({
+        idPrefix: "first-section",
+        items: [
+          {
+            title: {
+              text: "Full-time education journey redesign"
+            },
+            hint: {
+              text: "Simplifying the citizen journey where we ask about education, and also introducing deflection ('kickout') pages where we know the citizen will not be eligible due to being in full-time education. "
+            },
+            href: "long-journeys/education/education-index.html",
+            status: inProgressStatus
+          }
+          
+          
+        ]
+      }) }}
+
+     
+
+      
+</div>
+</div>
+      
+
+   
+{% endblock %}

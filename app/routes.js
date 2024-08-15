@@ -15,4 +15,24 @@ router.post('/35-hours-past-date', function(request, response) {
     } else {
         response.redirect("/layouts/apply/short-journeys/35-hours-deflection")
     }
+}),
+
+router.post('/layouts/apply/long-journeys/education/education-past-date', function(request, response) {
+
+    var education = request.session.data['inEducation']
+    if (education == "yes"){
+        response.redirect("/layouts/apply/long-journeys/education/education-still")
+    } else {
+        response.redirect("/layouts/apply/long-journeys/education/employment")
+    }
+}),
+
+router.post('/layouts/apply/long-journeys/education/education-still', function(request, response) {
+
+    var education = request.session.data['inEducationStill']
+    if (education == "yes"){
+        response.redirect("/layouts/apply/long-journeys/education/education-still-yes")
+    } else {
+        response.redirect("/layouts/apply/long-journeys/education/education-still-no")
+    }
 })
