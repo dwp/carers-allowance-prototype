@@ -1,0 +1,61 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – Apply for Carer's Allowance – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post">
+        <h1 class="govuk-heading-l">
+            You cannot get Carer's Allowance if you are in full-time education
+        </h1>
+
+        <p class="govuk-body">
+            As you doing a course of education which is classed as full-time, you are not able to get Carer's Allowance.
+        </p>
+
+        <h2 class="govuk-heading-m">Other support available</h2>
+        <p class="govuk-body">
+          You can ask your tutor, teacher or lecturer about what help may be available to you as a carer while you are in full-time education.
+        </p>
+        <p class="govuk-body">
+          You can also get help and advice about being a carer from <a href="https://www.carersuk.org/" class="govuk-link" >Carers UK</a> and <a href="https://carers.org/" class="govuk-link">Carers Trust</a>.
+        </p>
+        
+
+        
+        
+        
+
+
+
+
+  
+
+  
+
+
+
+        
+
+  
+    
+  
+
+
+
+      </form>
+    </div>
+  </div>
+
+  {% endblock %}

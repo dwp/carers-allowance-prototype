@@ -18,29 +18,32 @@
 
      
 
-      <form class="form" action="submit-claim" method="post">
+      <form class="form" action="education-21-break" method="post">
 
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
               <h1 class="govuk-fieldset__heading">
-                Have you been an employee at any time since 1 January 2024?
+                Are you on an approved break agreed by your school, sixth form or college? 
               </h1>
             </legend>
-            
+            <div id="contact-hint" class="govuk-hint">
+              You will need to send us a copy of your agreement for this break after you apply. 
+            </div>
             <div class="govuk-radios" data-module="govuk-radios">
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="employee" name="employee" type="radio" value="yes">
-                <label class="govuk-label govuk-radios__label" for="employee">
+                <input class="govuk-radios__input" id="approvedBreak" name="approvedBreak" type="radio" value="yes">
+                <label class="govuk-label govuk-radios__label" for="approvedBreak">
                   Yes
                 </label>
               </div>
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="employee-2" name="employee" type="radio" value="no">
-                <label class="govuk-label govuk-radios__label" for="employee-2">
+                <input class="govuk-radios__input" id="approvedBreak-2" name="approvedBreak" type="radio" value="no">
+                <label class="govuk-label govuk-radios__label" for="approvedBreak-2">
                   No
                 </label>
               </div>
+              
               
             </div>
           </fieldset>
