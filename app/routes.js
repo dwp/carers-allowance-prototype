@@ -92,4 +92,61 @@ router.post('/layouts/apply/long-journeys/education/education-21-break', functio
     else {
         response.redirect("/layouts/apply/long-journeys/education/education-deflection-full-time")
     }
+}),
+
+router.post('/layouts/apply/long-journeys/education/education-today-date', function(request, response) {
+
+    var currentEducation = request.session.data['currentEducation']
+    if (currentEducation == "yes"){
+        response.redirect("/layouts/apply/long-journeys/education/education-still-yes")
+    } 
+    else {
+        response.redirect("/layouts/apply/long-journeys/education/employment-no-education")
+    }
+}),
+
+router.post('/layouts/apply/long-journeys/education/education-future-date', function(request, response) {
+
+    var futureEducation = request.session.data['inEducationFuture']
+    if (futureEducation == "yes"){
+        response.redirect("/layouts/apply/long-journeys/education/education-future-where")
+    } 
+    else {
+        response.redirect("/layouts/apply/long-journeys/education/employment-no-education")
+    }
+}),
+
+router.post('/layouts/apply/long-journeys/education/education-future-where', function(request, response) {
+
+    var educationFutureWhere = request.session.data['futureEducationWhere']
+    if (educationFutureWhere == "school"){
+        response.redirect("/layouts/apply/long-journeys/education/education-future-deflection-school")
+    } 
+    if (educationFutureWhere == "university"){
+        response.redirect("/layouts/apply/long-journeys/education/education-uni")
+    }else {
+        response.redirect("/layouts/apply/long-journeys/education/education-future-21-hours")
+    }
+}),
+
+router.post('/layouts/apply/long-journeys/education/education-future-21-hours', function(request, response) {
+
+    var futureHours = request.session.data['future21hours']
+    if (futureHours == "yes"){
+        response.redirect("/layouts/apply/long-journeys/education/education-future-21-break")
+    } 
+    else {
+        response.redirect("/layouts/apply/long-journeys/education/employment")
+    }
+}),
+
+router.post('/layouts/apply/long-journeys/education/education-future-21-break', function(request, response) {
+
+    var futureBreak = request.session.data['futureApprovedBreak']
+    if (futureBreak == "yes"){
+        response.redirect("/layouts/apply/long-journeys/education/employment")
+    } 
+    else {
+        response.redirect("/layouts/apply/long-journeys/education/education-deflection-full-time")
+    }
 })
