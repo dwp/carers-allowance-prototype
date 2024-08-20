@@ -43,7 +43,7 @@ router.post('/layouts/apply/long-journeys/education/education-still-yes', functi
     if (educationWhere == "school"){
         response.redirect("/layouts/apply/long-journeys/education/education-deflection-school")
     } 
-    if (educationWhere == "university"){
+    else if (educationWhere == "university"){
         response.redirect("/layouts/apply/long-journeys/education/education-uni")
     }
     else {
@@ -123,7 +123,7 @@ router.post('/layouts/apply/long-journeys/education/education-future-where', fun
     if (educationFutureWhere == "school"){
         response.redirect("/layouts/apply/long-journeys/education/education-future-deflection-school")
     } 
-    if (educationFutureWhere == "university"){
+    else if (educationFutureWhere == "university"){
         response.redirect("/layouts/apply/long-journeys/education/education-uni")
     }
     else {
