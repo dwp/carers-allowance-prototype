@@ -45,7 +45,8 @@ router.post('/layouts/apply/long-journeys/education/education-still-yes', functi
     } 
     if (educationWhere == "university"){
         response.redirect("/layouts/apply/long-journeys/education/education-uni")
-    }else {
+    }
+    else {
         response.redirect("/layouts/apply/long-journeys/education/education-21-hours")
     }
 }),
@@ -124,7 +125,8 @@ router.post('/layouts/apply/long-journeys/education/education-future-where', fun
     } 
     if (educationFutureWhere == "university"){
         response.redirect("/layouts/apply/long-journeys/education/education-uni")
-    }else {
+    }
+    else {
         response.redirect("/layouts/apply/long-journeys/education/education-future-21-hours")
     }
 }),
