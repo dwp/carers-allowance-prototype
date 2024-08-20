@@ -33,17 +33,71 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
+  
 
-    
+      <h1 class="govuk-heading-l">Report a change to Carer's Allownce - prototypes</h1>
 
-    <h1 class="govuk-heading-l">
-      Change of circumstances
-    </h1>
+      
+
+      {% set inProgressStatus = {
+        tag: {
+          text: "Ongoing",
+          classes: "govuk-tag--yellow"
+        }
+      } %}
+
+      {% set liveStatus = {
+        tag: {
+          text: "In live",
+          classes: "govuk-tag--green"
+        }
+      } %}
+
+      {% set incompleteStatus = {
+        tag: {
+          text: "Incomplete",
+          classes: "govuk-tag--red"
+        }
+      } %}
+
+      {% set testedStatus = {
+        tag: {
+          text: "Tested",
+          classes: "govuk-tag--blue"
+        }
+      } %}
+
+      {% set experimentalStatus = {
+        tag: {
+          text: "Experimental",
+          classes: "govuk-tag--pink"
+        }
+      } %}
+
+      {# To switch between the completed and incomplete statues, use some inline logic within the component below, like this: "status: (completedStatus if ... else incompleteStatus)" #}
+      {% from "govuk/components/task-list/macro.njk" import govukTaskList %}
+      {{ govukTaskList({
+        idPrefix: "first-section",
+        items: [
+          {
+            title: {
+              text: "Helping claimants of 'Carer Support Payment' report a change"
+            },
+            hint: {
+              text: "Carer Support Payment (CSP) is the Scottish equivalent of CA. If a claimant of CSP lands on the CA report a change service, we need to redirect them to the correct service - as we do with the apply for CA journey. "
+            },
+            href: "csp/csp-intro.html",
+            status: experimentalStatus
+          }
+          
+          
+        ]
+      }) }}
 
      
 
-   
-  </div>
+      
+</div>
 </div>
 
 {% endblock %}
