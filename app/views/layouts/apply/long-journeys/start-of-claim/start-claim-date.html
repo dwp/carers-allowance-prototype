@@ -58,8 +58,11 @@
 
 
 
-            <p class="strong">Claim date</p>
+            <h3 class="govuk-heading-s">Claim date</h3>
 
+            <div id="passport-issued-hint" class="govuk-hint">
+              For example, 18 9 1984
+            </div>
 
            
             <div class="govuk-date-input" id="passport-issued">
@@ -91,9 +94,30 @@
           </fieldset>
         </div>
 
+        <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <h3 class="govuk-heading-s">Were you providing care for the person for more than 35 hours a week before this date?</h2>
+         
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="careDate" name="careDate" type="radio" value="yes">
+                <label class="govuk-label govuk-radios__label" for="careDate">
+                  Yes
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="careDate-2" name="careDate" type="radio" value="no">
+                <label class="govuk-label govuk-radios__label" for="careDate-2">
+                  No
+                </label>
+              </div>
+              </div>
+  </fieldset>
+  </div>
+
         {{ govukButton({
           text: "Continue",
-          href: "/layouts/apply/long-journeys/start-of-claim/start-qualifying-benefit"
+          href: "/layouts/apply/long-journeys/start-of-claim/start-end-of-journey"
         }) }}
 
       

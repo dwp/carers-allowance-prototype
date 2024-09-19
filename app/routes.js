@@ -190,4 +190,32 @@ router.post('/layouts/apply/long-journeys/start-of-claim/start-qualifying-benefi
     else {
         response.redirect("/layouts/apply/long-journeys/start-of-claim/start-claim-date")
     }
+}),
+
+router.post('/layouts/apply/long-journeys/start-of-claim/startni-are-you-carer', function(request, response) {
+
+    var isNiCarer = request.session.data['areYouCarerNI']
+    if (isNiCarer == "yes"){
+        response.redirect("/layouts/apply/long-journeys/start-of-claim/startni-where")
+    } 
+    else {
+        response.redirect("/layouts/apply/long-journeys/start-of-claim/startni-where")
+    }
+}),
+
+router.post('/layouts/apply/long-journeys/start-of-claim/startni-where', function(request, response) {
+
+    var startNiWhere = request.session.data['whichCountryNi']
+    if (startNiWhere == "scotland"){
+        response.redirect("/layouts/apply/long-journeys/start-of-claim/start-deflection-scotland")
+    } 
+    else if (startNiWhere == "northernIreland"){
+        response.redirect("/layouts/apply/long-journeys/start-of-claim/startni-carer-dob")
+    }
+    else if (startNiWhere == "anotherCountry"){
+        response.redirect("/layouts/apply/long-journeys/start-of-claim/start-deflection-other-country")
+    }
+    else {
+        response.redirect("/layouts/apply/long-journeys/start-of-claim/startni-deflection-engwal")
+    }
 })
