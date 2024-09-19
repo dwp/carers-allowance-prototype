@@ -1,0 +1,67 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – Apply for Carer's Allowance – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      
+        <h1 class="govuk-heading-l">
+          Based on this answer, you may not be eligible for Carer's Allowance
+        </h1>
+
+        <p class="govuk-body">
+          You can only get Carer's Allowance if you normally live in England, Wales or Northern Ireland. You might get it if you live in the European Economic Area (EEA) or Switzerland, but you must apply to find out.
+        </p>
+        <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+        <h2 class="govuk-heading-m">Do you still want to apply?</h2>
+        <div id="passport-issued-hint" class="govuk-hint">You are still legally entitled to apply, even though you may not qualify for Carer's Allowance.</div>
+
+       
+
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="anotherCountry" name="anotherCountry" type="radio" value="yes">
+              <label class="govuk-label govuk-radios__label" for="anotherCountry">
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="anotherCountry-2" name="anotherCountry" type="radio" value="no">
+              <label class="govuk-label govuk-radios__label" for="anotherCountry-2">
+                No
+              </label>
+            </div>
+            </div>
+</fieldset>
+</div>
+    
+{{ govukButton({
+  text: "Continue",
+  href: "#",
+  isStartButton: false
+}) }}
+         
+
+    
+    </div>
+  </div>
+  
+ 
+
+ 
+
+  {% endblock %}
+
+ 

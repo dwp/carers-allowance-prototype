@@ -1,0 +1,58 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – Apply for Carer's Allowance – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post">
+        <h1 class="govuk-heading-l">
+            You cannot apply using this service
+        </h1>
+
+        <p class="govuk-body">
+            You are using the Carer's Allowance application service for England and Wales. If you live in Northern Ireland, you must apply using the NI Direct service instead.
+        </p>
+
+        {{ govukButton({
+          text: "Apply on NI Direct",
+          href: "https://www.nidirect.gov.uk/services/apply-carers-allowance-online",
+          isStartButton: false
+        }) }}
+
+        
+        
+        
+
+
+
+
+  
+
+  
+
+
+
+        
+
+  
+    
+  
+
+
+
+      </form>
+    </div>
+  </div>
+
+  {% endblock %}
