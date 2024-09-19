@@ -1,0 +1,58 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – Apply for Carer's Allowance – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post">
+        <h1 class="govuk-heading-l">
+            You cannot apply using this service
+        </h1>
+
+        <p class="govuk-body">
+            You are using the Carer's Allowance application service for Northern Ireland. You need to apply using GOV.UK.
+        </p>
+
+        {{ govukButton({
+          text: "Apply on GOV.UK",
+          href: "https://www.gov.uk/carers-allowance/how-to-claim",
+          isStartButton: false
+        }) }}
+
+        
+        
+        
+
+
+
+
+  
+
+  
+
+
+
+        
+
+  
+    
+  
+
+
+
+      </form>
+    </div>
+  </div>
+
+  {% endblock %}
