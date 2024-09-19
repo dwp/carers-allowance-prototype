@@ -1,0 +1,104 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+     
+
+      
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                When do you want your Carer's Allowance to start?
+              </h1>
+            </legend>
+
+            <p class="govuk-body">
+              The person you care for must get their disability benefit before your claim can start.
+            </p>
+            <p class="govuk-body">
+              You can backdate your claim for up to 3 months, as long as you provided care for at least 35 hours a week.
+            </p>
+
+            <details class="govuk-details">
+              <summary class="govuk-details__summary">
+                <span class="govuk-details__summary-text">
+                 Claims that can be backdated more than 3 months
+                </span>
+              </summary>
+              <div class="govuk-details__text">
+                <p>If the person you care for was awarded their disability benefit in the last 3 months with a backdated start date of more than 3 months ago, you can claim from:</p>
+                <ul class="govuk-list govuk-list--bullet">
+                  <li>their disability benefit start date – if you were proving care for at least 35 hours a week from that date</li>
+                  <li>the date you started to provide care – if this was after their benefit start date</li>
+
+                </ul>
+
+                
+              </div>
+            </details>
+
+            <p>Your claim date cannot be more than 3 months in the future.</p>
+
+
+
+
+            <p class="strong">Claim date</p>
+
+
+           
+            <div class="govuk-date-input" id="passport-issued">
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
+                    Day
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-day" name="passport-issued-day" type="text" inputmode="numeric">
+                </div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+                    Month
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month" name="passport-issued-month" type="text" inputmode="numeric">
+                </div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
+                    Year
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-issued-year" name="passport-issued-year" type="text" inputmode="numeric">
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        {{ govukButton({
+          text: "Continue",
+          href: "/layouts/apply/long-journeys/start-of-claim/start-qualifying-benefit"
+        }) }}
+
+      
+
+    </div>
+  </div>
+
+{% endblock %}

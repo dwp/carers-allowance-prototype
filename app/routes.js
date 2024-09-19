@@ -151,4 +151,43 @@ router.post('/layouts/apply/long-journeys/education/education-future-21-break', 
     else {
         response.redirect("/layouts/apply/long-journeys/education/education-deflection-full-time")
     }
+}),
+
+router.post('/layouts/apply/long-journeys/start-of-claim/start-are-you-carer', function(request, response) {
+
+    var isCarer = request.session.data['areYouCarer']
+    if (isCarer == "yes"){
+        response.redirect("/layouts/apply/long-journeys/start-of-claim/start-where")
+    } 
+    else {
+        response.redirect("/layouts/apply/long-journeys/start-of-claim/start-where")
+    }
+}),
+
+router.post('/layouts/apply/long-journeys/start-of-claim/start-where', function(request, response) {
+
+    var startWhere = request.session.data['whichCountry']
+    if (startWhere == "scotland"){
+        response.redirect("/layouts/apply/long-journeys/start-of-claim/start-deflection-scotland")
+    } 
+    else if (startWhere == "northernIreland"){
+        response.redirect("/layouts/apply/long-journeys/start-of-claim/start-deflection-ni")
+    }
+    else if (startWhere == "anotherCountry"){
+        response.redirect("/layouts/apply/long-journeys/start-of-claim/start-deflection-other-country")
+    }
+    else {
+        response.redirect("/layouts/apply/long-journeys/start-of-claim/start-carer-dob")
+    }
+}),
+
+router.post('/layouts/apply/long-journeys/start-of-claim/start-qualifying-benefit', function(request, response) {
+
+    var qualBen = request.session.data['benefits']
+    if (qualBen == "none"){
+        response.redirect("/layouts/apply/long-journeys/start-of-claim/start-deflection-qb")
+    } 
+    else {
+        response.redirect("/layouts/apply/long-journeys/start-of-claim/start-claim-date")
+    }
 })
