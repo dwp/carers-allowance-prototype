@@ -16,8 +16,6 @@
 
       <h1 class="govuk-heading-l">Apply for Carer's Allowance - short prototypes</h1>
 
-      <h2 class="govuk-heading-m">OIDV</h2>
-
       {% set inProgressStatus = {
         tag: {
           text: "Ongoing",
@@ -55,49 +53,14 @@
 
       {# To switch between the completed and incomplete statues, use some inline logic within the component below, like this: "status: (completedStatus if ... else incompleteStatus)" #}
       {% from "govuk/components/task-list/macro.njk" import govukTaskList %}
-      {{ govukTaskList({
-        idPrefix: "first-section",
-        items: [
-          {
-            title: {
-              text: "OIDV documentation filter screen"
-            },
-            hint: {
-              text: "A screen to sit in CADS that asks the user if they have the documentation to get through OIDV. If they do not, they will bypass the OIDV journey.
-              This has been tested. "
-            },
-            href: "short-journeys/oidv-filter.html",
-            status: testedStatus
-          },
-          
-          {
-            title: {
-              text: "OIDV drop out to CA screen"
-            },
-            hint: {
-              text: "A screen to sit in CADS that users will see if they drop out of OIDV back into the CA application journey. It's to give users information about what is happening, so that they understand they can continue applying online. "
-            },
-            href: "short-journeys/oidv-dropout.html",
-            status: inProgressStatus
-          }
-        ]
-      }) }}
+
+      
 
       <h2 class="govuk-heading-m govuk-!-margin-top-5">Stand-alone pages or journeys</h2>
 
       {{ govukTaskList({
-        idPrefix: "second-section",
+        idPrefix: "first-section",
         items: [
-          {
-            title: {
-              text: "Making bank details mandatory"
-            },
-            hint: {
-              text: "Jira ticket ACA-2829"
-            },
-            href: "short-journeys/bank-details.html",
-            status: liveStatus
-          },
 
           {
             title: {
@@ -128,9 +91,52 @@
             },
             href: "short-journeys/scottish-qb.html",
             status: inProgressStatus
+          },
+          {
+            title: {
+              text: "Making bank details mandatory"
+            },
+            hint: {
+              text: "Jira ticket ACA-2829"
+            },
+            href: "short-journeys/bank-details.html",
+            status: liveStatus
           }
         ]
       }) }}
+
+      <h2 class="govuk-heading-m">OIDV (*Blocked*)</h2>
+
+      {{ govukTaskList({
+        idPrefix: "second-section",
+        items: [
+          {
+            title: {
+              text: "OIDV documentation filter screen"
+            },
+            hint: {
+              text: "A screen to sit in CADS that asks the user if they have the documentation to get through OIDV. If they do not, they will bypass the OIDV journey.
+              This has been tested. "
+            },
+            href: "short-journeys/oidv-filter.html",
+            status: testedStatus
+          },
+          
+          {
+            title: {
+              text: "OIDV drop out to CA screen"
+            },
+            hint: {
+              text: "A screen to sit in CADS that users will see if they drop out of OIDV back into the CA application journey. It's to give users information about what is happening, so that they understand they can continue applying online. "
+            },
+            href: "short-journeys/oidv-dropout.html",
+            status: incompleteStatus
+          }
+        ]
+      }) }}
+
+
+
 </div>
 </div>
       
