@@ -58,7 +58,7 @@ router.post('/layouts/apply/long-journeys/education/education-uni', function(req
         response.redirect("/layouts/apply/long-journeys/education/education-uni-fulltime-exempt")
     } 
     else {
-        response.redirect("/layouts/apply/long-journeys/education/employment")
+        response.redirect("/layouts/apply/long-journeys/education/education-form-info")
     }
 }),
 
@@ -69,7 +69,7 @@ router.post('/layouts/apply/long-journeys/education/education-21-hours', functio
         response.redirect("/layouts/apply/long-journeys/education/education-21-break")
     } 
     else {
-        response.redirect("/layouts/apply/long-journeys/education/employment")
+        response.redirect("/layouts/apply/long-journeys/education/education-form-info")
     }
 }),
 
@@ -77,7 +77,7 @@ router.post('/layouts/apply/long-journeys/education/education-uni-fulltime-exemp
 
     var uniExempt = request.session.data['universityExemption']
     if (uniExempt == "yes"){
-        response.redirect("/layouts/apply/long-journeys/education/employment")
+        response.redirect("/layouts/apply/long-journeys/education/education-form-info")
     } 
     else {
         response.redirect("/layouts/apply/long-journeys/education/education-deflection-full-time")
@@ -88,7 +88,7 @@ router.post('/layouts/apply/long-journeys/education/education-21-break', functio
 
     var collegeBreak = request.session.data['approvedBreak']
     if (collegeBreak == "yes"){
-        response.redirect("/layouts/apply/long-journeys/education/employment")
+        response.redirect("/layouts/apply/long-journeys/education/education-form-info")
     } 
     else {
         response.redirect("/layouts/apply/long-journeys/education/education-deflection-full-time")
