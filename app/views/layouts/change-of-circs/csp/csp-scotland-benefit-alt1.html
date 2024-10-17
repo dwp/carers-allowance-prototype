@@ -1,0 +1,60 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+     
+
+      <form class="form" action="/csp-scotland-benefit" method="post">
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                What benefit do you currently get? 
+              </h1>
+            </legend>
+            <div id="contact-hint" class="govuk-hint">
+              If you applied for your benefit after November 2024, it is likely you are getting Carer Support Payment.
+            </div>
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="cofcScotlandCA" name="cofcScotlandCA" type="radio" value="yes">
+                <label class="govuk-label govuk-radios__label" for="cofcScotlandCA">
+                  Carer's Allowance
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="cofcScotlandCA-2" name="cofcScotlandCA" type="radio" value="no">
+                <label class="govuk-label govuk-radios__label" for="cofcScotlandCA-2">
+                  Carer Support Payment
+                </label>
+              </div>
+              
+            </div>
+          </fieldset>
+        </div>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

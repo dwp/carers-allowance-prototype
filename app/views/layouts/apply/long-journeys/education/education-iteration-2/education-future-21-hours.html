@@ -1,0 +1,66 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+     
+
+      <form class="form" action="education-future-21-hours" method="post">
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Will you spend at least 21 hours each week doing supervised study? 
+              </h1>
+            </legend>
+            <div id="contact-hint" class="govuk-hint">
+              Supervised study includes any time in class and any compulsory work set by your course director or tutor to be completed out of class. 
+            </div>
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="future21hours" name="future21hours" type="radio" value="yes">
+                <label class="govuk-label govuk-radios__label" for="future21hours">
+                  Yes
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="future21hours-2" name="future21hours" type="radio" value="no">
+                <label class="govuk-label govuk-radios__label" for="future21hours-2">
+                  No
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="future21hours-3" name="future21hours" type="radio" value="notsure">
+                <label class="govuk-label govuk-radios__label" for="future21hours-3">
+                  Not sure
+                </label>
+              </div>
+              
+            </div>
+          </fieldset>
+        </div>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
