@@ -311,7 +311,7 @@ router.post('/layouts/apply/long-journeys/education/education-iteration-2/educat
         response.redirect("/layouts/apply/long-journeys/education/education-iteration-2/education-future-uni-fulltime-exempt")
     } 
     else {
-        response.redirect("/layouts/apply/long-journeys/education/education-iteration-2/employment")
+        response.redirect("/layouts/apply/long-journeys/education/education-iteration-2/education-form-info")
     }
 }),
 
@@ -341,7 +341,7 @@ router.post('/layouts/apply/long-journeys/education/education-iteration-2/educat
 
     var uniExempt = request.session.data['universityExemption']
     if (uniExempt == "yes"){
-        response.redirect("/layouts/apply/long-journeys/education/education-iteration-2/employment")
+        response.redirect("/layouts/apply/long-journeys/education/education-iteration-2/education-form-info")
     } 
     else {
         response.redirect("/layouts/apply/long-journeys/education/education-iteration-2/education-deflection-full-time")
@@ -366,7 +366,7 @@ router.post('/layouts/apply/long-journeys/education/education-iteration-2/educat
         response.redirect("/layouts/apply/long-journeys/education/education-iteration-2/education-today-uni-fulltime-exempt")
     } 
     else {
-        response.redirect("/layouts/apply/long-journeys/education/education-iteration-2/employment")
+        response.redirect("/layouts/apply/long-journeys/education/education-iteration-2/education-form-info")
     }
 }),
 
@@ -377,7 +377,7 @@ router.post('/layouts/apply/long-journeys/education/education-iteration-2/educat
         response.redirect("/layouts/apply/long-journeys/education/education-iteration-2/education-today-21-break")
     } 
     else {
-        response.redirect("/layouts/apply/long-journeys/education/education-iteration-2/employment")
+        response.redirect("/layouts/apply/long-journeys/education/education-iteration-2/education-form-info")
     }
 }),
 
@@ -385,7 +385,7 @@ router.post('/layouts/apply/long-journeys/education/education-iteration-2/educat
 
     var uniExempt = request.session.data['universityExemption']
     if (uniExempt == "yes"){
-        response.redirect("/layouts/apply/long-journeys/education/education-iteration-2/employment")
+        response.redirect("/layouts/apply/long-journeys/education/education-iteration-2/education-form-info")
     } 
     else {
         response.redirect("/layouts/apply/long-journeys/education/education-iteration-2/education-deflection-full-time")
@@ -396,7 +396,7 @@ router.post('/layouts/apply/long-journeys/education/education-iteration-2/educat
 
     var collegeBreak = request.session.data['approvedBreak']
     if (collegeBreak == "yes"){
-        response.redirect("/layouts/apply/long-journeys/education/education-iteration-2/employment")
+        response.redirect("/layouts/apply/long-journeys/education/education-iteration-2/education-form-info")
     } 
     else {
         response.redirect("/layouts/apply/long-journeys/education/education-iteration-2/education-deflection-full-time")
@@ -446,7 +446,7 @@ router.post('/layouts/apply/long-journeys/education/education-iteration-2/educat
         response.redirect("/layouts/apply/long-journeys/education/education-iteration-2/education-future-21-break")
     } 
     else {
-        response.redirect("/layouts/apply/long-journeys/education/education-iteration-2/employment")
+        response.redirect("/layouts/apply/long-journeys/education/education-iteration-2/education-form-info")
     }
 }),
 
@@ -454,12 +454,13 @@ router.post('/layouts/apply/long-journeys/education/education-iteration-2/educat
 
     var futureBreak = request.session.data['futureApprovedBreak']
     if (futureBreak == "yes"){
-        response.redirect("/layouts/apply/long-journeys/education/education-iteration-2/employment")
+        response.redirect("/layouts/apply/long-journeys/education/education-iteration-2/education-form-info")
     } 
     else {
         response.redirect("/layouts/apply/long-journeys/education/education-iteration-2/education-deflection-full-time")
     }
 }),
+
 
 
 
