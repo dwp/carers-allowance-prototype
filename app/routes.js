@@ -273,6 +273,11 @@ router.post('/layouts/apply/long-journeys/education/education-iteration-2/educat
     } 
     else if (educationWhere == "university"){
         response.redirect("/layouts/apply/long-journeys/education/education-iteration-2/education-uni")
+        
+    }
+    else if (educationWhere == "ou"){
+        response.redirect("/layouts/apply/long-journeys/education/education-iteration-2/employment")
+        
     }
     else {
         response.redirect("/layouts/apply/long-journeys/education/education-iteration-2/education-21-hours")
@@ -287,6 +292,10 @@ router.post('/layouts/apply/long-journeys/education/education-iteration-2/educat
     } 
     else if (educationWhere == "university"){
         response.redirect("/layouts/apply/long-journeys/education/education-iteration-2/education-today-uni")
+    }
+    else if (educationWhere == "ou"){
+        response.redirect("/layouts/apply/long-journeys/education/education-iteration-2/employment")
+        
     }
     else {
         response.redirect("/layouts/apply/long-journeys/education/education-iteration-2/education-today-21-hours")
@@ -433,6 +442,10 @@ router.post('/layouts/apply/long-journeys/education/education-iteration-2/educat
     } 
     else if (educationFutureWhere == "university"){
         response.redirect("/layouts/apply/long-journeys/education/education-iteration-2/education-future-uni")
+    }
+    else if (educationFutureWhere == "ou"){
+        response.redirect("/layouts/apply/long-journeys/education/education-iteration-2/employment")
+        
     }
     else {
         response.redirect("/layouts/apply/long-journeys/education/education-iteration-2/education-future-21-hours")
