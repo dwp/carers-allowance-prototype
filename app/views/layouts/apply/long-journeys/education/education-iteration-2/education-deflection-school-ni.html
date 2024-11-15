@@ -1,0 +1,60 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – Apply for Carer's Allowance – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post">
+        <h1 class="govuk-heading-l">
+          You cannot get Carer's Allowance if you are still in school
+        </h1>
+
+        <p class="govuk-body">
+            As you are at school and in full-time education, you are not able to get Carer's Allowance. You may be eligible for Carer's Allowance after you leave full-time education.
+        </p>
+
+        <h2 class="govuk-heading-m">Other support available</h2>
+        <p class="govuk-body">
+          You can get advice and support about being a young carer from <a href="https://www.nidirect.gov.uk/articles/young-carers" class="govuk-link" rel="noreferrer noopener" target="_blank" >NI Direct (opens in a new tab)</a>, and advice about what benefits you are entitled to from the <a href="https://www.nidirect.gov.uk/contacts/make-call-service" class="govuk-link" rel="noreferrer noopener" target="_blank">Make the Call Service (opens in a new tab)</a>.
+        </p>
+        <p class="govuk-body">
+          You can also ask your teacher or tutor about what help may be available to you as a young carer.
+        </p>
+
+        
+        
+        
+
+
+
+
+  
+
+  
+
+
+
+        
+
+  
+    
+  
+
+
+
+      </form>
+    </div>
+  </div>
+
+  {% endblock %}
