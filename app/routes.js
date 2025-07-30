@@ -551,3 +551,54 @@ router.post('/layouts/apply/long-journeys/start-of-claim/startni-where', functio
         response.redirect("/layouts/apply/long-journeys/start-of-claim/startni-deflection-engwal")
     }
 })
+
+
+
+
+// EZRAS ROUTES
+
+// ROUTING FOR EMPLOYEE-CHECK PAGE
+// Run this code when a form is submitted to 'employee-check-answer'
+router.post('/employee-check-answer', function (req, res) {
+
+  // Make a variable and give it the value from 'how-many-balls'
+  var employeeCheck = req.session.data['employee-check']
+
+  // Check whether the variable matches a condition
+  if (employeeCheck == "yes"){
+    // Send user to next page
+    res.redirect('/employment-and-income/employer-details')
+  } else {
+    // Send user to ineligible page
+    res.redirect('/employment-and-income/self-employed')
+  }
+
+})
+// END ROUTING FOR EMPLOYEE-CHECK PAGE
+
+
+// ROUTING FOR RELATIONSHIPS CONCEPT
+
+// Run this code when a form is submitted to 'juggling-balls-answer'
+router.post('/asking-questions-answer', function (req, res) {
+
+  // Make a variable and give it the value from 'how-many-balls'
+  var relationshipTier1 = req.session.data['relationship-tier-1']
+
+  // Check whether the variable matches a condition
+  if (relationshipTier1 == "child"){
+    // Send user to next page
+    res.redirect('/relationships/asking-questions-child')
+  } else if (relationshipTier1 == "sibling"){
+    // Send user to ineligible page
+    res.redirect('/relationships/asking-questions-sibling')
+  } else {
+    // Send user to ineligible page
+    res.redirect('/relationships/ineligible')
+  }
+
+})
+
+// END ROUTING FOR RELATIONSHIPS CONCEPT
+
+// END EZRAS ROUTES

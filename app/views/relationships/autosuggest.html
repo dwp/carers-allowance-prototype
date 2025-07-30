@@ -1,0 +1,57 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+<style>
+  .ui-autocomplete-loading {
+    background: white url("images/ui-anim_basic_16x16.gif") right center no-repeat;
+  }
+</style>
+<!-- JQUERY AND JQUERY UI SCRIPTS -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/ui/1.14.1/jquery-ui.min.js" integrity="sha256-AlTido85uXPlSyyaZNsjJXeCs07eSv3r43kyCVc8ChI=" crossorigin="anonymous"></script>
+<!-- END JQUERY AND JQUERY UI SCRIPTS -->
+
+<script type="text/javascript">
+  $(function() {
+    $("#relationshipAutosuggest").autocomplete({
+      source: ["Wife", "Father", "Mother", "Grandfather", "Grandmother", "Son", "Daughter", "Grandson", "Granddaughter", "Stepfather", "Stepmother", "Stepson", "Stepdaughter", "Brother", "Sister", "Half-brother", "Half-sister", "Stepbrother", "Stepsister", "Mother", "Aunt", "Uncle", "Nephew", "Neice", "Father-in-law", "Mother-in-law", "Brother-in-law", "Sister-in-law", "Son-in-law", "Daughter-in-law", "Husband", "Other relationship", "Friend", "Partner"],
+      minLength: 2
+    });
+  });
+</script>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="/path/of/next/page" method="post">
+
+        <div class="govuk-form-group">
+          <h1 class="govuk-label-wrapper">
+            <label class="govuk-label govuk-label--l" for="event-name">
+              What is Susan Grainger's relationship to you?
+            </label>
+          </h1>
+          <input id="relationshipAutosuggest" class="govuk-input" id="event-name" name="eventName" type="text">
+        </div>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

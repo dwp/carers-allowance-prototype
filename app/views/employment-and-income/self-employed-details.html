@@ -1,0 +1,274 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Self-employment
+      </h1>
+
+      <form class="form" action="care-costs" method="post">
+
+        <!-- TYPE OF BUSINESS -->
+        {% from "govuk/components/input/macro.njk" import govukInput %}
+
+        {{ govukInput({
+          label: {
+            text: "Type of business or work",
+            classes: "govuk-label--s"
+          },
+          hint: {
+            text: "For example: joiner, childminder."
+          },
+          id: "type-of-business",
+          name: "typeOfBusiness"
+        }) }}
+        <!-- END TYPE OF BUSINESS -->
+
+        <!-- ARE YOU STILL DOING THIS WORK? -->
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+        {% from "govuk/components/input/macro.njk" import govukInput %}
+
+        <!-- ARE YOU STILL DOING THIS WORK - CONDITIONAL -->
+        {% set finishWork %}
+        {% from "govuk/components/date-input/macro.njk" import govukDateInput %}
+
+        {{ govukDateInput({
+          id: "when-did-you-finish-this-work",
+          namePrefix: "when-did-you-finish-this-work",
+          fieldset: {
+            legend: {
+              text: "When did you finish this work?",
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          hint: {
+            text: "For example, 27 3 2007"
+          }
+        }) }}
+        {% endset -%}
+        <!-- END ARE YOU STILL DOING THIS WORK - CONDITIONAL -->
+
+        {{ govukRadios({
+          name: "stillDoingWork",
+          fieldset: {
+            legend: {
+              text: "Are you still doing this work?",
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          items: [
+            {
+              value: "yes",
+              text: "Yes"
+            },
+            {
+              value: "no",
+              text: "No",
+              conditional: {
+                html: finishWork
+              }
+            }
+          ]
+        }) }}
+        <!-- END ARE YOU STILL DOING THIS WORK? -->
+
+        <!-- DID YOU START THIS WORK MORE THAN A YEAR AGO? -->
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+        {% from "govuk/components/input/macro.njk" import govukInput %}
+
+        <!-- TRADING YEAR START DATE - CONDITIONAL -->
+        {% set tradingYearStartDate %}
+        {% from "govuk/components/date-input/macro.njk" import govukDateInput %}
+
+        {{ govukDateInput({
+          id: "trading-year-start-date",
+          namePrefix: "trading-year-start-date",
+          fieldset: {
+            legend: {
+              text: "Trading year start date",
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          hint: {
+            text: "For example, 27 3 2007"
+          }
+        }) }}
+        {% endset %}
+        <!-- END TRADING YEAR START DATE - CONDITIONAL -->
+
+        <!-- TRADING YEAR -->
+        {% set tradingYear %}
+        {{ govukRadios({
+          name: "doYouKnowYourTradingYear",
+          fieldset: {
+            legend: {
+              text: "Do you know your trading year?",
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          hint: {
+            text: "This is the date you do your accounts to each year - it's often the same as the tax year, but it doesn't have to be."
+          },
+          items: [
+            {
+              value: "yes",
+              text: "Yes",
+              conditional: {
+                html: tradingYearStartDate
+              }
+            },
+            {
+              value: "no",
+              text: "No"
+            }
+          ]
+        }) }}
+        {% endset %}
+        <!-- END TRADING YEAR -->
+
+        <!-- DID YOU START THIS WORK MORE THAN A YEAR AGO - YES - CONDITIONAL -->
+        {% set doYouHaveAccounts %}
+        {{ govukRadios({
+          name: "accounts",
+          fieldset: {
+            legend: {
+              text: "Do you have accounts?",
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          items: [
+            {
+              value: "yes",
+              text: "Yes"
+            },
+            {
+              value: "no",
+              text: "No",
+              conditional: {
+                html: tradingYear
+              }
+            }
+          ]
+        }) }}
+        {% endset %}
+
+        <!-- DID YOU START THIS WORK MORE THAN A YEAR AGO - NO - CONDITIONAL -->
+        <!-- WHEN DID YOU START THIS WORK -->
+        {% set startWork %}
+        {% from "govuk/components/date-input/macro.njk" import govukDateInput %}
+
+        {{ govukDateInput({
+          id: "when-did-you-start-this-work",
+          namePrefix: "when-did-you-start-this-work",
+          fieldset: {
+            legend: {
+              text: "When did you start this work?",
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          hint: {
+            text: "For example, 27 3 2007"
+          }
+        }) }}
+        <!-- END WHEN DID YOU START THIS WORK -->
+
+        <!-- DATE MONEY FIRST RECEIVED -->
+        {% set dateMoneyFirstReceived %}
+        {{ govukDateInput({
+          id: "date-money-first-received",
+          namePrefix: "date-money-first-received",
+          fieldset: {
+            legend: {
+              text: "Date money first received by the business",
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          hint: {
+            text: "For example, 27 3 2007"
+          }
+        }) }}
+        {% endset -%}
+        <!-- END DATE MONEY FIRST RECEIVED -->
+
+        <!-- HAS YOUR BUSINESS BEEN PAID MONEY -->
+        {{ govukRadios({
+          name: "businessBeenPaidMoney",
+          fieldset: {
+            legend: {
+              text: "Has your self-employed business been paid any money yet?",
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          hint: {
+            text: "This includes money paid directly to you or into a business account."
+          },
+          items: [
+            {
+              value: "yes",
+              text: "Yes",
+              conditional: {
+                html: dateMoneyFirstReceived
+              }
+            },
+            {
+              value: "no",
+              text: "No"
+            }
+          ]
+        }) }}
+        <!-- END HAS YOUR BUSINESS BEEN PAID MONEY -->
+
+        {% endset -%}
+        <!-- END DID YOU START THIS WORK MORE THAN A YEAR AGO - NO - CONDITIONAL -->
+
+        {{ govukRadios({
+          name: "startWorkMoreThanAYearAgo",
+          fieldset: {
+            legend: {
+              text: "Did you start this work more than a year ago?",
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          items: [
+            {
+              value: "yes",
+              text: "Yes",
+              conditional: {
+                html: doYouHaveAccounts
+              }
+            },
+            {
+              value: "no",
+              text: "No",
+              conditional: {
+                html: startWork
+              }
+            }
+          ]
+        }) }}
+        <!-- END DID YOU START THIS WORK MORE THAN A YEAR AGO? -->
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

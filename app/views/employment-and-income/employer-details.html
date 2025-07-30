@@ -1,0 +1,163 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <!-- HEADING -->
+      <h1 class="govuk-heading-l">
+        Employer details
+      </h1>
+
+      <p>These details are used to contact your employer.</p>
+      <!-- END HEADING -->
+
+      <form class="form" action="last-paid" method="post">
+
+      <!-- EMPLOYERS NAME -->
+      {% from "govuk/components/input/macro.njk" import govukInput %}
+
+      {{ govukInput({
+        name: "employers-name",
+        label: {
+          text: "Employer's name",
+          classes: "govuk-label--s"
+        }
+      }) }}
+      <!-- END EMPLOYERS NAME -->
+
+      <!-- JOB START DATE -->
+      {% from "govuk/components/radios/macro.njk" import govukRadios %}
+      {% from "govuk/components/date-input/macro.njk" import govukDateInput %}
+
+      <!-- COMPONENT FOR JOB START DATE CONDITIONAL  -->
+      {% set jobStart %}
+      {{ govukDateInput({
+        id: "job-start",
+        namePrefix: "job-start",
+        fieldset: {
+          legend: {
+            text: "Job start date",
+            classes: "govuk-fieldset__legend--s"
+          }
+        },
+        hint: {
+          text: "For example, 26 8 2023"
+        }
+      }) }}
+      {% endset -%}
+      <!-- END COMPONENT FOR JOB START DATE CONDITIONAL  -->
+
+      {{ govukRadios({
+        name: "job-start",
+        fieldset: {
+          legend: {
+            text: "Did you start this job before 9 August 2023?",
+            classes: "govuk-fieldset__legend--s"
+          }
+        },
+        hint: {
+          text: "This is 1 month before your claim date."
+        },
+        items: [
+          {
+            value: "yes",
+            text: "Yes"
+          },
+          {
+            value: "no",
+            text: "No",
+            conditional: {
+              html: jobStart
+            }
+          }
+        ]
+      }) }}
+      <!-- END JOB START DATE -->
+
+      <!-- HAVE YOU FINISHED THIS JOB? -->
+      {% from "govuk/components/radios/macro.njk" import govukRadios %}
+      {% from "govuk/components/date-input/macro.njk" import govukDateInput %}
+
+      <!-- COMPONENT FOR HAVE YOU FINISHED THIS JOB CONDITIONAL  -->
+      {% set jobEnd %}
+      {{ govukDateInput({
+        id: "date-last-worked",
+        namePrefix: "date-last-worked",
+        fieldset: {
+          legend: {
+            text: "Date last worked",
+            classes: "govuk-fieldset__legend--s"
+          }
+        },
+        hint: {
+          text: "For example, 26 8 2023"
+        }
+      }) }}
+
+      {{ govukDateInput({
+        id: "leaving-date-on-p45",
+        namePrefix: "leaving-date-on-p45",
+        fieldset: {
+          legend: {
+            text: "Leaving date on your P45 (optional)",
+            classes: "govuk-fieldset__legend--s"
+          }
+        },
+        hint: {
+          text: "For example, 26 8 2023"
+        }
+      }) }}
+      {% endset -%}
+      <!-- END COMPONENT FOR HAVE YOU FINISHED THIS JOB CONDITIONAL  -->
+
+      {{ govukRadios({
+        name: "job-finished",
+        fieldset: {
+          legend: {
+            text: "Have you finished this job?",
+            classes: "govuk-fieldset__legend--s"
+          }
+        },
+        items: [
+          {
+            value: "yes",
+            text: "Yes",
+            conditional: {
+              html: jobEnd
+            }
+          },
+          {
+            value: "no",
+            text: "No"
+          }
+        ]
+      }) }}
+      <!-- END HAVE YOU FINISHED THIS JOB? -->
+
+      <!-- BUTTON -->
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+      <!-- END BUTTON -->
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

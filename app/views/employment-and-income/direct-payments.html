@@ -1,0 +1,159 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Direct Payments for caring for people
+      </h1>
+
+      <form class="form" action="rental-income" method="post">
+
+         <!-- ARE YOU STILL BEING PAID? -->
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+        {% from "govuk/components/input/macro.njk" import govukInput %}
+
+        <!-- ARE YOU STILL BEING PAID - CONDITIONAL -->
+        {% set notStillBeingPaid %}
+        {% from "govuk/components/date-input/macro.njk" import govukDateInput %}
+
+        {{ govukDateInput({
+          id: "when-last-paid",
+          namePrefix: "when-last-paid",
+          fieldset: {
+            legend: {
+              text: "When were you last paid?",
+              classes: "govuk-fieldset__legend--s"
+            }
+          }
+        }) }}
+        {% endset -%}
+        <!-- END ARE YOU STILL BEING PAID - CONDITIONAL -->
+
+        {{ govukRadios({
+          name: "areYouStillBeingPaid",
+          fieldset: {
+            legend: {
+              text: "Are you still being paid this?",
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          items: [
+            {
+              value: "yes",
+              text: "Yes"
+            },
+            {
+              value: "no",
+              text: "No",
+              conditional: {
+                html: notStillBeingPaid
+              }
+            }
+          ]
+        }) }}
+        <!-- END ARE YOU SITLL BEING PAID -->
+
+        <!-- WHO PAID YOU THIS? -->
+        {% from "govuk/components/input/macro.njk" import govukInput %}
+
+        {{ govukInput({
+          label: {
+            text: "Who paid you this?",
+            classes: "govuk-label--s"
+          },
+          id: "who-paid-you",
+          name: "whoPaidYou"
+        }) }}
+        <!-- END WHO PAID YOU THIS? -->
+
+        <!-- AMOUNT PAID -->
+        {% from "govuk/components/input/macro.njk" import govukInput %}
+
+        {{ govukInput({
+          label: {
+            text: "Amount paid",
+            classes: "govuk-label--s"
+          },
+          id: "amount-paid",
+          name: "amountPaid"
+        }) }}
+        <!-- AMOUNT PAID -->
+
+        <!-- HOW OFTEN ARE YOU PAID? -->
+        <!-- HOW OFTEN ARE YOU PAID - CONDITIONAL -->
+        {% set howOftenAreYouPaid %}
+        {% from "govuk/components/input/macro.njk" import govukInput %}
+
+        {{ govukInput({
+          label: {
+            text: "How often are you paid?",
+            classes: "govuk-label--s"
+          },
+          id: "how-often-are-you-paid",
+          name: "howOftenAreYouPaid"
+        }) }}
+        {% endset %}
+        <!-- END HOW OFTEN ARE YOU PAID - CONDITIONAL -->
+
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+        {{ govukRadios({
+          name: "howOftenAreYouPaid",
+          fieldset: {
+            legend: {
+              text: "How often are you paid?",
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          items: [
+            {
+              value: "weekly",
+              text: "Weekly"
+            },
+            {
+              value: "fornightly",
+              text: "Fornightly"
+            },
+            {
+              value: "every 4 weeks",
+              text: "Every 4 weeks"
+            },
+            {
+              value: "monthly",
+              text: "Monthly"
+            },
+            {
+              value: "it-varies",
+              text: "It varies",
+              conditional: {
+                html: howOftenAreYouPaid
+              }
+            }
+          ]
+        }) }}
+        <!-- END HOW OFTEN ARE YOU PAID? -->
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

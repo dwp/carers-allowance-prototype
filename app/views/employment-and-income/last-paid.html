@@ -1,0 +1,77 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        {{ data['employers-name'] }}
+      </h1>
+
+      <form class="form" action="employment-expenses-or-care-costs" method="post">
+
+        {% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+
+        <!-- TEXTAREA -->
+        {{ govukTextarea({
+          name: "includedInPay",
+          id: "included-in-pay",
+          rows: "8",
+          label: {
+            text: "What was included in this pay? (Optional)",
+            classes: "govuk-label--s"
+          },
+          hint: {
+            text: "For example, holiday, sick or any redundancy pay."
+          }
+        }) }}
+        <!-- END TEXTAREA -->
+
+        <!-- RADIOS -->
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+        {{ govukRadios({
+          name: "sameAmountEachMonth",
+          fieldset: {
+            legend: {
+              text: "Do you get the same amount each month?",
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          items: [
+            {
+              value: "yes",
+              text: "Yes"
+            },
+            {
+              value: "no",
+              text: "No"
+            }
+          ]
+        }) }}
+        <!-- END RADIOS -->
+
+        <!-- BUTTON -->
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+        <!-- END BUTTON -->
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,76 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="statutory-sick-pay" method="post">
+
+        {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+        {{ govukCheckboxes({
+          name: "receivedAnyOfThese",
+          fieldset: {
+            legend: {
+              text: "Have you received any of these since 9 September 2023?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: "Select all that apply"
+          },
+          items: [
+            {
+              value: "statutory-sick-pay",
+              text: "Statutory sick pay"
+            },
+            {
+              value: "statutory-maternity,-paternity-or-adoption pay",
+              text: "Statutory Maternity, Paternity or Adoption Pay"
+            },
+            {
+              value: "fostering-allowance",
+              text: "Fostering Allowance"
+            },
+            {
+              value: "direct-payment-for-caring-for-someone",
+              text: "Direct payment for caring for someone"
+            },
+            {
+              value: "rental-income",
+              text: "Rental Income"
+            },
+            {
+              divider: "or"
+            },
+            {
+              value: "none",
+              text: "No, I have not received any of these",
+              behaviour: "exclusive"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,178 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="/path/of/next/page" method="post">
+
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+        {{ govukRadios({
+          name: "whereDoYouLive",
+          fieldset: {
+            legend: {
+              text: "What is Susan Grainger's relationship to you?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "published",
+              text: "Wife"
+            },
+            {
+              value: "updated",
+              text: "Father"
+            },
+            {
+              value: "views",
+              text: "Mother"
+            },
+            {
+              value: "comments",
+              text: "Grandfather"
+            }
+            ,
+            {
+              value: "comments",
+              text: "Grandmother"
+            },
+            {
+              value: "comments",
+              text: "Son"
+            },
+            {
+              value: "comments",
+              text: "Daughter"
+            },
+            {
+              value: "comments",
+              text: "Grandson"
+            },
+            {
+              value: "comments",
+              text: "Granddaughter"
+            },
+            {
+              value: "comments",
+              text: "Step father"
+            },
+            {
+              value: "comments",
+              text: "Step mother"
+            },
+            {
+              value: "comments",
+              text: "Stepson"
+            },
+            {
+              value: "comments",
+              text: "Stepdaughter"
+            },
+            {
+              value: "comments",
+              text: "Brother"
+            },
+            {
+              value: "comments",
+              text: "Sister"
+            },
+            {
+              value: "comments",
+              text: "Half-brother"
+            },
+            {
+              value: "comments",
+              text: "Half-sister"
+            },
+            {
+              value: "comments",
+              text: "Step-brother"
+            },
+            {
+              value: "comments",
+              text: "Step-sister"
+            },
+            {
+              value: "comments",
+              text: "Aunt"
+            },
+            {
+              value: "comments",
+              text: "Uncle"
+            },
+            {
+              value: "comments",
+              text: "Nephew"
+            },
+            {
+              value: "comments",
+              text: "Neice"
+            },
+            {
+              value: "comments",
+              text: "Father-in-law"
+            },
+            {
+              value: "comments",
+              text: "Mother-in-law"
+            },
+            {
+              value: "comments",
+              text: "Brother-in-law"
+            },
+            {
+              value: "comments",
+              text: "Sister-in-law"
+            },
+            {
+              value: "comments",
+              text: "Son-in-law"
+            },
+            {
+              value: "comments",
+              text: "Daughter-in-law"
+            },
+            {
+              value: "comments",
+              text: "Husband/Civil partner"
+            },
+            {
+              value: "comments",
+              text: "Friend"
+            },
+            {
+              value: "comments",
+              text: "Other relationship"
+            },
+            {
+              value: "comments",
+              text: "Partner"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

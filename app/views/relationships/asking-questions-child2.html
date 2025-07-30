@@ -1,0 +1,69 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="/asking-questions-tier-3" method="post">
+
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+        {{ govukRadios({
+          name: "relationship-tier-child",
+          fieldset: {
+            legend: {
+              text: "What is your relationship to this child?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "daughter",
+              text: "Biological child"
+            },
+            {
+              value: "son",
+              text: "Stepchild"
+            },
+            {
+              value: "prefer-not-say",
+              text: "Adopted child"
+            },
+            {
+              value: "prefer-not-say",
+              text: "Foster child"
+            },
+            {
+              value: "prefer-not-say",
+              text: "Other (please specify)"
+            },
+            {
+              value: "prefer-not-say",
+              text: "Prefer not to say"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

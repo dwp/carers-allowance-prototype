@@ -1,0 +1,69 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="/asking-questions-tier-3" method="post">
+
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+        {{ govukRadios({
+          name: "relationship-tier-sibling",
+          fieldset: {
+            legend: {
+              text: "What is your relationship to this sibling?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "brother",
+              text: "Brother"
+            },
+            {
+              value: "sister",
+              text: "Sister"
+            },
+            {
+              value: "half-brother",
+              text: "Half brother"
+            },
+            {
+              value: "Half-sister",
+              text: "Half sister"
+            },
+            {
+              value: "step-brother",
+              text: "Step brother"
+            },
+            {
+              value: "step-sister",
+              text: "Step sister"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

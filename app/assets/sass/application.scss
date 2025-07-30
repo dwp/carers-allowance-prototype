@@ -4,3 +4,22 @@
 // 
 
 // Add extra styles here
+
+.more {
+  display: none;
+}
+
+.d-block {
+  display: block;
+}
+
+.show-more-button {
+  display: block;
+  margin-top: 2em;
+}
+
+#ui-id-1 {
+    background: white;
+    border: 1px solid black;
+    width: 50%;
+}
