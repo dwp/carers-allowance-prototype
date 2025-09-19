@@ -1,0 +1,39 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">We check your expenses</h1>
+
+      <p>We will check if your expenses:</p>
+
+      <p class="govuk-body">You can buy:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>are allowed</li>
+        <li>are only for things you need for your job</li>
+        <li>reduce your earnings to less than £849.37 a month</li>
+      </ul>
+
+      <p>We will contact you by letter or phone if we need more information.</p>
+
+      <a href="income-summary" class="govuk-button" data-module="govuk-button">
+        Continue
+      </a>
+
+    </div>
+  </div>
+
+{% endblock %}

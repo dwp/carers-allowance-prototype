@@ -1,0 +1,65 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="how-often-paid" method="post">
+
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+        {{ govukRadios({
+          classes: "govuk-radios",
+          name: "doYouReceiveThese",
+          fieldset: {
+            legend: {
+              text: "Do you receive any of these?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "Statutory sick pay",
+              text: "Statutory sick pay"
+            },
+            {
+              value: "Statutory maternity pay",
+              text: "Statutory maternity pay"
+            },
+            {
+              value: "Statutory paternity pay",
+              text: "Statutory paternity pay"
+            },
+            {
+              value: "Statutory adoption pay",
+              text: "Statutory adoption pay"
+            },
+            {
+              value: "None of these",
+              text: "None of these"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

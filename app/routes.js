@@ -601,4 +601,290 @@ router.post('/asking-questions-answer', function (req, res) {
 
 // END ROUTING FOR RELATIONSHIPS CONCEPT
 
+
+
+
+
+// EMPLOYMENT & INCOME WITH EXPESNSES ROUTES
+
+// MORE THAN ONE INCOME
+router.post('/more-than-one-income-answer', function(request, response) {
+
+	var moreThanOneIncome = request.session.data['doYouReceiveMoreThanOneIncome']
+	if (moreThanOneIncome == "No"){
+		response.redirect("/employment-and-income-with-expenses/what-is-source-of-income")
+	} else {
+		response.redirect("/employment-and-income-with-expenses/add-income-1")
+	}
+})
+// END MORE THAN ONE INCOME
+
+// SOURCE OF INCOME INCOME
+router.post('/source-of-income-answer', function(request, response) {
+
+	var sourceOfIncome = request.session.data['sourceOfIncome']
+	if (sourceOfIncome == "Employment"){
+		response.redirect("/employment-and-income-with-expenses/do-you-receive-these")
+	} else if (sourceOfIncome == "Self-employment"){
+        response.redirect("/employment-and-income-with-expenses/self-employment")
+    } else if (sourceOfIncome == "Rental property"){
+        response.redirect("/employment-and-income-with-expenses/how-often-paid")
+    } else if (sourceOfIncome == "Caring for people"){
+        response.redirect("/employment-and-income-with-expenses/how-often-paid")
+    } else if (sourceOfIncome == "Fostering allowance"){
+        response.redirect("/employment-and-income-with-expenses/paid-by-fostering-agency-or-local-authority")
+    } else if (sourceOfIncome == "Cash in hand"){
+        response.redirect("/employment-and-income-with-expenses/how-often-paid")
+    } else {
+		response.redirect("/employment-and-income-with-expenses/add-income-1")
+	}
+})
+// END SOURCE OF INCOME INCOME
+
+// HOW OFTEN PAID
+router.post('/how-often-paid-answer', function(request, response) {
+
+	var howOftenPaid = request.session.data['howOftenPaid']
+	if (howOftenPaid == "weekly"){
+		response.redirect("/employment-and-income-with-expenses/threshold-weekly")
+	} else if (howOftenPaid == "Fortnightly"){
+        response.redirect("/employment-and-income-with-expenses/threshold-fortnightly")
+    } else if (howOftenPaid == "4 weekly"){
+        response.redirect("/employment-and-income-with-expenses/threshold-4-weekly")
+    } else if (howOftenPaid == "Monthly"){
+        response.redirect("/employment-and-income-with-expenses/threshold-monthly")
+    } else if (howOftenPaid == "One off payments"){
+        response.redirect("/employment-and-income-with-expenses/threshold-one-off-payments")
+    } else {
+		response.redirect("/employment-and-income-with-expenses/404")
+	}
+})
+// END HOW OFTEN PAID
+
+// THRESHOLD WEEKLY
+router.post('/threshold-weekly-answer', function(request, response) {
+
+	var thresholdWeekly = request.session.data['thresholdWeekly']
+	if (thresholdWeekly == "Yes"){
+		response.redirect("/employment-and-income-with-expenses/care-costs")
+	} else {
+		response.redirect("/employment-and-income-with-expenses/you-may-be-allowed-carers-allowance")
+	}
+})
+// END THRESHOLD WEEKLY
+
+// THRESHOLD FORTNIGHTLY
+router.post('/threshold-fortnightly-answer', function(request, response) {
+
+	var thresholdFortnightly = request.session.data['thresholdFortnightly']
+	if (thresholdFortnightly == "Yes"){
+		response.redirect("/employment-and-income-with-expenses/care-costs")
+	} else {
+		response.redirect("/employment-and-income-with-expenses/you-may-be-allowed-carers-allowance")
+	}
+})
+// END THRESHOLD FORTNIGHTLY
+
+// THRESHOLD 4 WEEKLY
+router.post('/threshold-4-weekly-answer', function(request, response) {
+
+	var threshold4Weekly = request.session.data['threshold4Weekly']
+	if (threshold4Weekly == "Yes"){
+		response.redirect("/employment-and-income-with-expenses/care-costs")
+	} else {
+		response.redirect("/employment-and-income-with-expenses/you-may-be-allowed-carers-allowance")
+	}
+})
+// END THRESHOLD 4 WEEKLY
+
+// THRESHOLD MONTHLY
+router.post('/threshold-monthly-answer', function(request, response) {
+
+	var thresholdMonthly = request.session.data['thresholdMonthly']
+	if (thresholdMonthly == "Yes"){
+		response.redirect("/employment-and-income-with-expenses/care-costs")
+	} else {
+		response.redirect("/employment-and-income-with-expenses/you-may-be-allowed-carers-allowance")
+	}
+})
+// END THRESHOLD MONTHLY
+
+// THRESHOLD ONE OFF PAYMENTS
+router.post('/threshold-one-off-payments-answer', function(request, response) {
+
+	var thresholdOneOffPayments = request.session.data['thresholdOneOffPayments']
+	if (thresholdOneOffPayments == "Yes"){
+		response.redirect("/employment-and-income-with-expenses/care-costs")
+	} else {
+		response.redirect("/employment-and-income-with-expenses/you-may-be-allowed-carers-allowance")
+	}
+})
+// END THRESHOLD ONE OFF PAYMENTS
+
+// DOES YOUR PREVIOUS EMPLOYER OWE YOU ANY MONEY
+router.post('/previous-employer-owe-money-answer', function(request, response) {
+
+	var previousEmployerOweMoney = request.session.data['previousEmployerOweMoney']
+	if (previousEmployerOweMoney == "Yes"){
+		response.redirect("/employment-and-income-with-expenses/how-much-do-you-expect-to-receive")
+	} else {
+		response.redirect("/employment-and-income-with-expenses/care-costs")
+	}
+})
+// END DOES YOUR PREVIOUS EMPLOYER OWE YOU ANY MONEY
+
+// ADD INCOME SOURCE 1
+router.post('/add-income-1-answer', function(request, response) {
+
+	var sourceOfIncome1 = request.session.data['sourceOfIncome1']
+	if (sourceOfIncome1 == "Employment"){
+		response.redirect("/employment-and-income-with-expenses/name-of-employer")
+	} else {
+		response.redirect("/employment-and-income-with-expenses/care-costs")
+	}
+})
+// END ADD INCOME SOURCE 1
+
+// THRESHOLD WEEKLY 2
+router.post('/threshold-weekly-2-answer', function(request, response) {
+
+	var thresholdWeekly2 = request.session.data['thresholdWeekly2']
+	if (thresholdWeekly2 == "Yes"){
+		response.redirect("/employment-and-income-with-expenses/income-summary")
+	} else {
+		response.redirect("/employment-and-income-with-expenses/you-may-be-allowed-carers-allowance")
+	}
+})
+// END THRESHOLD WEEKLY 2
+
+// ADD INCOME SOURCE 2
+router.post('/add-income-2-answer', function(request, response) {
+
+	var sourceOfIncome2 = request.session.data['sourceOfIncome2']
+	if (sourceOfIncome2 == "Self-employment"){
+		response.redirect("/employment-and-income-with-expenses/type-of-business")
+	} else {
+		response.redirect("/employment-and-income-with-expenses/care-costs")
+	}
+})
+// END ADD INCOME SOURCE 2
+
+// THRESHOLD WEEKLY 2
+router.post('/threshold-weekly-3-answer', function(request, response) {
+
+	var thresholdWeekly3 = request.session.data['thresholdWeekly3']
+	if (thresholdWeekly3 == "Yes"){
+		response.redirect("/employment-and-income-with-expenses/do-you-have-accounts")
+	} else {
+		response.redirect("/employment-and-income-with-expenses/add-expense-1")
+	}
+})
+// END THRESHOLD WEEKLY 2
+
+// DO YOU HAVE ACCOUNTS
+router.post('/do-you-have-accounts-answer', function(request, response) {
+
+	var doYouHaveAccounts = request.session.data['doYouHaveAccounts']
+	if (doYouHaveAccounts == "Yes"){
+		response.redirect("/employment-and-income-with-expenses/send-accounts")
+	} else {
+		response.redirect("/employment-and-income-with-expenses/do-you-know-trading-year-start-date")
+	}
+})
+// END DO YOU HAVE ACCOUNTS
+
+// DO YOU KNOW TRADING YEAR START DATE
+router.post('/do-you-know-trading-year-answer', function(request, response) {
+
+	var doYouKnowTradingYear = request.session.data['doYouKnowTradingYear']
+	if (doYouKnowTradingYear == "Yes"){
+		response.redirect("/employment-and-income-with-expenses/when-did-you-start-trading")
+	} else {
+		response.redirect("/employment-and-income-with-expenses/we-need-more-information")
+	}
+})
+// END DO YOU KNOW TRADING YEAR START DATE
+
+// TAKE OFF YOUR EXPENSES
+router.post('/take-off-your-expenses-answer', function(request, response) {
+
+	var takeOffYourExpenses = request.session.data['takeOffYourExpenses']
+	if (takeOffYourExpenses == "Yes"){
+		response.redirect("/employment-and-income-with-expenses/add-expense-1")
+	} else {
+		response.redirect("/employment-and-income-with-expenses/not-eligible")
+	}
+})
+// END TAKE OFF YOUR EXPENSES
+
+// TAKE ADD EXPENSE 1
+router.post('/add-expense-1-answer', function(request, response) {
+
+	var addExpense1 = request.session.data['addExpense1']
+	if (addExpense1 == "Car insurance"){
+		response.redirect("/employment-and-income-with-expenses/expense-car-insurance")
+	} else if (addExpense1 == "Car lease"){
+        response.redirect("/employment-and-income-with-expenses/expense-car-lease")
+    } else if (addExpense1 == "Car maintenance"){
+        response.redirect("/employment-and-income-with-expenses/expense-car-maintenance")
+    } else if (addExpense1 == "Equipment"){
+        response.redirect("/employment-and-income-with-expenses/expense-equipment")
+    } else if (addExpense1 == "Food"){
+        response.redirect("/employment-and-income-with-expenses/expense-food")
+    } else if (addExpense1 == "Fuel"){
+        response.redirect("/employment-and-income-with-expenses/expense-fuel")
+    } else if (addExpense1 == "House bills"){
+        response.redirect("/employment-and-income-with-expenses/expense-house-bills")
+    } else if (addExpense1 == "Laundry"){
+        response.redirect("/employment-and-income-with-expenses/expense-laundry")
+    } else if (addExpense1 == "Parking costs"){
+        response.redirect("/employment-and-income-with-expenses/expense-parking-costs")
+    } else if (addExpense1 == "Transportation costs"){
+        response.redirect("/employment-and-income-with-expenses/expense-transportation-costs")
+    } else if (addExpense1 == "Uniform"){
+        response.redirect("/employment-and-income-with-expenses/expense-uniform")
+    } else if (addExpense1 == "Something else"){
+        response.redirect("/employment-and-income-with-expenses/expense-something-else")
+    } else {
+		response.redirect("/employment-and-income-with-expenses/add-income-1")
+	}
+})
+// END TAKE ADD EXPENSE 1
+
+// ADD EXPENSE 2
+router.post('/add-expense-2-answer', function(request, response) {
+
+	var addExpense1 = request.session.data['addExpense2']
+	if (addExpense1 == "Car insurance"){
+		response.redirect("/employment-and-income-with-expenses/expense-car-insurance")
+	} else if (addExpense1 == "Car lease"){
+        response.redirect("/employment-and-income-with-expenses/expense-car-lease")
+    } else if (addExpense1 == "Car maintenance"){
+        response.redirect("/employment-and-income-with-expenses/expense-car-maintenance")
+    } else if (addExpense1 == "Equipment"){
+        response.redirect("/employment-and-income-with-expenses/expense-equipment")
+    } else if (addExpense1 == "Food"){
+        response.redirect("/employment-and-income-with-expenses/expense-food")
+    } else if (addExpense1 == "Fuel"){
+        response.redirect("/employment-and-income-with-expenses/expense-fuel")
+    } else if (addExpense1 == "House bills"){
+        response.redirect("/employment-and-income-with-expenses/expense-house-bills")
+    } else if (addExpense1 == "Laundry"){
+        response.redirect("/employment-and-income-with-expenses/expense-laundry")
+    } else if (addExpense1 == "Parking costs"){
+        response.redirect("/employment-and-income-with-expenses/expense-parking-costs")
+    } else if (addExpense1 == "Transportation costs"){
+        response.redirect("/employment-and-income-with-expenses/expense-transportation-costs")
+    } else if (addExpense1 == "Uniform"){
+        response.redirect("/employment-and-income-with-expenses/expense-uniform")
+    } else if (addExpense1 == "Something else"){
+        response.redirect("/employment-and-income-with-expenses/expense-something-else")
+    } else {
+		response.redirect("/employment-and-income-with-expenses/add-income-1")
+	}
+})
+// END ADD EXPENSE 2
+
+// END EMPLOYMENT & INCOME WITH EXPESNSES ROUTES
+
 // END EZRAS ROUTES

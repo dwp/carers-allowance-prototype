@@ -1,0 +1,106 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">Expenses Summary</h1>
+
+      <form class="form" action="we-check-your-expenses" method="post">
+
+        {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+        {{ govukSummaryList({
+          card: {
+            title: {
+              text: "Car insurance"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Remove expense"
+                }
+              ]
+            }
+          },
+          rows: [
+            {
+              key: {
+                text: "How often do you pay for car insurance?"
+              },
+              value: {
+                html: data['howOftenCarInsurance']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "expense-car-insurance",
+                    text: "Change",
+                    visuallyHiddenText: "income source"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Amount"
+              },
+              value: {
+                html: data['howMuchCarInsurance']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "expense-car-insurance",
+                    text: "Change",
+                    visuallyHiddenText: "nationality"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Tell us about your car insurance"
+              },
+              value: {
+                html: data['moreDetailCarInsurance']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "expense-car-insurance",
+                    text: "Change",
+                    visuallyHiddenText: "nationality"
+                  }
+                ]
+              }
+            }
+          ]
+        }) }}
+
+        <a href="add-expense-2" class="govuk-button govuk-button--secondary d-block width-fit-content" data-module="govuk-button">
+          Add another expense
+        </a>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

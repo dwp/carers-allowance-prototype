@@ -1,0 +1,31 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">You must send  a copy of your accounts to the Carer's Allowance Unit</h1>
+
+      <p class="govuk-body">We will use the information you provide to decide if you can get Carer's Allowance. </p>
+
+      <a href="income-summary-2" class="govuk-button" data-module="govuk-button">
+        Continue
+      </a>
+
+
+    </div>
+  </div>
+
+{% endblock %}
