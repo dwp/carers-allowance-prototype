@@ -1,0 +1,53 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-l">Your other expenses for NAME</h1>
+
+        <p class="govuk-body">You can count things you use only for your job as expenses. </p>
+
+        <form class="form" action="expense-something-else-how-often" method="post">
+        {% from "govuk/components/input/macro.njk" import govukInput %}
+
+        {{ govukInput({
+          label: {
+            text: "What other expense do you want to take off your income?",
+            classes: "govuk-label--m"
+          },
+          classes: "govuk-input--width-20",
+          id: "expense-something-else-name",
+          name: "expenseSomethingElseName"
+        }) }}
+
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Continue"
+          }) }}
+
+          {{ govukButton({
+            text: "Cancel",
+            classes: "govuk-button--secondary",
+            href: "expenses-onboarding"
+          }) }}
+        </div>
+
+        </form>
+
+    </div>
+  </div>
+
+{% endblock %}

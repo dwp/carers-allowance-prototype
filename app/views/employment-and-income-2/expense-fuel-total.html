@@ -1,0 +1,42 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-l">Your total fuel expenses</h1>
+
+        <p class="govuk-body">You can claim 45 pence a mile for vehicles used as part of your job.</p>
+        <p class="govuk-body">10 miles x 45p = £4.50</p>
+
+        {% from "govuk/components/button/macro.njk" import govukButton %}
+
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Continue",
+            href: "expenses-summary-1"
+          }) }}
+
+          {{ govukButton({
+            text: "Cancel",
+            classes: "govuk-button--secondary",
+            href: "expenses-onboarding"
+          }) }}
+        </div>
+
+    </div>
+  </div>
+
+{% endblock %}

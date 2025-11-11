@@ -1,0 +1,57 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="when-do-you-expect-to-receive-this-money" method="post">
+        {% from "govuk/components/input/macro.njk" import govukInput %}
+        {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+
+        {{ govukInput({
+          id: "cost",
+          name: "cost",
+          label: {
+            text: "How much do you expect to receive?",
+            classes: "govuk-label--l",
+            isPageHeading: true
+          },
+          prefix: {
+            text: "£"
+          },
+          classes: "govuk-input--width-6",
+          spellcheck: false
+        }) }}
+
+        {{ govukCheckboxes({
+          name: "iDoNotKnow",
+          items: [
+            {
+              value: "I do not know",
+              text: "I do not know"
+            }
+          ]
+        }) }}
+        
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

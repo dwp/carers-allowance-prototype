@@ -888,3 +888,46 @@ router.post('/add-expense-2-answer', function(request, response) {
 // END EMPLOYMENT & INCOME WITH EXPESNSES ROUTES
 
 // END EZRAS ROUTES
+
+
+
+
+// OVERPAYMENT ROUTES
+
+// OVERPAYMENT QUESTION
+router.post('/overpayment-answer', function(request, response) {
+
+	var overpayment = request.session.data['askedToRepayCarersAllowanceOverpayment']
+	if (overpayment == "No"){
+		response.redirect("/overpayments/exit-1")
+	} else {
+		response.redirect("/overpayments/overpayment-because-of-employed-earnings")
+	}
+})
+// END OVERPAYMENT QUESTION
+
+// OVERPAYMENT BECAUSE OF EARNINGS QUESTION
+router.post('/overpayment-because-of-earnings-answer', function(request, response) {
+
+	var overpaymentEarnings = request.session.data['overpaymentBecauseOfEmployedEarnings']
+	if (overpaymentEarnings == "No"){
+		response.redirect("/overpayments/exit-2")
+	} else {
+		response.redirect("/overpayments/what-is-your-national-insurance-number")
+	}
+})
+// END OVERPAYMENT BECAUSE OF EARNINGS QUESTION
+
+// WHERE DO YOU LIVE
+router.post('/where-do-you-live-answer', function(request, response) {
+
+	var whereDoYouLive = request.session.data['whereDoYouLive']
+	if (whereDoYouLive == "United Kingdom"){
+		response.redirect("/overpayments/what-is-your-current-address-uk")
+	} else {
+		response.redirect("/overpayments/what-is-your-current-address-abroad")
+	}
+})
+// END WHERE DO YOU LIVE
+
+// END OVERPAYMENT ROUTES

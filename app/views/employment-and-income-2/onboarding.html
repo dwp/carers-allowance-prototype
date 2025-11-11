@@ -1,0 +1,94 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Start page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "#"
+      },
+      {
+        text: "Section",
+        href: "#"
+      },
+      {
+        text: "Subsection"
+      }
+    ]
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        Your income
+      </h1>
+
+      <p class="govuk-body">To be eligible for Carers Allowance, you must earn less than £196 a week.</p>
+
+      <p>To understand if you are eligible we will ask about your:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>current income</li>
+        <li>income from any jobs that ended since DATE</li>
+        <li>all your jobs</li>
+      </ul>
+
+<h1 class="govuk-heading-m">If you are employed</h1>
+<p class="govuk-body">We get your income and job details from DWP and HMRC records.</p>
+
+<p class="govuk-body">If your income is above £196 a week, you can reduce it by telling us about:</p>
+<ul class="govuk-list govuk-list--bullet">
+  <li>expenses you have to do your job</li>
+  <li>care costs for Joe Bloggs</li>
+  <li>childcare costs</li>
+  <li>contributions you make into a private or personal pension</li>
+</ul>
+
+<h1 class="govuk-heading-m">If you are self-employed</h1>
+<p class="govuk-body">You will need to send us your accounts or provide evidence about your weekly income.</p>
+
+<p class="govuk-body">If your income is above £196 a week, you can reduce it by telling us about:</p>
+<ul class="govuk-list govuk-list--bullet">
+  <li>care costs for Joe Bloggs</li>
+  <li>childcare costs</li>
+  <li>contributions you make into a private or personal pension</li>
+</ul>
+
+<h1 class="govuk-heading-m">If you have other income</h1>
+<p class="govuk-body">You can tell us about:</p>
+<ul class="govuk-list govuk-list--bullet">
+  <li>cash in hand</li>
+  <li>direct payments from Joe Bloggs (money they get from the local authority to buy their care)</li>
+  <li>Fostering Allowance</li>
+  <li>rental property</li>
+</ul>
+</p>
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Continue",
+  href: "what-is-source-of-income"
+}) }}
+
+    </div>
+
+  </div>
+
+{% endblock %}

@@ -1,0 +1,91 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Start page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "#"
+      },
+      {
+        text: "Section",
+        href: "#"
+      },
+      {
+        text: "Subsection"
+      }
+    ]
+  }) }}
+
+  {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "#"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+{% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
+
+{% set html %}
+  <p class="govuk-notification-banner__heading">
+    This is a preview of this form. Do not enter personal information.
+  </p>
+{% endset %}
+
+{{ govukNotificationBanner({
+  html: html
+}) }}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="summary" method="post">
+
+      {% from "govuk/components/input/macro.njk" import govukInput %}
+
+      {{ govukInput({
+        label: {
+          text: "What is the full name of the person you cared for between 10 April 2015 and 2 September 2025?",
+          classes: "govuk-label--l",
+          isPageHeading: true
+        },
+        hint: {
+          text: "If you have cared for more than one person, we only need one person's name at this time."
+        },
+        id: "full-name",
+        name: "fullNameOfPersonCaredFor",
+        value: data['fullNameOfPersonCaredFor']
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+      </form>
+
+      {% from "govuk/components/details/macro.njk" import govukDetails %}
+
+      {{ govukDetails({
+        summaryText: "Get help with this form",
+        text: "What text goes here?"
+      }) }}
+
+    </div>
+
+  </div>
+
+{% endblock %}

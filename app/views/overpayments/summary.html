@@ -1,0 +1,303 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Start page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "#"
+      },
+      {
+        text: "Section",
+        href: "#"
+      },
+      {
+        text: "Subsection"
+      }
+    ]
+  }) }}
+
+  {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "#"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+{% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
+
+{% set html %}
+  <p class="govuk-notification-banner__heading">
+    This is a preview of this form. Do not enter personal information.
+  </p>
+{% endset %}
+
+{{ govukNotificationBanner({
+  html: html
+}) }}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+       <h1 class="govuk-heading-l">
+        Check your answers before submitting your form
+      </h1>
+
+      {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Have you been asked to repay a Carer's Allowance overpayment between 10 April 2015 and 2 September 2025?"
+            },
+            value: {
+              text: data['askedToRepayCarersAllowanceOverpayment']
+            },
+            actions: {
+              items: [
+                {
+                  href: "asked-to-repay-carers-allowance-overpayment",
+                  text: "Change",
+                  visuallyHiddenText: "name"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Was this overpayment because of your employed earnings?"
+            },
+            value: {
+              text: data['overpaymentBecauseOfEmployedEarnings']
+            },
+            actions: {
+              items: [
+                {
+                  href: "overpayment-because-of-employed-earnings",
+                  text: "Change",
+                  visuallyHiddenText: "date of birth"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "What is your National Insurance number?"
+            },
+            value: {
+              text: data['nationalInsurance']
+            },
+            actions: {
+              items: [
+                {
+                  href: "what-is-your-national-insurance-number",
+                  text: "Change",
+                  visuallyHiddenText: "address"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "What is your name?"
+            },
+            value: {
+              text: data['fullName']
+            },
+            actions: {
+              items: [
+                {
+                  href: "what-is-your-name",
+                  text: "Change",
+                  visuallyHiddenText: "contact details"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "What is your date of birth?"
+            },
+            value: {
+              text: data['birthday-day'] + " - " + data['birthday-month'] + " - " + data['birthday-year']
+            },
+            actions: {
+              items: [
+                {
+                  href: "what-is-your-dob",
+                  text: "Change",
+                  visuallyHiddenText: "address"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Where do you currently live?"
+            },
+            value: {
+              text: data['whereDoYouLive']
+            },
+            actions: {
+              items: [
+                {
+                  href: "where-do-you-live",
+                  text: "Change",
+                  visuallyHiddenText: "address"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "What is your current address?"
+            },
+            value: {
+              text: data['addressLine1'] + ", " + data['addressLine2'] + ", " + data['addressTown'] + ", " + data['addressCounty'] + ", " + data['addressPostcode'],
+              text: data['addressAbroad'] + ", " + data['addressCountry']
+            },
+            actions: {
+              items: [
+                {
+                  href: "what-is-your-current-address-uk",
+                  text: "Change",
+                  visuallyHiddenText: "address"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "What is your phone number? (optional)"
+            },
+            value: {
+              text: data['phoneNumber']
+            },
+            actions: {
+              items: [
+                {
+                  href: "what-is-your-phone-number",
+                  text: "Change",
+                  visuallyHiddenText: "address"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "If you live in Wales, would you like to speak to someone in Welsh?"
+            },
+            value: {
+              text: data['liveInWales']
+            },
+            actions: {
+              items: [
+                {
+                  href: "live-in-wales",
+                  text: "Change",
+                  visuallyHiddenText: "address"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "What is the full name of the person you cared for between 10 April 2015 and 2 September 2025?"
+            },
+            value: {
+              text: data['fullNameOfPersonCaredFor']
+            },
+            actions: {
+              items: [
+                {
+                  href: "name-of-person-you-cared-for",
+                  text: "Change",
+                  visuallyHiddenText: "address"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <form class="form" action="submitted" method="post">
+
+      {% from "govuk/components/radios/macro.njk" import govukRadios %}
+      {% from "govuk/components/input/macro.njk" import govukInput %}
+
+      {% set emailHtml %}
+      {{ govukInput({
+        id: "contact-by-email",
+        name: "contactByEmail",
+        type: "email",
+        autocomplete: "email",
+        spellcheck: false,
+        classes: "govuk-!-width-full",
+        label: {
+          text: "What email address do you want us to send your confirmation to?"
+        }
+      }) }}
+      {% endset -%}
+
+      {{ govukRadios({
+        name: "contact",
+        fieldset: {
+          legend: {
+            text: "Do you want to get an email confirming your form has been submitted?",
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        hint: {
+          text: "We'll only use the email address you provide here to send a confirmation that your form has been successfully submitted. It will not contain a copy of your answers."
+        },
+        items: [
+          {
+            value: "yes",
+            text: "Yes",
+            conditional: {
+              html: emailHtml
+            }
+          },
+          {
+            value: "no",
+            text: "No"
+          }
+        ]
+      }) }}
+
+      <h3 class="govuk-heading-m">Declaration</h3>
+      <p class="govuk-body">By submitting this form you are confirming that to the best of your knowledge, the answers you are providing are correct.</p>
+
+      {{ govukButton({
+        text: "Agree and submit"
+      }) }}
+
+      </form>
+
+      {% from "govuk/components/details/macro.njk" import govukDetails %}
+
+      {{ govukDetails({
+        summaryText: "Get help with this form",
+        text: "What text goes here?"
+      }) }}
+
+    </div>
+
+  </div>
+
+{% endblock %}

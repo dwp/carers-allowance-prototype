@@ -1,0 +1,55 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="expense-fuel-total" method="post">
+
+        {% from "govuk/components/input/macro.njk" import govukInput %}
+
+        {{ govukInput({
+          label: {
+            text: "How many miles do you do each WEEK?",
+            classes: "govuk-label--l",
+            isPageHeading: true
+          },
+          classes: "govuk-input--width-10",
+          hint: {
+            text: "Only tell us about miles driven for your job."
+          },
+          id: "account-number",
+          name: "howManyMiles",
+          inputmode: "numeric",
+          spellcheck: false
+        }) }}
+
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Continue"
+          }) }}
+
+          {{ govukButton({
+            text: "Cancel",
+            classes: "govuk-button--secondary",
+            href: "expenses-onboarding"
+          }) }}
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

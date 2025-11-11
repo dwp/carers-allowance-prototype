@@ -1,0 +1,60 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="threshold-weekly" method="post">
+
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+        {{ govukRadios({
+          classes: "govuk-radios",
+          name: "doYouReceiveThese",
+          fieldset: {
+            legend: {
+              text: "Do you receive any of these payments?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: "This will help us to understand if you are receiving your full salary."
+          },
+          items: [
+            {
+              value: "Statutory sick pay",
+              text: "Statutory sick pay"
+            },
+            {
+              value: "Statutory Maternity, Paternity or Adoption Pay",
+              text: "Statutory Maternity, Paternity or Adoption Pay"
+            },
+            {
+              value: "None of these",
+              text: "None of these"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

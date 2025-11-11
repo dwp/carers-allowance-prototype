@@ -1,0 +1,92 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Start page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "#"
+      },
+      {
+        text: "Section",
+        href: "#"
+      },
+      {
+        text: "Subsection"
+      }
+    ]
+  }) }}
+
+  {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "#"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+{% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
+
+{% set html %}
+  <p class="govuk-notification-banner__heading">
+    This is a preview of this form. Do not enter personal information.
+  </p>
+{% endset %}
+
+{{ govukNotificationBanner({
+  html: html
+}) }}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="what-is-your-name" method="post">
+
+      {% from "govuk/components/input/macro.njk" import govukInput %}
+
+      {{ govukInput({
+        label: {
+          text: "What is your National Insurance number?",
+          classes: "govuk-label--l",
+          isPageHeading: true
+        },
+        classes: "govuk-input--width-10",
+        hint: {
+          text: "It's on your National Insurance card, benefit letter, payslip or P60. For example, QQ 12 34 56 C"
+        },
+        id: "national-insurance",
+        name: "nationalInsurance",
+        value: data['nationalInsurance']
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+      </form>
+
+      {% from "govuk/components/details/macro.njk" import govukDetails %}
+
+      {{ govukDetails({
+        summaryText: "Get help with this form",
+        text: "What text goes here?"
+      }) }}
+
+    </div>
+
+  </div>
+
+{% endblock %}

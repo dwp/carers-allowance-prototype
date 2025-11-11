@@ -1,0 +1,46 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-l">Your fuel expenses for tesco</h1>
+
+        <p class="govuk-body">You cannot claim any fuel used for personal use as an expense.</p>
+
+        <h1 class="govuk-heading-m">What you can count as an expense</h1>
+        <p class="govuk-body">Fuel that is used for travelling from your place of work to a client site.</p>
+        <h1 class="govuk-heading-m">What you cannot count as an expense</p>
+        <p class="govuk-body">Fuel you use to travel between your  home and work.</p>
+
+        {% from "govuk/components/button/macro.njk" import govukButton %}
+
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Continue",
+            href: "expense-fuel-how-often"
+          }) }}
+
+          {{ govukButton({
+            text: "Cancel",
+            classes: "govuk-button--secondary",
+            href: "expenses-onboarding"
+          }) }}
+        </div>
+
+    </div>
+  </div>
+
+{% endblock %}

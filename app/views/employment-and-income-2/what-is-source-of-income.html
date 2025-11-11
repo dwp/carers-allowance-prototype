@@ -1,0 +1,80 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="/source-of-income-answer" method="post">
+
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+        {{ govukRadios({
+          classes: "govuk-radios",
+          name: "sourceOfIncome",
+          fieldset: {
+            legend: {
+              text: "What is your main source of income?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: "You can add more income later"
+          },
+          items: [
+            {
+              value: "Employment",
+              text: "Employment"
+            },
+            {
+              value: "Self-employment",
+              text: "Self-employment"
+            },
+            {
+              value: "Cash in hand",
+              text: "Cash in hand"
+            },
+            {
+              value: "Direct payments from Joe Bloggs",
+              text: "Direct payments from Joe Bloggs"
+            },
+            {
+              value: "Fostering allowance",
+              text: "Fostering allowance"
+            },
+            {
+              value: "Rental property",
+              text: "Rental property"
+            },
+            {
+              divider: "or"
+            },
+            {
+              value: "I do not receive an income",
+              text: "I do not receive an income"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue",
+          href: "name-of-employer"
+        }) }}
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

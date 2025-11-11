@@ -1,0 +1,99 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="/add-expense-2-answer" method="post">
+
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+        {{ govukRadios({
+          classes: "govuk-radios",
+          name: "addExpense2",
+          fieldset: {
+            legend: {
+              text: "Add an expense",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: "You can add more later."
+          },
+          items: [
+            {
+              value: "Car insurance",
+              text: "Car insurance"
+            },
+            {
+              value: "Car lease",
+              text: "Car lease"
+            },
+            {
+              value: "Car maintenance",
+              text: "Car maintenance"
+            },
+            {
+              value: "Equipment",
+              text: "Equipment"
+            },
+            {
+              value: "Food",
+              text: "Food"
+            },
+            {
+              value: "Fuel",
+              text: "Fuel"
+            },
+            {
+              value: "House bills",
+              text: "House bills"
+            },
+            {
+              value: "Laundry",
+              text: "Laundry"
+            },
+            {
+              value: "Parking costs",
+              text: "Parking costs"
+            },
+            {
+              value: "Transport costs",
+              text: "Transport costs"
+            },
+            {
+              value: "Uniform",
+              text: "Uniform"
+            },
+            {
+              divider: "or"
+            },
+            {
+              value: "Something else",
+              text: "Something else"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

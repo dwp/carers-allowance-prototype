@@ -1,0 +1,81 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="expense-something-else-how-much" method="post">
+
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+        {{ govukRadios({
+          classes: "govuk-radios",
+          name: "howOftenSomethingElse",
+          fieldset: {
+            legend: {
+              text: "How often do you pay for " + data['expenseSomethingElseName'] +"?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "week",
+              text: "Weekly"
+            },
+            {
+              value: "fortnight",
+              text: "Fortnightly"
+            },
+            {
+              value: "4 weeks",
+              text: "4 weekly"
+            },
+            {
+              value: "month",
+              text: "Monthly"
+            },
+            {
+              value: "6 months",
+              text: "6 monthly"
+            },
+            {
+              value: "year",
+              text: "Yearly"
+            },
+            {
+              value: "one-off-payment",
+              text: "One-off payments"
+            }
+          ]
+        }) }}
+
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Continue"
+          }) }}
+
+          {{ govukButton({
+            text: "Cancel",
+            classes: "govuk-button--secondary",
+            href: "expenses-onboarding"
+          }) }}
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

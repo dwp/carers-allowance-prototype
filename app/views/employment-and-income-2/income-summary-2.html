@@ -1,0 +1,260 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">Income Summary</h1>
+
+      <form class="form" action="care-costs" method="post">
+
+        {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+        {{ govukSummaryList({
+          card: {
+            title: {
+              text: "Income source 1"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Remove income"
+                }
+              ]
+            }
+          },
+          rows: [
+            {
+              key: {
+                text: "Source of income"
+              },
+              value: {
+                html: data['sourceOfIncome1']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "add-income-1",
+                    text: "Change",
+                    visuallyHiddenText: "income source"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Employer"
+              },
+              value: {
+                html: data['nameOfEmployer']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "name-of-employer",
+                    text: "Change",
+                    visuallyHiddenText: "nationality"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Statutory pay"
+              },
+              value: {
+                html: data['doYouReceiveThese2']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "do-you-receive-these-2",
+                    text: "Change",
+                    visuallyHiddenText: "nationality"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "How often do you get paid?"
+              },
+              value: {
+                html: data['howOftenPaid2']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "how-often-paid-2",
+                    text: "Change",
+                    visuallyHiddenText: "nationality"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Do you expect to earn less than £196 in the next month?"
+              },
+              value: {
+                html: data['thresholdWeekly2']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "how-often-paid-2",
+                    text: "Change",
+                    visuallyHiddenText: "nationality"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Total expenses"
+              },
+              value: {
+                text: "£351.89"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "expenses-summary-2",
+                    text: "Change",
+                    visuallyHiddenText: "nationality"
+                  }
+                ]
+              }
+            }
+          ]
+        }) }}
+
+        {{ govukSummaryList({
+          card: {
+            title: {
+              text: "Income source 2"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Remove income"
+                }
+              ]
+            }
+          },
+          rows: [
+            {
+              key: {
+                text: "Source of income"
+              },
+              value: {
+                html: data['sourceOfIncome2']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "add-income-2",
+                    text: "Change",
+                    visuallyHiddenText: "income source"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Type of business"
+              },
+              value: {
+                html: data['typeOfBusiness']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "name-of-business",
+                    text: "Change",
+                    visuallyHiddenText: "nationality"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "How often do you get paid?"
+              },
+              value: {
+                html: data['howOftenPaid3']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "how-often-paid-3",
+                    text: "Change",
+                    visuallyHiddenText: "nationality"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Do you expect to earn less than £196 in the next month?"
+              },
+              value: {
+                html: data['thresholdWeekly3']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "how-often-paid-3",
+                    text: "Change",
+                    visuallyHiddenText: "nationality"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Do you have accounts?"
+              },
+              value: {
+                html: data['doYouHaveAccounts']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "do-you-have-accounts",
+                    text: "Change",
+                    visuallyHiddenText: "nationality"
+                  }
+                ]
+              }
+            }
+          ]
+        }) }}
+
+        <a href="add-income-2" class="govuk-button govuk-button--secondary d-block width-fit-content" data-module="govuk-button">
+          Add another income source
+        </a>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

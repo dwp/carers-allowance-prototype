@@ -1,0 +1,166 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">Expenses Summary</h1>
+
+      <form class="form" action="we-check-your-expenses" method="post">
+
+        {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+        {{ govukSummaryList({
+          card: {
+            title: {
+              text: "Fuel"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Remove expense"
+                }
+              ]
+            }
+          },
+          rows: [
+            {
+              key: {
+                text: "How often do you pay for fuel?"
+              },
+              value: {
+                html: data['howOftenFuel']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "expense-fuel-how-often",
+                    text: "Change",
+                    visuallyHiddenText: "income source"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "How many miles?"
+              },
+              value: {
+                html: data['howManyMiles']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "expense-fuel-how-many-miles",
+                    text: "Change",
+                    visuallyHiddenText: "nationality"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Your total fuel expenses"
+              },
+              value: {
+                 text: "£4.50"
+              }
+            }
+          ]
+        }) }}
+        
+        {{ govukSummaryList({
+            card: {
+              title: {
+                text: data['expenseSomethingElseName']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "#",
+                    text: "Remove expense"
+                  }
+                ]
+              }
+            },
+            rows: [
+              {
+                key: {
+                  text: "How often do you pay for " + data['expenseSomethingElseName'] + "?"
+                },
+                value: {
+                  html: data['howOftenSomethingElse']
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "expense-car-lease",
+                      text: "Change",
+                      visuallyHiddenText: "income source"
+                    }
+                  ]
+                }
+              },
+              {
+                key: {
+                  text: "Amount"
+                },
+                value: {
+                  html: data['howMuchSomethingElse']
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "expense-car-lease",
+                      text: "Change",
+                      visuallyHiddenText: "nationality"
+                    }
+                  ]
+                }
+              },
+              {
+                key: {
+                  text: "How was " + data['expenseSomethingElseName'] + " used to do your job?"
+                },
+                value: {
+                  html: data['howWasItUsedDetails']
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "expense-car-lease",
+                      text: "Change",
+                      visuallyHiddenText: "nationality"
+                    }
+                  ]
+                }
+              }
+            ]
+          }) }}
+
+        <a href="add-expense-2" class="govuk-button govuk-button--secondary d-block width-fit-content" data-module="govuk-button">
+          Add another expense
+        </a>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

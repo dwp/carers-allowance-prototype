@@ -1,0 +1,100 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Start page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "#"
+      },
+      {
+        text: "Section",
+        href: "#"
+      },
+      {
+        text: "Subsection"
+      }
+    ]
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Your expenses from JOB NAME
+      </h1>
+
+      <p class="govuk-body">Taking off expenses could reduce your weekly income so you earn less than the £196 a week limit to be eligible for Carer's Allowance.</p>
+
+      <p class="govuk-body">We only allow you to claim expenses for things that you need to do your job.</p>
+
+      <h2 class="govuk-heading-m">Example of expenses</h2>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>use your car while doing your job, you can claim a mileage allowance.</li>
+        <li>purchase a work uniform or clothing that has an employer's logo, or an item that is used exclusively for work (not worn for personal use).</li>
+        <li>work from home and pay for electricity (you can claim some of the cost as an expense).</li>
+      </ul>
+
+      <h2 class="govuk-heading-m">Examples of things that you cannot treat as expenses</h2>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>fuel for travelling to or from work.</li>
+        <li>cost of clothing that you can wear at work or home.</li>
+        <li>food costs.</li>
+        <li>full cost of household bills as some of this is for private use.</li>
+        <li>Internet use or WiFi</li>
+      </ul>
+
+      <form class="form" action="/source-of-income-answer" method="post">
+
+      {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+      {{ govukRadios({
+        name: "changedName",
+        fieldset: {
+          legend: {
+            text: "Do you pay for things you need to do your job?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+          {
+            value: "yes",
+            text: "Yes"
+          },
+          {
+            value: "no",
+            text: "No"
+          }
+        ]
+      }) }}
+
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+      </form>
+
+    </div>
+
+  </div>
+
+{% endblock %}

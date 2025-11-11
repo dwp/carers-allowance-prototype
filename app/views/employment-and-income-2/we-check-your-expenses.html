@@ -1,0 +1,30 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">We will consider if your expenses are allowed</h1>
+
+      <p>We will contact you by letter or phone if we need more information.</p>
+
+      <a href="income-summary" class="govuk-button" data-module="govuk-button">
+        Continue
+      </a>
+
+    </div>
+  </div>
+
+{% endblock %}

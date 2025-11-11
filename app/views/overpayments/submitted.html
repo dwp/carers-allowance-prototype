@@ -1,0 +1,78 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Start page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "#"
+      },
+      {
+        text: "Section",
+        href: "#"
+      },
+      {
+        text: "Subsection"
+      }
+    ]
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+{% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
+
+{% set html %}
+  <p class="govuk-notification-banner__heading">
+    This is a preview of this form. Do not enter personal information.
+  </p>
+{% endset %}
+
+{{ govukNotificationBanner({
+  html: html
+}) }}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% from "govuk/components/panel/macro.njk" import govukPanel %}
+
+      {{ govukPanel({
+        titleText: "Your form has been submitted",
+        html: "Your form reference number<br><strong>HDJ2123F</strong>"
+      }) }}
+
+      <h1 class="govuk-heading-s">
+        What happens next
+      </h1>
+
+      <p class="govuk-body">The Carer's Allowance unit will:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>start to review cases from April 2026</li>
+        <li>contact you for more details about your Carer's Allowance overpayment</li>
+      </ul>
+
+      <p class="govuk-body">After the review, we will send you a letter with our decision.</p>
+
+      <p class="govuk-body">
+        <a href="#" class="govuk-link">What did you think of this service? (opens in new tab)</a>
+         (takes about 30 seconds)
+      </p>
+
+    </div>
+
+  </div>
+
+{% endblock %}

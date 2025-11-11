@@ -1,0 +1,97 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="expenses-summary-2" method="post">
+
+        <h1 class="govuk-heading-l">Your car lease expense</h1>
+
+        <p>Only tell us about costs you pay when working.</p>
+
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+        {{ govukRadios({
+          name: "howOftenCarLease",
+          fieldset: {
+            legend: {
+              text: "How often do you pay for car lease?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "Weekly",
+              text: "Weekly"
+            },
+            {
+              value: "Fortnightly",
+              text: "Fortnightly"
+            },
+            {
+              value: "4 weekly",
+              text: "4 weekly"
+            },
+            {
+              value: "Monthly",
+              text: "Monthly"
+            },
+            {
+              value: "One-off payment",
+              text: "One-off payment"
+            }
+          ]
+        }) }}
+
+        {% from "govuk/components/input/macro.njk" import govukInput %}
+
+        {{ govukInput({
+          id: "howMuchCarLease",
+          name: "howMuchCarLease",
+          label: {
+            text: "How much do you pay for car lease?",
+            classes: "govuk-label--m",
+            isPageHeading: true
+          },
+          prefix: {
+            text: "£"
+          },
+          classes: "govuk-input--width-5",
+          spellcheck: false
+        }) }}
+
+        {% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+
+        {{ govukTextarea({
+          name: "moreDetailCarLease",
+          id: "more-detail-car-lease",
+          label: {
+            text: "Tell us more about your car lease",
+            classes: "govuk-label--m",
+            isPageHeading: true
+          }
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
