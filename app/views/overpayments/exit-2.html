@@ -11,22 +11,6 @@
 
 {% block beforeContent %}
 
-  {{ govukBreadcrumbs({
-    items: [
-      {
-        text: "Home",
-        href: "#"
-      },
-      {
-        text: "Section",
-        href: "#"
-      },
-      {
-        text: "Subsection"
-      }
-    ]
-  }) }}
-
   {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
 
   {{ govukBackLink({
@@ -54,15 +38,12 @@
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-xl">
-        Exit
+        You cannot use this form
       </h1>
 
-      <p class="govuk-body">Exit text</p>
+      <p class="govuk-body">This form is only for carers who had an overpayment because of employed earnings.</p>
 
-      {{ govukDetails({
-        summaryText: "Get help with this form",
-        text: "What text goes here?"
-      }) }}
+      <p class="govuk-body">For all other overpayments, you can <a href="#">challenge a benefit decision (opens in new tab)</a>.</p>
 
     </div>
 
