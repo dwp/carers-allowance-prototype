@@ -34,15 +34,27 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
+      {% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
+
+      {% set html %}
+        <p class="govuk-notification-banner__heading">
+          Work in progress. Content may change.
+        </p>
+      {% endset %}
+
+      {{ govukNotificationBanner({
+        html: html
+      }) }}
+
       <h1 class="govuk-heading-l">
         Request a review of your Carer's Allowance overpayment
       </h1>
 
-      <h2 class="govuk-heading-m">
-        Only use this form if you are a carer who has been asked to repay Carer's Allowance because of an overpayment related to employed earnings.
-      </h2>
+      <p class="govuk-body-l">
+        Only use this form if you have been asked to repay Carer's Allowance because of an overpayment related to employed earnings.
+      </p>
 
-      <p class="govuk-body"><b>Who can request a review</b></p>
+      <h2 class="govuk-heading-m">Who can request a review</h2>
 
       <p class="govuk-body">This form is for carers who:</p>
 
@@ -53,13 +65,13 @@
 
       <p class="govuk-body">If you had more than one overpayment during this time, you only need to request a review once.</p>
 
-      <h3 class="govuk-heading-s">Who cannot request a review</h3>
+      <h2 class="govuk-heading-m">Who cannot request a review</h3>
       <p class="govuk-body">Carers who were solely self-employed between 10 April 2015 and 2 September 2025. </p>
 
-      <h3 class="govuk-heading-s">When can you request a review</h3>
+      <h3 class="govuk-heading-m">When can you request a review</h3>
       <p class="govuk-body">From 20 November 2025, you can request that we review your overpayment. </p>
 
-      <h3 class="govuk-heading-s">Request a review online</h3>
+      <h3 class="govuk-heading-m">Request a review online</h3>
       <p class="govuk-body">You will need your personal details and National Insurance number.</p>
 
       {{ govukButton({
