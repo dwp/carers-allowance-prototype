@@ -1,0 +1,83 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Start page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "#"
+      },
+      {
+        text: "Section",
+        href: "#"
+      },
+      {
+        text: "Subsection"
+      }
+    ]
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Tax Free Childcare
+      </h1>
+
+      <p class="govuk-body">This government scheme helps with the costs of childcare.</p>
+
+      <form class="form" action="/tax-free-childcare-answer" method="post">
+
+      {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+      {{ govukRadios({
+        name: "taxFreeChildcare",
+        fieldset: {
+          legend: {
+            text: "Do you get Tax Free Childcare for these children?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        hint: {
+          text: "The children you have told us about are Sally Smith, Edward Edwards, Keith Parker."
+        },
+        items: [
+          {
+            value: "Yes",
+            text: "Yes"
+          },
+          {
+            value: "No",
+            text: "No"
+          }
+        ]
+      }) }}
+
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+      </form>
+
+    </div>
+
+  </div>
+
+{% endblock %}

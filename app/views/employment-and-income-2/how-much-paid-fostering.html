@@ -16,13 +16,13 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form class="form" action="expense-something-else-how-was-it-used" method="post">
+      <form class="form" action="income-summary" method="post">
 
         {% from "govuk/components/input/macro.njk" import govukInput %}
 
         {{ govukInput({
           label: {
-            text: "How much do you pay for " + data['expenseSomethingElseName'] + " each " + data['howOftenSomethingElse'] + "?",
+            text: "How much does " + data['fosteringAgencyName'] + " pay you?",
             classes: "govuk-label--l",
             isPageHeading: true
           },
@@ -30,8 +30,8 @@
             text: "£"
           },
           classes: "govuk-input--width-10",
-          id: "how-was-it-used",
-          name: "howMuchSomethingElse",
+          id: "how-much-paid-fostering",
+          name: "howMuchPaidFostering",
           inputmode: "numeric",
           spellcheck: false
         }) }}

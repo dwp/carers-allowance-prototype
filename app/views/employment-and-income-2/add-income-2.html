@@ -16,22 +16,22 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form class="form" action="/add-income-2-answer" method="post">
+      <form class="form" action="/add-an-income-2-answer" method="post">
 
         {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
         {{ govukRadios({
           classes: "govuk-radios",
-          name: "sourceOfIncome1",
+          name: "sourceOfIncome2",
           fieldset: {
             legend: {
-              text: "Tell us about income source 1",
+              text: "What other income do you have?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--l"
             }
           },
           hint: {
-            text: "You can add more later."
+            text: "You will be able to add more income sources later."
           },
           items: [
             {

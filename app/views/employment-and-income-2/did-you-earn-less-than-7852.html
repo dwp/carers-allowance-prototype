@@ -16,28 +16,31 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form class="form" action="/fostering-answer" method="post">
+      <form class="form" action="/earn-less-than-7852-answer" method="post">
 
         {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
         {{ govukRadios({
           classes: "govuk-radios",
-          name: "fosteringAgencyOrLocalAuthority",
+          name: "earnLessThan7852",
           fieldset: {
             legend: {
-              text: "Are you paid by a fostering agency or local authority?",
+              text: "Did you earn less than £7,852 in the last tax year after you paid tax and National Insurance?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--l"
             }
           },
+          hint: {
+                text: "This amount is the total you can earn to be eligible for Carer's Allowance."
+              },
           items: [
             {
-              value: "Fostering agency",
-              text: "Fostering agency"
+              value: "Yes",
+              text: "Yes"
             },
             {
-              value: "Local authority",
-              text: "Local authority"
+              value: "No",
+              text: "No"
             }
           ]
         }) }}

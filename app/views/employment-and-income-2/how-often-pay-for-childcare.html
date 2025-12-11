@@ -16,62 +16,48 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form class="form" action="/add-an-expense-1-answer" method="post">
+      <form class="form" action="/how-often-pay-childcare-answer" method="post">
 
         {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
         {{ govukRadios({
           classes: "govuk-radios",
-          name: "addExpense1",
+          name: "howOftenPayForChildcare",
           fieldset: {
             legend: {
-              text: "Add an expense",
+              text: "How often do you pay for childcare?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--l"
             }
           },
-          hint: {
-            text: "You can add more later."
-          },
           items: [
             {
-              value: "Equipment",
-              text: "Equipment"
+              value: "week",
+              text: "Weekly"
             },
             {
-              value: "Fuel",
-              text: "Fuel"
+              value: "fortnight",
+              text: "Fortnightly"
             },
             {
-              value: "Household bills",
-              text: "Household bills"
+              value: "4 weeks",
+              text: "4 weekly"
             },
             {
-              value: "Laundry",
-              text: "Laundry"
+              value: "month",
+              text: "Monthly"
             },
             {
-              value: "Parking costs",
-              text: "Parking costs"
+              value: "6 months",
+              text: "6 monthly"
             },
             {
-              value: "Travel",
-              text: "Travel"
+              value: "year",
+              text: "Yearly"
             },
             {
-              value: "Accomodation",
-              text: "Accomodation"
-            },
-            {
-              value: "Uniform",
-              text: "Uniform"
-            },
-            {
-              divider: "or"
-            },
-            {
-              value: "Something else",
-              text: "Something else"
+              value: "one-off payment",
+              text: "One-off payments"
             }
           ]
         }) }}

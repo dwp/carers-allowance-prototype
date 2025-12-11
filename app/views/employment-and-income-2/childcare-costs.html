@@ -1,0 +1,82 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Start page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "#"
+      },
+      {
+        text: "Section",
+        href: "#"
+      },
+      {
+        text: "Subsection"
+      }
+    ]
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Childcare costs
+      </h1>
+
+      <p class="govuk-body">If you pay for childcare for any of your children you can take some of the costs off your income. </p>
+
+      <p class="govuk-body">This could reduce your income and allow you to get Carer's Allowance. </p>
+
+      <form class="form" action="any-children-get-child-benefit" method="post">
+
+      {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+      {{ govukRadios({
+        name: "doYouPayForCareForDP",
+        fieldset: {
+          legend: {
+            text: "Do you pay for childcare for any of your children?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+          {
+            value: "Yes",
+            text: "Yes"
+          },
+          {
+            value: "No",
+            text: "No"
+          }
+        ]
+      }) }}
+
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+      </form>
+
+    </div>
+
+  </div>
+
+{% endblock %}

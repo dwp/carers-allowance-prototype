@@ -1,0 +1,76 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Start page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "#"
+      },
+      {
+        text: "Section",
+        href: "#"
+      },
+      {
+        text: "Subsection"
+      }
+    ]
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Check the amount you pay for childcare 
+      </h1>
+
+      <p class="govuk-body">If the Tax Free Childcare (TFC) scheme helps with the costs of your childcare, you cannot take the amount they pay off your earnings.</p>
+
+      <p class="govuk-body">For example, you pay £50 a week and TFC tops up £10. We can take the £50 you pay off your earnings when working out if you can get Carer's Allowance.</p>
+
+      <form class="form" action="childcare-costs-no-input" method="post">
+
+      {% from "govuk/components/input/macro.njk" import govukInput %}
+
+      {{ govukInput({
+        id: "cost",
+        name: "careCostsForDP",
+        label: {
+          text: "How much do you pay for childcare a " + data['howOftenPayForChildcare'] + " if you take off the TFC amount?",
+          classes: "govuk-label--l",
+          isPageHeading: true
+        },
+        prefix: {
+          text: "£"
+        },
+        classes: "govuk-input--width-5",
+        spellcheck: false
+      }) }}
+
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+      </form>
+
+    </div>
+
+  </div>
+
+{% endblock %}

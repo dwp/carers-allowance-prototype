@@ -16,13 +16,13 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form class="form" action="/threshold-weekly-answer" method="post">
+      <form class="form" action="/threshold-answer" method="post">
 
         {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
         {{ govukRadios({
           classes: "govuk-radios",
-          name: "thresholdWeekly",
+          name: "thresholdAnswer",
           fieldset: {
             legend: {
               text: "Do you expect to earn less than £196 a week after you have paid tax and National Insurance?",

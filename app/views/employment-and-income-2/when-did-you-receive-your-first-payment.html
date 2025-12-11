@@ -16,30 +16,23 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form class="form" action="/fostering-answer" method="post">
+      <form class="form" action="we-need-more-information" method="post">
 
-        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+        {% from "govuk/components/date-input/macro.njk" import govukDateInput %}
 
-        {{ govukRadios({
-          classes: "govuk-radios",
-          name: "fosteringAgencyOrLocalAuthority",
+        {{ govukDateInput({
+          id: "when-did-you-receive-your-first-payment",
+          namePrefix: "when-did-you-receive-your-first-payment",
           fieldset: {
             legend: {
-              text: "Are you paid by a fostering agency or local authority?",
+              text: "When did you receive your first payment?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--l"
             }
           },
-          items: [
-            {
-              value: "Fostering agency",
-              text: "Fostering agency"
-            },
-            {
-              value: "Local authority",
-              text: "Local authority"
-            }
-          ]
+          hint: {
+            text: "For example, 27 3 2007"
+          }
         }) }}
 
         {{ govukButton({

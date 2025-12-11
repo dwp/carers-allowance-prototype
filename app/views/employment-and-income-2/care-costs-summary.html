@@ -1,0 +1,125 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">Income Summary</h1>
+
+      <form class="form" action="childcare-costs" method="post">
+
+        {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+        {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+{{ govukSummaryList({
+  rows: [
+    {
+      key: {
+        text: "Do you pay someone?"
+      },
+      value: {
+        text: data['doYouPayForCareForDP']
+      },
+      actions: {
+        items: [
+          {
+            href: "do-you-pay-someone-to-care-for-dp",
+            text: "Change",
+            visuallyHiddenText: "name"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Who do you pay?"
+      },
+      value: {
+        text: data['checkCanTakeCareCostsOff']
+      },
+      actions: {
+        items: [
+          {
+            href: "check-can-take-care-costs-off",
+            text: "Change",
+            visuallyHiddenText: "date of birth"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Name of the person"
+      },
+      value: {
+        text: data['nameOfPerson']
+      },
+      actions: {
+        items: [
+          {
+            href: "name-of-person",
+            text: "Change",
+            visuallyHiddenText: "date of birth"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "How often do you pay for childcare?"
+      },
+      value: {
+        text: data['howOftenPayForCare']
+      },
+      actions: {
+        items: [
+          {
+            href: "name-of-person",
+            text: "Change",
+            visuallyHiddenText: "date of birth"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Total care costs each week"
+      },
+      value: {
+        text: data['careCostsForDP']
+      },
+      actions: {
+        items: [
+          {
+            href: "care-costs-for-dp",
+            text: "Change",
+            visuallyHiddenText: "date of birth"
+          }
+        ]
+      }
+    }
+  ]
+}) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

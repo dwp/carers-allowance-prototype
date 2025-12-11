@@ -1,0 +1,81 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Start page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "#"
+      },
+      {
+        text: "Section",
+        href: "#"
+      },
+      {
+        text: "Subsection"
+      }
+    ]
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Check you can take these childcare costs off
+      </h1>
+
+      <p class="govuk-body">You cannot take off childcare costs if the person you pay is closely related to you.</p>
+
+      <p class="govuk-body">By closely related we mean husband, wife, partner, parent, child, brother or sister.</p>
+
+      <form class="form" action="/check-can-take-childcare-costs-off-answer" method="post">
+
+      {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+      {{ govukRadios({
+        name: "checkCanTakeChildcareCostsOff",
+        fieldset: {
+          legend: {
+            text: "Who do you pay to care for your child?",
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+          {
+            value: "A business",
+            text: "A business"
+          },
+          {
+            value: "A person",
+            text: "A person"
+          }
+        ]
+      }) }}
+
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+      </form>
+
+    </div>
+
+  </div>
+
+{% endblock %}

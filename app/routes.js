@@ -887,6 +887,258 @@ router.post('/add-expense-2-answer', function(request, response) {
 
 // END EMPLOYMENT & INCOME WITH EXPESNSES ROUTES
 
+
+
+
+
+
+
+
+// EMPLOYMENT & INCOME 2
+
+// SOURCE OF INCOME INCOME
+router.post('/main-source-of-income-answer', function(request, response) {
+
+	var mainSourceOfIncome = request.session.data['mainSourceOfIncome']
+	if (mainSourceOfIncome == "Employment"){
+		response.redirect("/employment-and-income-2/name-of-employer")
+	} else if (mainSourceOfIncome == "Self-employment"){
+        response.redirect("/employment-and-income-2/type-of-business")
+    } else if (mainSourceOfIncome == "Cash in hand"){
+        response.redirect("/employment-and-income-2/we-need-more-information-earnings")
+    } else if (mainSourceOfIncome == "Direct payments"){
+        response.redirect("/employment-and-income-2/we-need-more-information-earnings")
+    } else if (mainSourceOfIncome == "Fostering allowance"){
+        response.redirect("/employment-and-income-2/paid-by-fostering-agency-or-local-authority")
+    } else if (mainSourceOfIncome == "Rental property"){
+        response.redirect("/employment-and-income-2/we-need-more-information-earnings")
+    } else {
+		response.redirect("/employment-and-income-2/previous-job-onboarding")
+	}
+})
+// END SOURCE OF INCOME INCOME
+
+// EXPECT TO EARN LESS THAN £196?
+router.post('/threshold-answer', function(request, response) {
+
+	var thresholdAnswer = request.session.data['thresholdAnswer']
+    var doYouReceiveThesePayments = request.session.data['doYouReceiveThesePayments']
+
+	if (doYouReceiveThesePayments == "Statutory Maternity, Paternity or Adoption Pay") {
+		response.redirect("/employment-and-income-2/income-summary")
+	} else if (doYouReceiveThesePayments == "Statutory sick pay") {
+		response.redirect("/employment-and-income-2/income-summary")
+	} else if (thresholdAnswer == "No") {
+		response.redirect("/employment-and-income-2/not-eligible")
+	} else if (thresholdAnswer == "Not always") {
+		response.redirect("/employment-and-income-2/not-eligible")
+	} else if (thresholdAnswer == "Not sure") {
+		response.redirect("/employment-and-income-2/not-eligible")
+	} else if (thresholdAnswer == "Yes") {
+		response.redirect("/employment-and-income-2/expenses-onboarding")
+	}
+
+})
+// END EXPECT TO EARN LESS THAN £196?
+
+// DO YOU PAY FOR THINGS TO DO YOUR JOB?
+router.post('/do-you-pay-for-expenses-answer', function(request, response) {
+
+	var doYouPayForExpenses = request.session.data['doYouPayForExpenses']
+
+	if (doYouPayForExpenses == "Yes") {
+		response.redirect("/employment-and-income-2/add-expense-1")
+	} else if (doYouPayForExpenses == "No") {
+		response.redirect("/employment-and-income-2/income-summary")
+	}
+
+})
+// END DO YOU PAY FOR THINGS TO DO YOUR JOB?
+
+// ADD EXPENSE 1
+router.post('/add-an-expense-1-answer', function(request, response) {
+
+	var addExpense1 = request.session.data['addExpense1']
+	if (addExpense1 == "Equipment"){
+		response.redirect("/employment-and-income-2/expense-equipment-onboarding")
+	} else if (addExpense1 == "Fuel"){
+        response.redirect("/employment-and-income-2/expense-fuel-onboarding")
+    } else if (addExpense1 == "Household bills"){
+        response.redirect("/employment-and-income-2/expense-household-bills-onboarding")
+    } else if (addExpense1 == "Laundry"){
+        response.redirect("/employment-and-income-2/expense-laundry-onboarding")
+    } else if (addExpense1 == "Parking costs"){
+        response.redirect("/employment-and-income-2/expense-parking-costs-onboarding")
+    } else if (addExpense1 == "Travel"){
+        response.redirect("/employment-and-income-2/expense-travel-onboarding")
+    } else if (addExpense1 == "Accomodation"){
+        response.redirect("/employment-and-income-2/expense-accomodation-onboarding")
+    } else if (addExpense1 == "Uniform"){
+        response.redirect("/employment-and-income-2/expense-uniform-onboarding")
+    } else if (addExpense1 == "Something else"){
+        response.redirect("/employment-and-income-2/expense-something-else")
+    }
+})
+// END ADD EXPENSE 1
+
+// ADD INCOME 2
+router.post('/add-an-income-2-answer', function(request, response) {
+
+	var sourceOfIncome1 = request.session.data['sourceOfIncome1']
+
+	if (sourceOfIncome1 == "Employment"){
+		response.redirect("/employment-and-income-2/name-of-employer")
+	} else if (sourceOfIncome1 == "Self-employment"){
+        response.redirect("/employment-and-income-2/type-of-business")
+    } else if (sourceOfIncome1 == "Cash in hand"){
+        response.redirect("/employment-and-income-2/we-need-more-information-earnings")
+    } else if (sourceOfIncome1 == "Direct payments"){
+        response.redirect("/employment-and-income-2/we-need-more-information-earnings")
+    } else if (sourceOfIncome1 == "Fostering allowance"){
+        response.redirect("/employment-and-income-2/paid-by-fostering-agency-or-local-authority")
+    } else if (sourceOfIncome1 == "Rental property"){
+        response.redirect("/employment-and-income-2/we-need-more-information-earnings")
+    } else {
+		response.redirect("/employment-and-income-2/previous-job-onboarding")
+	}
+})
+// END ADD INCOME 2
+
+// DO YOU HAVE ACCOUNTS
+router.post('/have-accounts-answer', function(request, response) {
+
+	var doYouHaveAccounts = request.session.data['doYouHaveAccounts']
+
+	if (doYouHaveAccounts == "Yes"){
+		response.redirect("/employment-and-income-2/send-accounts")
+	} else {
+		response.redirect("/employment-and-income-2/do-you-know-trading-year-start-date")
+	}
+})
+// END DO YOU HAVE ACCOUNTS
+
+// EARN LESS THAN 7852
+router.post('/earn-less-than-7852-answer', function(request, response) {
+
+	var earnLessThan7852 = request.session.data['earnLessThan7852']
+
+	if (earnLessThan7852 == "Yes"){
+		response.redirect("/employment-and-income-2/income-summary-2")
+	} else {
+		response.redirect("/employment-and-income-2/not-eligible-2")
+	}
+})
+// END EARN LESS THAN 7852
+
+// PAID BY FOSTERING AGENCY OR LOCAL AUTHORITY
+router.post('/fostering-answer', function(request, response) {
+
+	var fosteringAgencyOrLocalAuthority = request.session.data['fosteringAgencyOrLocalAuthority']
+
+	if (fosteringAgencyOrLocalAuthority == "Fostering agency"){
+		response.redirect("/employment-and-income-2/how-often-paid-fostering-agency")
+	} else {
+		response.redirect("/employment-and-income-2/income-summary")
+	}
+})
+// END PAID BY FOSTERING AGENCY OR LOCAL AUTHORITY
+
+// DO YOU PAY FOR CARE FOR DP
+router.post('/do-you-pay-for-care-for-dp-answer', function(request, response) {
+
+	var doYouPayForCareForDP = request.session.data['doYouPayForCareForDP']
+
+	if (doYouPayForCareForDP == "Yes"){
+		response.redirect("/employment-and-income-2/check-can-take-care-costs-off")
+	} else {
+		response.redirect("/employment-and-income-2/childcare-costs")
+	}
+})
+// END DO YOU PAY FOR CARE FOR DP
+
+// CHECK CAN TAKE CARE COSTS OFF
+router.post('/check-can-take-care-costs-off-answer', function(request, response) {
+
+	var checkCanTakeCareCostsOff = request.session.data['checkCanTakeCareCostsOff']
+
+	if (checkCanTakeCareCostsOff == "A business"){
+		response.redirect("/employment-and-income-2/name-of-business")
+	} else {
+		response.redirect("/employment-and-income-2/name-of-person")
+	}
+})
+// END CHECK CAN TAKE CARE COSTS OFF
+
+// ANY CHILDREN GET CHILD BENEFIT?
+router.post('/any-children-get-child-benefit-answer', function(request, response) {
+
+	var anyChildrenGetChildBenefit = request.session.data['anyChildrenGetChildBenefit']
+
+	if (anyChildrenGetChildBenefit == "Yes"){
+		response.redirect("/employment-and-income-2/child-name-child-benefit-number")
+	} else {
+		response.redirect("/employment-and-income-2/cannot-take-childcare-costs-off-income")
+	}
+})
+// END ANY CHILDREN GET CHILD BENEFIT?
+
+// CHECK CAN TAKE CHILDCARE COSTS OFF
+router.post('/check-can-take-childcare-costs-off-answer', function(request, response) {
+
+	var checkCanTakeChildcareCostsOff = request.session.data['checkCanTakeChildcareCostsOff']
+
+	if (checkCanTakeChildcareCostsOff == "A business"){
+		response.redirect("/employment-and-income-2/name-of-business-childcare")
+	} else {
+		response.redirect("/employment-and-income-2/name-of-person-childcare")
+	}
+})
+// END CHECK CAN TAKE CHILDCARE COSTS OFF
+
+// DO YOU GET TAX FREE CHILDCARE
+router.post('/tax-free-childcare-answer', function(request, response) {
+
+	var taxFreeChildcare = request.session.data['taxFreeChildcare']
+
+	if (taxFreeChildcare == "Yes"){
+		response.redirect("/employment-and-income-2/how-often-pay-for-childcare")
+	} else {
+		response.redirect("/employment-and-income-2/how-often-pay-for-childcare")
+	}
+})
+// END DO YOU GET TAX FREE CHILDCARE
+
+// HOW OFTEN DO YOU PAY FOR CHILDCARE?
+router.post('/how-often-pay-childcare-answer', function(request, response) {
+
+	var taxFreeChildcare = request.session.data['taxFreeChildcare']
+
+	if (taxFreeChildcare == "Yes"){
+		response.redirect("/employment-and-income-2/check-amount-you-pay-for-childcare")
+	} else {
+		response.redirect("/employment-and-income-2/total-childcare-costs")
+	}
+})
+// END HOW OFTEN DO YOU PAY FOR CHILDCARE?
+
+// DO YOU PAY INTO PRIVATE PENSION?
+router.post('/do-you-pay-private-pension-answer', function(request, response) {
+
+	var doYouPayIntoPrivatePension = request.session.data['doYouPayIntoPrivatePension']
+
+	if (doYouPayIntoPrivatePension == "Yes"){
+		response.redirect("/employment-and-income-2/how-often-pay-private-pension")
+	} else {
+		response.redirect("/employment-and-income-2/previous-income")
+	}
+})
+// END DO YOU PAY INTO PRIVATE PENSION?
+
+// END EMPLOYMENT & INCOME 2
+
+
+
+
 // END EZRAS ROUTES
 
 

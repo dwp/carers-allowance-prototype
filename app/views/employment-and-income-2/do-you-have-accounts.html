@@ -16,7 +16,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form class="form" action="/do-you-have-accounts-answer" method="post">
+      <form class="form" action="/have-accounts-answer" method="post">
 
         {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
@@ -25,7 +25,7 @@
           name: "doYouHaveAccounts",
           fieldset: {
             legend: {
-              text: "Do you have accounts?",
+              text: "Do you have accounts for your most recent finalised tax accounts?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--l"
             }

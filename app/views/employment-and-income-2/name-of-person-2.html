@@ -1,0 +1,76 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="tax-free-childcare" method="post">
+
+        {% from "govuk/components/input/macro.njk" import govukInput %}
+
+        {{ govukInput({
+          label: {
+            text: "What is the name of the person 1?",
+            classes: "govuk-label--l",
+            isPageHeading: true
+          },
+          id: "nameOfBusiness",
+          name: "nameOfBusiness"
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "What is the name of the person 2?",
+            classes: "govuk-label--l"
+          },
+          id: "nameOfBusiness",
+          name: "nameOfBusiness"
+        }) }}
+
+        {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+        {{ govukCheckboxes({
+          name: "confirmNotRelated",
+          fieldset: {
+            legend: {
+              text: "I confirm these people are not closely related to me or my child",
+              classes: "govuk-body d-none"
+            }
+          },
+          items: [
+            {
+              value: "I confirm",
+              text: "I confirm these people are not closely related to me or my children"
+            }
+          ]
+        }) }}
+
+        {% from "govuk/components/button/macro.njk" import govukButton %}
+
+        {{ govukButton({
+          text: "Add another person",
+          classes: "govuk-button--secondary d-block",
+          href: "#"
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

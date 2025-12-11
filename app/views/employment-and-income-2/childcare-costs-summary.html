@@ -1,0 +1,193 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">Childcare costs summary</h1>
+
+      <form class="form" action="private-pensions" method="post">
+
+        {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+        {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+{{ govukSummaryList({
+  rows: [
+    {
+      key: {
+        text: "Do you pay for childcare?"
+      },
+      value: {
+        text: data['doYouPayForCareForDP']
+      },
+      actions: {
+        items: [
+          {
+            href: "childcare-costs",
+            text: "Change",
+            visuallyHiddenText: "name"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Do any of your children get child benefit?"
+      },
+      value: {
+        text: data['anyChildrenGetChildBenefit']
+      },
+      actions: {
+        items: [
+          {
+            href: "any-children-get-child-benefit",
+            text: "Change",
+            visuallyHiddenText: "date of birth"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Children and their Child Benefit numbers"
+      },
+      value: {
+        text: data['nameOfChild'] + ", " + data['childBenefitNumber']
+      },
+      actions: {
+        items: [
+          {
+            href: "child-name-child-benefit-number",
+            text: "Change",
+            visuallyHiddenText: "date of birth"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Who do you pay?"
+      },
+      value: {
+        text: data['checkCanTakeChildcareCostsOff']
+      },
+      actions: {
+        items: [
+          {
+            href: "check-can-take-childcare-costs-off",
+            text: "Change",
+            visuallyHiddenText: "date of birth"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Name of person?"
+      },
+      value: {
+        text: data['nameOfPersonChildcare']
+      },
+      actions: {
+        items: [
+          {
+            href: "name-of-person-childcare",
+            text: "Change",
+            visuallyHiddenText: "date of birth"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Do you confirm these people are not closely related to you or the children?"
+      },
+      value: {
+        text: data['IConfirm']
+      },
+      actions: {
+        items: [
+          {
+            href: "name-of-person-childcare",
+            text: "Change",
+            visuallyHiddenText: "date of birth"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Do you get Tax Free Childcare for Ethan Ethan, Rich Rich, Jess Jess?"
+      },
+      value: {
+        text: data['taxFreeChildcare']
+      },
+      actions: {
+        items: [
+          {
+            href: "tax-free-childcare",
+            text: "Change",
+            visuallyHiddenText: "date of birth"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "How often do you pay for childcare?"
+      },
+      value: {
+        text: data['howOftenPayForChildcare']
+      },
+      actions: {
+        items: [
+          {
+            href: "how-often-pay-for-childcare",
+            text: "Change",
+            visuallyHiddenText: "date of birth"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "How much do you pay for childcare a MONTH if you take off the TFC amount?"
+      },
+      value: {
+        text: data['careCostsForDP']
+      },
+      actions: {
+        items: [
+          {
+            href: "check-amount-you-pay-for-childcare",
+            text: "Change",
+            visuallyHiddenText: "date of birth"
+          }
+        ]
+      }
+    }
+  ]
+}) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

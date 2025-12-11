@@ -16,13 +16,13 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form class="form" action="/source-of-income-answer" method="post">
+      <form class="form" action="/main-source-of-income-answer" method="post">
 
         {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
         {{ govukRadios({
           classes: "govuk-radios",
-          name: "sourceOfIncome",
+          name: "mainSourceOfIncome",
           fieldset: {
             legend: {
               text: "What is your main source of income?",
@@ -47,7 +47,7 @@
               text: "Cash in hand"
             },
             {
-              value: "Direct payments from Joe Bloggs",
+              value: "Direct payments",
               text: "Direct payments from Joe Bloggs"
             },
             {
@@ -69,8 +69,7 @@
         }) }}
 
         {{ govukButton({
-          text: "Continue",
-          href: "name-of-employer"
+          text: "Continue"
         }) }}
       </form>
 

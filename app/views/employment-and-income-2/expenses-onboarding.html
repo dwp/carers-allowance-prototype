@@ -60,12 +60,12 @@
         <li>Internet use or WiFi</li>
       </ul>
 
-      <form class="form" action="/source-of-income-answer" method="post">
+      <form class="form" action="/do-you-pay-for-expenses-answer" method="post">
 
       {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
       {{ govukRadios({
-        name: "changedName",
+        name: "doYouPayForExpenses",
         fieldset: {
           legend: {
             text: "Do you pay for things you need to do your job?",
@@ -75,11 +75,11 @@
         },
         items: [
           {
-            value: "yes",
+            value: "Yes",
             text: "Yes"
           },
           {
-            value: "no",
+            value: "No",
             text: "No"
           }
         ]

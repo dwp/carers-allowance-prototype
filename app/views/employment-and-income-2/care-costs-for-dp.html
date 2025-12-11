@@ -1,0 +1,83 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Start page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "#"
+      },
+      {
+        text: "Section",
+        href: "#"
+      },
+      {
+        text: "Subsection"
+      }
+    ]
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Care costs for Joe Bloggs
+      </h1>
+
+      <p class="govuk-body">We will:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>get your salary information from HMRC </li>
+        <li>work out how much of your care costs we can take off your income</li>
+      </ul>
+
+      <p class="govuk-body">We can take off up to 50% of your net wage.</p>
+
+      <p class="govuk-body">For example, if your net wage is £1,000 a month and you pay £600 in care costs, we could take off up to £500.</p>
+
+      <form class="form" action="care-costs-summary" method="post">
+
+      {% from "govuk/components/input/macro.njk" import govukInput %}
+
+      {{ govukInput({
+        id: "cost",
+        name: "careCostsForDP",
+        label: {
+          text: "What are your total care costs each " + data['howOftenPayForCare'] + "?",
+          classes: "govuk-label--l",
+          isPageHeading: true
+        },
+        prefix: {
+          text: "£"
+        },
+        classes: "govuk-input--width-5",
+        spellcheck: false
+      }) }}
+
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+      </form>
+
+    </div>
+
+  </div>
+
+{% endblock %}

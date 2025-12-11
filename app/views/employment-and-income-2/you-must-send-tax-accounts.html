@@ -1,0 +1,64 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Start page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "#"
+      },
+      {
+        text: "Section",
+        href: "#"
+      },
+      {
+        text: "Subsection"
+      }
+    ]
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        If you earn over £196 a week you may get Carer's Allowance
+      </h1>
+
+      <p class="govuk-body">Tell us about things that could reduce your income to below £196 like:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>expenses from your job at JOB NAME</li>
+        <li>paying someone else to care for DP NAME</li>
+        <li>paying for childcare</li>
+        <li>making contributions into a private pension</li>
+      </ul>
+
+      <h1 class="govuk-heading-m">If your earnings vary</h1>
+      <p class="govuk-body">You may be eligible if some weeks you get more than £196. If this is the case, we will work this out for you if you continue.</p>
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Continue",
+  href: "expenses-onboarding"
+}) }}
+
+    </div>
+
+  </div>
+
+{% endblock %}

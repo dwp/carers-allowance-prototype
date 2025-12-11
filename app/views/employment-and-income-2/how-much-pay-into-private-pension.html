@@ -16,22 +16,25 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form class="form" action="expense-something-else-how-was-it-used" method="post">
+      <form class="form" action="private-pension-summary" method="post">
 
         {% from "govuk/components/input/macro.njk" import govukInput %}
 
         {{ govukInput({
           label: {
-            text: "How much do you pay for " + data['expenseSomethingElseName'] + " each " + data['howOftenSomethingElse'] + "?",
+            text: "How much do you pay into your private pension each " + data['howOftenPayPrivatePension'],
             classes: "govuk-label--l",
             isPageHeading: true
           },
             prefix: {
             text: "£"
           },
+          hint: {
+            text: "Tell us the total you pay into your private pension. We will work out how much you can take off your earnings."
+          },
           classes: "govuk-input--width-10",
-          id: "how-was-it-used",
-          name: "howMuchSomethingElse",
+          id: "how-much-pay-pension",
+          name: "howMuchPayIntoPension",
           inputmode: "numeric",
           spellcheck: false
         }) }}
