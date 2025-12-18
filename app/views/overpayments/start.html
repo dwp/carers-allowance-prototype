@@ -34,44 +34,29 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      {% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
-
-      {% set html %}
-        <p class="govuk-notification-banner__heading">
-          Work in progress. Content may change.
-        </p>
-      {% endset %}
-
-      {{ govukNotificationBanner({
-        html: html
-      }) }}
-
       <h1 class="govuk-heading-l">
         Request a review of your Carer's Allowance overpayment
       </h1>
 
       <p class="govuk-body-l">
-        Only use this form if you have been asked to repay Carer's Allowance because of an overpayment related to employed earnings.
+        We are reviewing Carer’s Allowance overpayments related to employed earnings. The Sayce Independent Review found inconsistencies in the way we worked out average earnings for carers. 
+      </p>
+
+      <p class="govuk-body-l">
+        You do not need to do anything. We will contact you if your case was affected. 
       </p>
 
       <h2 class="govuk-heading-m">Who can request a review</h2>
 
-      <p class="govuk-body">This form is for carers who:</p>
-
-      <ul class="govuk-list govuk-list--bullet">
-        <li>received a Carer's Allowance overpayment due to employed earnings that went over the limit between 10 April 2015 and 2 September 2025</li>
-        <li>are repaying DWP or have already paid back money because of an employed earnings overpayment</li>
-      </ul>
-
-      <p class="govuk-body">If you had more than one overpayment during this time, you only need to request a review once.</p>
+      <p class="govuk-body">You can request a review if you think this affects you and you have not had a letter from DWP.</p>
 
       <h2 class="govuk-heading-m">Who cannot request a review</h3>
       <p class="govuk-body">Carers who were solely self-employed between 10 April 2015 and 2 September 2025. </p>
 
       <h3 class="govuk-heading-m">When can you request a review</h3>
-      <p class="govuk-body">From 20 November 2025, you can request that we review your overpayment. </p>
+      <p class="govuk-body">You can do this from 1 April 2026.</p>
 
-      <h3 class="govuk-heading-m">Request a review online</h3>
+      <h3 class="govuk-heading-m">What you will need to request a review online</h3>
       <p class="govuk-body">You will need your personal details and National Insurance number.</p>
 
       {{ govukButton({
@@ -81,11 +66,6 @@
       }) }}
 
       <p class="govuk-body">This <a href="">form is available in Welsh (Cymraeg)</a>.</p>
-
-      <h3 class="govuk-heading-s">Other ways to request an overpayment review</h3>
-      <p class="govuk-body text-red">[You can apply by post or phone.]</p>
-      <p class="govuk-body">You can get assisted digital support.</p>
-      <p class="govuk-body">Telephone: ?</p>
 
       <h3 class="govuk-heading-s">What will happen next</h3>
       <p class="govuk-body">We will:</p>

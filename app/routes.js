@@ -1134,6 +1134,19 @@ router.post('/do-you-pay-private-pension-answer', function(request, response) {
 })
 // END DO YOU PAY INTO PRIVATE PENSION?
 
+// WERE YOU PAID BETWEEN THESE DATES?
+router.post('/paid-between-dates-answer', function(request, response) {
+
+	var wereYouPaidBetweenDates = request.session.data['wereYouPaidBetweenDates']
+
+	if (wereYouPaidBetweenDates == "Yes"){
+		response.redirect("/employment-and-income-2/name-of-employer-2")
+	} else {
+		response.redirect("/employment-and-income-2/where-to?")
+	}
+})
+// END WERE YOU PAID BETWEEN THESE DATES?
+
 // END EMPLOYMENT & INCOME 2
 
 

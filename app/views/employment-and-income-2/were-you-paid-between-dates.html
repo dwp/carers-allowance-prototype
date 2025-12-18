@@ -11,11 +11,20 @@
 
 {% block beforeContent %}
 
-  {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
-
-  {{ govukBackLink({
-    text: "Back",
-    href: "#"
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "#"
+      },
+      {
+        text: "Section",
+        href: "#"
+      },
+      {
+        text: "Subsection"
+      }
+    ]
   }) }}
 
 {% endblock %}
@@ -25,28 +34,27 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form class="form" action="/where-do-you-live-answer" method="post">
+      <form class="form" action="/paid-between-dates-answer" method="post">
 
       {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
       {{ govukRadios({
-        name: "whereDoYouLive",
-        value: data['whereDoYouLive'],
+        name: "wereYouPaidBetweenDates",
         fieldset: {
           legend: {
-            text: "Where do you currently live?",
+            text: "Were you paid by a previous employer between 11 September and 21 October 2025?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }
         },
         items: [
           {
-            value: "United Kingdom",
-            text: "United Kingdom (UK)"
+            value: "Yes",
+            text: "Yes"
           },
           {
-            value: "Abroad",
-            text: "Abroad"
+            value: "No",
+            text: "No"
           }
         ]
       }) }}
@@ -58,21 +66,6 @@
       }) }}
 
       </form>
-
-      <details class="govuk-details">
-      <summary class="govuk-details__summary">
-        <span class="govuk-details__summary-text">
-          Get help with this form
-        </span>
-      </summary>
-      <div class="govuk-details__text">
-        <p>
-          <b>Phone</b><br />
-          <span class="text-red">[telephone TBC]</span><br />
-          <a href="#">Find out about call charges</a>
-        </p>
-      </div>
-    </details>
 
     </div>
 

@@ -1,0 +1,157 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">Previous employment summary</h1>
+
+      <form class="form" action="care-costs" method="post">
+
+        {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+        {{ govukSummaryList({
+          card: {
+            title: {
+              text: "Previous income 1"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Remove income"
+                }
+              ]
+            }
+          },
+          rows: [
+            {
+              key: {
+                text: "Source of income"
+              },
+              value: {
+                html: data['sourceOfIncome3']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "add-income-3",
+                    text: "Change",
+                    visuallyHiddenText: "income source"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Were you paid by a previous employer between 11 September and 21 October 2025?"
+              },
+              value: {
+                html: data['wereYouPaidBetweenDates']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "were-you-paid-between-dates",
+                    text: "Change",
+                    visuallyHiddenText: "income source"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Employer"
+              },
+              value: {
+                html: data['nameOfEmployer2']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "name-of-employer",
+                    text: "Change",
+                    visuallyHiddenText: "nationality"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "What was included in last pay?"
+              },
+              value: {
+                html: data['includedInLastPay']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "what-was-included-in-last-pay",
+                    text: "Change",
+                    visuallyHiddenText: "nationality"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "How much of your last pay was compensation?"
+              },
+              value: {
+                html: data['howMuchLastPayCompensation']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "how-much-of-pay-compensation",
+                    text: "Change",
+                    visuallyHiddenText: "nationality"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Total expenses"
+              },
+              value: {
+                text: "£351.89"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "#",
+                    text: "Change",
+                    visuallyHiddenText: "nationality"
+                  }
+                ]
+              }
+            }
+          ]
+        }) }}
+
+        <a href="add-income-2" class="govuk-button govuk-button--secondary d-block width-fit-content" data-module="govuk-button">
+          Add another income source
+        </a>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
