@@ -1196,3 +1196,22 @@ router.post('/where-do-you-live-answer', function(request, response) {
 // END WHERE DO YOU LIVE
 
 // END OVERPAYMENT ROUTES
+
+
+
+
+// NATIONALITY ROUTES
+
+// WHAT IS YOUR NATIONALITY?
+router.post('/what-is-your-nationality-answer', function(request, response) {
+
+	var whatIsYourNationality = request.session.data['whatIsYourNationality']
+	if (whatIsYourNationality == "British"){
+		response.redirect("/nationality-and-relationships/have-you-always-lived-england")
+	} else {
+		response.redirect("/nationality-and-relationships/enter-nationality")
+	}
+})
+// END WHAT IS YOUR NATIONALITY?
+
+// END NATIONALITY ROUTES

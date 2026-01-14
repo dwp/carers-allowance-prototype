@@ -34,71 +34,24 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-xl">
-        {{ serviceName }}
+      <h1 class="govuk-heading-l">
+        Nationality prototype start page
       </h1>
-      <p class="govuk-body">Some prototype mock ups for how we could handle Relationships.</p>
 
-      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
-      <h2 class="govuk-heading-m">Option 1 - Freetext</h2>
-      <p class="govuk-body">A freetext box for users to type in anything they want for their answer.</p>
-      <p class="govuk-body">Users might not know what to put into the text box.</p>
-      <p class="govuk-body">
-        <a href="freetext" class="govuk-link">View freetext prototype</a>
+      <p class="govuk-body-l">
+        Opening text if we need it.
       </p>
-      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 
-      <h2 class="govuk-heading-m">Option 2 - Select / Dropdown</h2>
-      <p class="govuk-body">Dropdowns that present all options to the user.</p>
-      <p class="govuk-body">Advised as a last resort, but better than a freetext box?</p>
-      <p class="govuk-body">
-        <a href="dropdown" class="govuk-link">View dropdown prototype</a>
-      </p>
-      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+      <p class="govuk-body">Body text if we need it.</p>
 
-      <h2 class="govuk-heading-m">Option 3 - Asking questions</h2>
-      <p class="govuk-body">Group relationship items into categories, and let users drill down to select their answer.</p>
-      <p class="govuk-body">When presented with a long dropdown (as in option 2) - GDS advises this route - asking questions.</p>
-      <p class="govuk-body">
-        <a href="asking-questions" class="govuk-link">View questions prototype</a>
-      </p>
-      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
-
-      <h2 class="govuk-heading-m">Option 4 - Radios</h2>
-      <p class="govuk-body">A long list of radio options</p>
-      <p class="govuk-body">Could possibly be too long a list to present to users? Screenreader or accessibility concerns? Could users get trapped in the long list?</p>
-      <p class="govuk-body">
-        <a href="radios-full" class="govuk-link">View radios prototype</a>
-      </p>
-      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
-
-      <h2 class="govuk-heading-m">Option 4.1 - Radios with category headings</h2>
-      <p class="govuk-body">A long list of radio options with category headings</p>
-      <p class="govuk-body">
-        <a href="radios-full-with-headings" class="govuk-link">View radios v2 prototype</a>
-      </p>
-      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
-
-      <h2 class="govuk-heading-m">Option 5 - Progressive Radios</h2>
-      <p class="govuk-body">Present users with 5 radios options with a 'show more' button.</p>
-      <p class="govuk-body">Accessibility concerns over hiding content behind progressive disclosure?</p>
-      <p class="govuk-body">
-        <a href="radios-progressive" class="govuk-link">View progressive radios prototype</a>
-      </p>
-      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
-
-      <h2 class="govuk-heading-m">Option 6 - Autosuggest</h2>
-      <p class="govuk-body">Present users with a text input. They start typing and we autosuggest answers for them.</p>
-      <p class="govuk-body">What concerns do we have over this? Accessibility? Usability?</p>
-      <p class="govuk-body">
-        <a href="autosuggest" class="govuk-link">View autosuggest prototype</a>
-      </p>
-      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
-
+      {{ govukButton({
+        text: "Start now",
+        href: "email-confirmation",
+        isStartButton: true
+      }) }}
 
     </div>
 
-    
   </div>
 
 {% endblock %}
