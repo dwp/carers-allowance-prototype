@@ -1,0 +1,47 @@
+
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="carer-away-from-england-wales" method="post">
+
+        {% from "govuk/components/input/macro.njk" import govukInput %}
+
+        {{ govukInput({
+          label: {
+            text: "What coutry did you live in before England or Wales?",
+            classes: "govuk-label--l",
+            isPageHeading: true
+          },
+          id: "country-before-england-wales",
+          name: "countryBeforeEnglandWales"
+        }) }}
+
+        {% from "govuk/components/button/macro.njk" import govukButton %}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+      
+    </div>
+
+    </div>
+  </div>
+
+{% endblock %}

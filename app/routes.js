@@ -1215,3 +1215,70 @@ router.post('/what-is-your-nationality-answer', function(request, response) {
 // END WHAT IS YOUR NATIONALITY?
 
 // END NATIONALITY ROUTES
+
+
+
+
+// NATIONALITY ROUTES - FULL JOURNEY
+
+// WHICH COUNTRY DO YOU LIVE IN
+router.post('/which-country-do-you-live-in-answer', function(request, response) {
+
+	var whichCountryLiveIn = request.session.data['whichCountryLiveIn']
+	if (whichCountryLiveIn == "Another country"){
+		response.redirect("/nationality-and-relationships-full-journey/telephone-number-another-country")
+	} else {
+		response.redirect("/nationality-and-relationships-full-journey/telephone-number")
+	}
+})
+// END WHICH COUNTRY DO YOU LIVE IN
+
+// WHAT IS YOUR NATIONALITY?
+router.post('/what-is-your-nationality-full-answer', function(request, response) {
+
+	var whatIsYourNationalityFull = request.session.data['whatIsYourNationalityFull']
+	if (whatIsYourNationalityFull == "British"){
+		response.redirect("/nationality-and-relationships-full-journey/have-you-always-lived-england")
+	} else {
+		response.redirect("/nationality-and-relationships-full-journey/enter-nationality")
+	}
+})
+// END WHAT IS YOUR NATIONALITY?
+
+// WHAT IS YOUR NATIONALITY - ANOTHER COUNTRY?
+router.post('/what-is-your-nationality-another-country-full-answer', function(request, response) {
+
+	var whatIsYourNationalityAnotherCountryFull = request.session.data['whatIsYourNationalityAnotherCountryFull']
+	if (whatIsYourNationalityAnotherCountryFull == "British"){
+		response.redirect("/nationality-and-relationships-full-journey/payments-from-abroad")
+	} else {
+		response.redirect("/nationality-and-relationships-full-journey/enter-nationality-another-country")
+	}
+})
+// END WHAT IS YOUR NATIONALITY? - ANOTHER COUNTRY?
+
+// HAVE YOU ALWAYS LIVED ENGLAND
+router.post('/have-you-always-lived-england-answer', function(request, response) {
+
+	var haveYouAlwaysLivedEngland = request.session.data['haveYouAlwaysLivedEngland']
+	if (haveYouAlwaysLivedEngland == "yes"){
+		response.redirect("/nationality-and-relationships-full-journey/carer-away-from-england-wales")
+	} else {
+		response.redirect("/nationality-and-relationships-full-journey/carer-arrive-england-wales")
+	}
+})
+// END HAVE YOU ALWAYS LIVED ENGLAND
+
+// WHEN DID YOU ARRIVE ENGLAND WALES
+router.post('/carer-arrive-england-wales-answer', function(request, response) {
+
+	var whenDidYouArriveEnglandWales = request.session.data['whenDidYouArriveEnglandWales']
+	if (whenDidYouArriveEnglandWales == "Less than 3 years ago"){
+		response.redirect("/nationality-and-relationships-full-journey/carer-date-arrive-england-wales")
+	} else {
+		response.redirect("/nationality-and-relationships-full-journey/carer-away-from-england-wales")
+	}
+})
+// END WHEN DID YOU ARRIVE ENGLAND WALES
+
+// END NATIONALITY ROUTES - FULL JOURNEY
