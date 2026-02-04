@@ -38,157 +38,82 @@
   </script>
 
   <script>
-  // ACCESSIBLE AUTOCOMPLETE - RELATIONSHIPS
-  const relationshipMappings = [
-    {
-      result: "Wife / Civil Partner",
-      query: "civil partner, spouse, partner, girlfriend",
-    },
-    {
-      result: "Father",
-      query: " father, dad, papa",
-    },
-    {
-      result: "Mother",
-      query: "mother, mum, mom, mam",
-    },
-    {
-      result: "Grandfather / Great grandfather",
-      query:
-        "grandfather, granda, granddad, grandpa, great grandfather, great granddad, gramps?",
-    },
-    {
-      result: "Grandmother / Great grandmother",
-      query:
-        "grandmother, grandma, nan, gran, great grandmother, great grandma - nanny, granny?",
-    },
-    {
-      result: "Son / Adopted son",
-      query: "son, adopted son, child, kid",
-    },
-    {
-      result: "Daughter / Adopted daughter",
-      query: "daughter, adopted daughter, child, kid",
-    },
-    {
-      result: "Grandson / Great grandson",
-      query: "grandson, grandchild, great grandson",
-    },
-    {
-      result: "Granddaughter / Great granddaughter",
-      query: "granddaughter, grandchild, great granddaughter",
-    },
-    {
-      result: "Stepfather",
-      query: "stepfather, stepdad,  - dad,father?",
-    },
-    {
-      result: "Stepmother",
-      query: " stepmother, stepmum, - mum, mother?",
-    },
-    {
-      result: "Stepson",
-      query: " stepson, step child - son?",
-    },
-    {
-      result: "Stepdaughter",
-      query: "stepdaughter, step child - daughter?",
-    },
-    {
-      result: "Brother",
-      query: "brother, sibling",
-    },
-    {
-      result: "Sister",
-      query: "sister, sibling",
-    },
-    {
-      result: "Half-brother",
-      query: " half-brother, halfbrother, - brother?",
-    },
-    {
-      result: "Half-sister",
-      query: "half-sister,  halfsister, - sister?",
-    },
-    {
-      result: "Stepbrother",
-      query: "stepbrother, step brother",
-    },
-    {
-      result: "Stepsister",
-      query: " stepsister, step sister",
-    },
-    {
-      result: "Aunt",
-      query: "aunt, aunty",
-    },
-    {
-      result: "Uncle",
-      query: "uncle",
-    },
-    {
-      result: "Nephew",
-      query: "nephew",
-    },
-    {
-      result: "Niece",
-      query: "niece",
-    },
-    {
-      result: "Father-in-law",
-      query: " father-in-law, FIL, father in law",
-    },
-    {
-      result: "Mother-in-law",
-      query: "mother-in-law, MIL, mother in law",
-    },
-    {
-      result: "Brother-in-law",
-      query: "brother-in-law, brother in law, BIL?",
-    },
-    {
-      result: "Sister-in-law",
-      query: "sister-in-law, sister in law, SIL?",
-    },
-    {
-      result: "Son-in-law",
-      query: "son-in-law, son in law, SIL?",
-    },
-    {
-      result: "Daughter-in-law",
-      query: "daughter-in-law, daughter in law DIL?",
-    },
-    {
-      result: "Husband / Civil Partner",
-      query: "husband, civil partner, spouse, partner, boyfriend",
-    },
-    {
-      result: "Friend",
-      query: " friend, mate, pal, girlfriend, boyfriend",
-    },
-    {
-      result: "Other",
-      query: "other, neighbour, acquaintance, colleague",
-    },
-    {
-      result: "Partner",
-      query:
-        " partner, companion, boyfriend, girlfriend, co-habitant, - significant other? Gf? Bf?",
-    },
-  ];
+    // ACCESSIBLE AUTOCOMPLETE - RELATIONSHIPS
+  const relationships = [
+      "Wife / Civil Partner",
+      "Father",
+      "Mother",
+      "Grandfather / Great grandfather",
+      "Grandmother / Great grandmother",
+      "Son / Adopted son",
+      "Daughter / Adopted daughter",
+      "Grandson / Great grandson",
+      "Granddaughter / Great granddaughter",
+      "Stepfather",
+      "Stepmother",
+      "Stepson",
+      "Stepdaughter",
+      "Brother",
+      "Sister",
+      "Half-brother",
+      "Half-sister",
+      "Stepbrother",
+      "Stepsister",
+      "Aunt",
+      "Uncle",
+      "Nephew",
+      "Niece",
+      "Father-in-law",
+      "Mother-in-law",
+      "Brother-in-law",
+      "Sister-in-law",
+      "Son-in-law",
+      "Daughter-in-law",
+      "Husband / Civil Partner",
+      "Friend",
+      "Other",
+      "Partner",
+      "wife, civil partner, spouse, partner, girlfriend",
+      " father, dad, papa",
+      "mother, mum, mom, mam",
+      "grandfather, granda, granddad, grandpa, great grandfather, great granddad, gramps?",
+      "grandmother, grandma, nan, gran, great grandmother, great grandma - nanny, granny?",
+      "son, adopted son, child, kid",
+      "daughter, adopted daughter, child, kid",
+      "grandson, grandchild, great grandson",
+      "granddaughter, grandchild, great granddaughter",
+      "stepfather, stepdad,  - dad,father?",
+      " stepmother, stepmum, - mum, mother?",
+      " stepson, step child - son?",
+      "stepdaughter, step child - daughter?",
+      "brother, sibling",
+      "sister, sibling",
+      " half-brother, halfbrother, - brother?",
+      "half-sister,  halfsister, - sister?",
+      "stepbrother, step brother",
+      " stepsister, step sister",
+      "aunt, aunty",
+      "uncle",
+      "nephew",
+      "Niece",
+      " father-in-law, FIL, father in law",
+      "mother-in-law, MIL, mother in law",
+      "brother-in-law, brother in law, BIL?",
+      "sister-in-law, sister in law, SIL?",
+      "son-in-law, son in law, SIL?",
+      "daughter-in-law, daughter in law DIL?",
+      "husband, civil partner, spouse, partner, boyfriend",
+      " friend, mate, pal, girlfriend, boyfriend",
+      "other, neighbour, acquaintance, colleague",
+      " partner, companion, boyfriend, girlfriend, co-habitant, - significant other? Gf? Bf?"
+  ]
 
   accessibleAutocomplete({
-    element: document.querySelector("#my-autocomplete-container-relationships"),
-    id: "my-autocomplete-relationships", // To match it to the existing <label>.
-    source: (enteredQuery, populateResults) => {
-      const filteredResults = relationshipMappings
-        .filter((result) => result.query.indexOf(enteredQuery) !== -1)
-        .flatMap((match) => [match.result]);
-
-      populateResults(filteredResults);
-    },
-  });
+    element: document.querySelector('#my-autocomplete-container-relationships'),
+    id: 'my-autocomplete-relationships', // To match it to the existing <label>.
+    source: relationships
+  })
   // END ACCESSIBLE AUTOCOMPLETE - RELATIONSHIPS
-</script>
+  </script>
 
 {% endblock %}
