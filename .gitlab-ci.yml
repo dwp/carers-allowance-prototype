@@ -26,7 +26,6 @@ build-app:
     - cd upstream_project/app
   script:
     - npm ci
-    - npm run build
     - npm prune --production
   artifacts:
     paths:
