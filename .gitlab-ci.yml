@@ -1,7 +1,6 @@
 stages:
   - code-quality
-  - build
-  - deploy
+  - heroku-publish
 
 include:
   - local: "/gitlab-ci/includes.yml"
@@ -18,35 +17,7 @@ shell-check:
 todo-check:
   extends: .todo-check-template
 
-build-app:
-  stage: build
-  image: node:20
-  before_script:
-    - git clone https://gitlab-ci-token:${CI_JOB_TOKEN}@${CI_SERVER_FQDN}/dwp/user-centred-design/carers-allowance-prototype upstream_project
-    - cd upstream_project/app
-  script:
-    - npm ci
-    - npm prune --production
-  artifacts:
-    paths:
-      - upstream_project/app/
-    expire_in: 1 hour
-
-deploy-to-heroku:
-  stage: deploy
-  image: registry.gitlab.com/dwp/secure-development/container-image-factory/ruby-dpl-cgr-dev-chainguard-ruby-latest-dev:1.0.6@sha256:4c7480462809933275a08d4076a240849b9cccddb305a48879f35d0696f8978d
-  dependencies:
-    - build-app
+heroku-site-publish:
+  extends: .heroku-site-publish-template
   variables:
-    APP_NAME: carers-allowance-prototype
-    HEROKU_TEAM_NAME: "engineering-digital-dwp-gov"
-    HEROKU_REGION: "eu"
-  before_script:
-    - export GEM_HOME=$HOME/.gem
-    - export BUNDLE_PATH="$HOME/.gem"
-    - cd upstream_project/app
-  script:
-    - heroku apps:info ${APP_NAME} || heroku apps:create -t ${HEROKU_TEAM_NAME} ${APP_NAME} --region ${HEROKU_REGION}
-    - heroku config:set -a ${APP_NAME} ${HEROKU_CONFIG_VARS} > /dev/null
-    - heroku config:set -a ${APP_NAME} NPM_CONFIG_PRODUCTION=true SKIP_NPM_INSTALL=true
-    - dpl --provider=heroku --app=$APP_NAME --api-key=${HEROKU_API_KEY}
+    HEROKU_APP_NAME: carers-allowance-prototype

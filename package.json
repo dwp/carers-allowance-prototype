@@ -2,13 +2,10 @@
   "scripts": {
     "dev": "govuk-prototype-kit dev",
     "serve": "govuk-prototype-kit serve",
-    "start": "govuk-prototype-kit start",
-    "heroku-prebuild": "echo 'Skipping install - using pre-built artifacts'",
-    "heroku-postbuild": "echo 'Build already completed in CI'"
+    "start": "govuk-prototype-kit start"
   },
-  "heroku-run-build-script": true,
   "engines": {
-    "node" : "20.x"
+    "node" : ">=23.0.0"
   },
   "dependencies": {
     "@dwp/dwp-frontend": "2.7.0",
