@@ -40,7 +40,10 @@
   // END ACCESSIBLE AUTOCOMPLETE MINIFIED JS - REQUIRED FOR THE 'ACCESSIBLE AUTOCOMPLETE' CODE TO WORK
   </script>
 
-  <script>
+  
+<script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js"></script>
+
+<script>
   // ACCESSIBLE AUTOCOMPLETE - RELATIONSHIPS
   const relationshipMappings = [
     {
@@ -180,18 +183,25 @@
     },
   ];
 
+  const fuse = new Fuse(relationshipMappings, {
+    keys: ["result", "query"],
+    threshold: 0.25, // lower = stricter matching
+    ignoreLocation: true,
+    distance: 50,
+  });
+
   accessibleAutocomplete({
     element: document.querySelector("#my-autocomplete-container-relationships"),
     id: "my-autocomplete-relationships", // To match it to the existing <label>.
     source: (enteredQuery, populateResults) => {
-      const filteredResults = relationshipMappings
-        .filter((result) => result.query.indexOf(enteredQuery) !== -1)
-        .flatMap((match) => [match.result]);
-
+      const results = enteredQuery ? fuse.search(enteredQuery) : [];
+      const filteredResults = results.flatMap((match) => [match.item.result]);
       populateResults(filteredResults);
     },
   });
+
   // END ACCESSIBLE AUTOCOMPLETE - RELATIONSHIPS
 </script>
+ 
 
 {% endblock %}
