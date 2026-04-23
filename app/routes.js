@@ -1282,3 +1282,73 @@ router.post('/carer-arrive-england-wales-answer', function(request, response) {
 // END WHEN DID YOU ARRIVE ENGLAND WALES
 
 // END NATIONALITY ROUTES - FULL JOURNEY
+
+
+
+
+
+// BREAKS IN CARE
+
+// CARERS NI NUMBER
+router.post('/carers-ni-number-answer', function(request, response) {
+
+	var nationalInsuranceNumber = request.session.data['nationalInsuranceNumber']
+	if (nationalInsuranceNumber == "AA1234567A"){
+		response.redirect("/breaks-in-care/jane-doe")
+	} else {
+		response.redirect("/breaks-in-care/ni-number-not-found")
+	}
+})
+// END CARERS NI NUMBER
+
+// NI NUMBER NOT FOUND
+router.post('/ni-number-not-found-answer', function(request, response) {
+
+	var niNumberNotFound = request.session.data['niNumberNotFound']
+	if (niNumberNotFound == "yes"){
+		response.redirect("/breaks-in-care/carers-full-name")
+	} else {
+		response.redirect("/breaks-in-care/carers-ni-number")
+	}
+})
+// END NI NUMBER NOT FOUND
+
+// QUALIFYING BENEFIT
+router.post('/qualifying-benefit-answer', function(request, response) {
+
+	var qualifyingBenefit = request.session.data['qualifyingBenefit']
+	if (qualifyingBenefit == "Personal Independence Payment"){
+		response.redirect("/breaks-in-care/dp-start-receiving-qualifying-benefit")
+	} else {
+		response.redirect("/breaks-in-care/cant-record-break-for-this-qualifying-benefit")
+	}
+})
+// QUALIFYING BENEFIT
+
+// WHEN DID SUSPENSION END
+router.post('/suspension-end-answer', function(request, response) {
+
+	var sourceOfInformation = request.session.data['sourceOfInformation']
+	if (sourceOfInformation == "Revision"){
+		response.redirect("/breaks-in-care/effective-decision-start-date_revision")
+	} else if (sourceOfInformation == "Supersession"){
+        response.redirect("/breaks-in-care/consider-decision-from-date_supersession")
+    } else {
+		response.redirect("/breaks-in-care/check-details")
+	}
+})
+// END WHEN DID SUSPENSION END
+
+// WHEN DID BREAK START
+router.post('/when-did-break-start-answer', function(request, response) {
+
+	var permanentBreak = request.session.data['permanentBreak']
+	if (permanentBreak == "No"){
+		response.redirect("/breaks-in-care/when-did-break-end_add-new")
+	} else {
+		response.redirect("/breaks-in-care/is-qualifying-benefit-suspended")
+	}
+})
+// WHEN DID BREAK END
+
+// END BREAKS IN CARE

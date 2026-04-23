@@ -1,0 +1,189 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">Jane Doe</h1>
+
+      <h2 class="govuk-heading-m govuk-!-margin-bottom-6">National Insurance number: AA1234567A</h2>
+
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      {{ govukButton({
+        href: "check-claim-details",
+        text: "Add new break in care"
+      }) }}
+
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-!-margin-bottom-8">
+
+      <h3 class="govuk-heading-l">Claim details</h3>
+
+        {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+        {{ govukSummaryList({
+          rows: [
+            {
+              key: {
+                text: "Started receiving Carer's Allowance"
+              },
+              value: {
+                text: "10 May 2025"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "#",
+                    text: "Change",
+                    visuallyHiddenText: "name"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Disabled person's NINO"
+              },
+              value: {
+                text: "AA1234567A"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "#",
+                    text: "Change",
+                    visuallyHiddenText: "date of birth"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Started caring for the disabled person"
+              },
+              value: {
+                html: "3 Jan 2024"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "#",
+                    text: "Change",
+                    visuallyHiddenText: "address"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Qualifying benefit"
+              },
+              value: {
+                text: "Personal Independance Payment"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "#",
+                    text: "Change",
+                    visuallyHiddenText: "address"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Disabled Person started receiving Qualifying Benefit"
+              },
+              value: {
+                text: "10 Jan 2024"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "#",
+                    text: "Change",
+                    visuallyHiddenText: "name"
+                  }
+                ]
+              }
+            }
+          ]
+        }) }}
+
+        <h3 class="govuk-heading-l govuk-!-margin-top-9">Breaks and suspensions</h3>
+
+        {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+        {{ govukSummaryList({
+          rows: [
+            {
+              key: {
+                text: "Break 1"
+              },
+              value: {
+                text: "502 - not entitled"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "break-1",
+                    text: "View break",
+                    visuallyHiddenText: "name"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Suspension 1"
+              },
+              value: {
+                text: "Decision reason"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "#",
+                    text: "View suspension",
+                    visuallyHiddenText: "date of birth"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Break 2"
+              },
+              value: {
+                text: "Decision reason"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "#",
+                    text: "View break",
+                    visuallyHiddenText: "address"
+                  }
+                ]
+              }
+            }
+          ]
+        }) }}
+
+    </div>
+  </div>
+
+{% endblock %}
