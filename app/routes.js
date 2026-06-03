@@ -1293,7 +1293,7 @@ router.post('/carer-arrive-england-wales-answer', function(request, response) {
 router.post('/carers-ni-number-answer', function(request, response) {
 
 	var nationalInsuranceNumber = request.session.data['nationalInsuranceNumber']
-	if (nationalInsuranceNumber == "AA1234567A"){
+	if (nationalInsuranceNumber == "AA 12 34 56 A"){
 		response.redirect("/breaks-in-care/jane-doe")
 	} else {
 		response.redirect("/breaks-in-care/ni-number-not-found")
