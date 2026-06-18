@@ -18,13 +18,19 @@
 
       <h1 class="govuk-heading-l">Jane Doe</h1>
 
-      <h2 class="govuk-heading-m govuk-!-margin-bottom-6">National Insurance number: AA 12 34 56 A</h2>
+      <h2 class="govuk-heading-m govuk-!-margin-bottom-6">National Insurance number: AA123456A</h2>
 
       {% from "govuk/components/button/macro.njk" import govukButton %}
 
       {{ govukButton({
         href: "check-claim-details",
-        text: "Add new break in care"
+        text: "Add break in care"
+      }) }}
+
+      {{ govukButton({
+        href: "check-claim-details_update-break",
+        text: "Update break in care",
+        classes: "govuk-button--secondary govuk-!-margin-left-3"
       }) }}
 
       <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-!-margin-bottom-8">
@@ -57,7 +63,7 @@
                 text: "Disabled person's NINO"
               },
               value: {
-                text: "AA 12 34 56 A"
+                text: "AA123456A"
               },
               actions: {
                 items: [
@@ -140,25 +146,8 @@
                 items: [
                   {
                     href: "break-1",
-                    text: "View break",
+                    text: "View more",
                     visuallyHiddenText: "name"
-                  }
-                ]
-              }
-            },
-            {
-              key: {
-                text: "Suspension 1"
-              },
-              value: {
-                text: "Decision reason"
-              },
-              actions: {
-                items: [
-                  {
-                    href: "#",
-                    text: "View suspension",
-                    visuallyHiddenText: "date of birth"
                   }
                 ]
               }
@@ -175,6 +164,23 @@
                   {
                     href: "#",
                     text: "View break",
+                    visuallyHiddenText: "date of birth"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Break 3"
+              },
+              value: {
+                text: "Decision reason"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "#",
+                    text: "View more",
                     visuallyHiddenText: "address"
                   }
                 ]

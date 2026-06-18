@@ -1,0 +1,140 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">Check your answers for income</h1>
+
+      <form class="form" action="care-costs" method="post">
+
+        {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+        {{ govukSummaryList({
+          rows: [
+            {
+              key: {
+                text: "More than one income source"
+              },
+              value: {
+                html: data['moreThanOneIncome']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "do-you-have-more-than-one-source-of-income",
+                    text: "Change",
+                    visuallyHiddenText: "income source"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Income source"
+              },
+              value: {
+                html: data['mainSourceOfIncome']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "what-is-source-of-income",
+                    text: "Change",
+                    visuallyHiddenText: "nationality"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Earn less than £204 a week"
+              },
+              value: {
+                html: data['thresholdAnswer']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "threshold",
+                    text: "Change",
+                    visuallyHiddenText: "nationality"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Statutory pay"
+              },
+              value: {
+                html: data['doYouReceiveThesePayments']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "do-you-receive-these",
+                    text: "Change",
+                    visuallyHiddenText: "nationality"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Work expenses"
+              },
+              value: {
+                html: data['doYouHaveExpenses']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "do-you-have-expenses_one-income",
+                    text: "Change",
+                    visuallyHiddenText: "nationality"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Expense details"
+              },
+              value: {
+                html: data['workExpenses']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "work-expenses",
+                    text: "Change",
+                    visuallyHiddenText: "nationality"
+                  }
+                ]
+              }
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -16,22 +16,27 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-l">Childcare costs summary</h1>
+      <h1 class="govuk-heading-l">Check your answers for childcare</h1>
 
-      <form class="form" action="private-pensions" method="post">
+      <form class="form" action="childcare-costs" method="post">
 
         {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
 
         {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
 
 {{ govukSummaryList({
+  card: {
+            title: {
+              text: "Care details"
+            }
+          },
   rows: [
     {
       key: {
-        text: "Do you pay for childcare?"
+        text: "Pay for care"
       },
       value: {
-        text: data['doYouPayForCareForDP']
+        text: data['careCosts']
       },
       actions: {
         items: [
@@ -42,47 +47,31 @@
           }
         ]
       }
-    },
+    }
+  ]
+}) }}
+
+{{ govukSummaryList({
+  card: {
+            title: {
+              text: data['nameOfPerson']
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Remove income"
+                }
+              ]
+            }
+          },
+  rows: [
     {
       key: {
-        text: "Do any of your children get child benefit?"
+        text: "Who you pay"
       },
       value: {
-        text: data['anyChildrenGetChildBenefit']
-      },
-      actions: {
-        items: [
-          {
-            href: "any-children-get-child-benefit",
-            text: "Change",
-            visuallyHiddenText: "date of birth"
-          }
-        ]
-      }
-    },
-    {
-      key: {
-        text: "Children and their Child Benefit numbers"
-      },
-      value: {
-        text: data['nameOfChild'] + ", " + data['childBenefitNumber']
-      },
-      actions: {
-        items: [
-          {
-            href: "child-name-child-benefit-number",
-            text: "Change",
-            visuallyHiddenText: "date of birth"
-          }
-        ]
-      }
-    },
-    {
-      key: {
-        text: "Who do you pay?"
-      },
-      value: {
-        text: data['checkCanTakeChildcareCostsOff']
+        text: data['checkCanTakeCareCostsOff']
       },
       actions: {
         items: [
@@ -96,10 +85,10 @@
     },
     {
       key: {
-        text: "Name of person?"
+        text: "You pay"
       },
       value: {
-        text: data['nameOfPersonChildcare']
+        text: data['nameOfPerson']
       },
       actions: {
         items: [
@@ -113,10 +102,10 @@
     },
     {
       key: {
-        text: "Do you confirm these people are not closely related to you or the children?"
+        text: "Closely related"
       },
       value: {
-        text: data['IConfirm']
+        text: data['isPersonCloselyRelatedToYou']
       },
       actions: {
         items: [
@@ -130,7 +119,7 @@
     },
     {
       key: {
-        text: "Do you get Tax Free Childcare for Ethan Ethan, Rich Rich, Jess Jess?"
+        text: "Get Tax Free Childcare"
       },
       value: {
         text: data['taxFreeChildcare']
@@ -147,7 +136,7 @@
     },
     {
       key: {
-        text: "How often do you pay for childcare?"
+        text: "How often you pay for childcare?"
       },
       value: {
         text: data['howOftenPayForChildcare']
@@ -164,7 +153,7 @@
     },
     {
       key: {
-        text: "How much do you pay for childcare a MONTH if you take off the TFC amount?"
+        text: "How much you pay for childcare a month if you take off TFC"
       },
       value: {
         text: data['careCostsForDP']
@@ -182,9 +171,120 @@
   ]
 }) }}
 
+{{ govukSummaryList({
+  card: {
+            title: {
+              text: data['nameOfBusiness']
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Remove income"
+                }
+              ]
+            }
+          },
+  rows: [
+    {
+      key: {
+        text: "Who you pay"
+      },
+      value: {
+        text: data['checkCanTakeCareCostsOff']
+      },
+      actions: {
+        items: [
+          {
+            href: "check-can-take-childcare-costs-off",
+            text: "Change",
+            visuallyHiddenText: "date of birth"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "You pay"
+      },
+      value: {
+        text: data['nameOfPerson']
+      },
+      actions: {
+        items: [
+          {
+            href: "name-of-person-childcare",
+            text: "Change",
+            visuallyHiddenText: "date of birth"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Get Tax Free Childcare"
+      },
+      value: {
+        text: data['taxFreeChildcare']
+      },
+      actions: {
+        items: [
+          {
+            href: "tax-free-childcare",
+            text: "Change",
+            visuallyHiddenText: "date of birth"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "How often you pay for childcare?"
+      },
+      value: {
+        text: data['howOftenPayForChildcare']
+      },
+      actions: {
+        items: [
+          {
+            href: "how-often-pay-for-childcare",
+            text: "Change",
+            visuallyHiddenText: "date of birth"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "How much you pay for childcare a month if you take off TFC"
+      },
+      value: {
+        text: data['careCostsForDP']
+      },
+      actions: {
+        items: [
+          {
+            href: "check-amount-you-pay-for-childcare",
+            text: "Change",
+            visuallyHiddenText: "date of birth"
+          }
+        ]
+      }
+    }
+  ]
+}) }}
+
+        <div class="govuk-button-group">
         {{ govukButton({
+          text: "Add another person or business",
+          classes: "govuk-button--secondary",
+          href: "check-can-take-care-costs-off"
+        }) }}
+        
+          {{ govukButton({
           text: "Continue"
         }) }}
+      </div>
       </form>
 
     </div>

@@ -10,23 +10,10 @@
 {% endblock %}
 
 {% block beforeContent %}
-
-  {{ govukBreadcrumbs({
-    items: [
-      {
-        text: "Home",
-        href: "#"
-      },
-      {
-        text: "Section",
-        href: "#"
-      },
-      {
-        text: "Subsection"
-      }
-    ]
-  }) }}
-
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
 {% endblock %}
 
 {% block content %}
@@ -42,12 +29,12 @@
 
       <p class="govuk-body">This could reduce your income and allow you to get Carer's Allowance. </p>
 
-      <form class="form" action="any-children-get-child-benefit" method="post">
+      <form class="form" action="/chidlcare-costs-answer" method="post">
 
       {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
       {{ govukRadios({
-        name: "doYouPayForCareForDP",
+        name: "childcareCosts",
         fieldset: {
           legend: {
             text: "Do you pay for childcare for any of your children?",

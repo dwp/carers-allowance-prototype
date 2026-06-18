@@ -10,23 +10,10 @@
 {% endblock %}
 
 {% block beforeContent %}
-
-  {{ govukBreadcrumbs({
-    items: [
-      {
-        text: "Home",
-        href: "#"
-      },
-      {
-        text: "Section",
-        href: "#"
-      },
-      {
-        text: "Subsection"
-      }
-    ]
-  }) }}
-
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
 {% endblock %}
 
 {% block content %}
@@ -48,13 +35,10 @@
         name: "taxFreeChildcare",
         fieldset: {
           legend: {
-            text: "Do you get Tax Free Childcare for these children?",
+            text: "Do you get Tax Free Childcare for " + data['nameOfChild'] + "?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--m"
           }
-        },
-        hint: {
-          text: "The children you have told us about are Sally Smith, Edward Edwards, Keith Parker."
         },
         items: [
           {

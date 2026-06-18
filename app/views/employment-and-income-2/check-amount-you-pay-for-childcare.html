@@ -10,23 +10,10 @@
 {% endblock %}
 
 {% block beforeContent %}
-
-  {{ govukBreadcrumbs({
-    items: [
-      {
-        text: "Home",
-        href: "#"
-      },
-      {
-        text: "Section",
-        href: "#"
-      },
-      {
-        text: "Subsection"
-      }
-    ]
-  }) }}
-
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
 {% endblock %}
 
 {% block content %}
@@ -40,7 +27,7 @@
 
       <p class="govuk-body">If the Tax Free Childcare (TFC) scheme helps with the costs of your childcare, you cannot take the amount they pay off your earnings.</p>
 
-      <p class="govuk-body">For example, you pay £50 a week and TFC tops up £10. We can take the £50 you pay off your earnings when working out if you can get Carer's Allowance.</p>
+      <p class="govuk-body">For example, you pay £40 a week and TFC tops up £10. We can take the £40 you pay off your earnings when working out if you can get Carer's Allowance.</p>
 
       <form class="form" action="childcare-costs-no-input" method="post">
 
@@ -50,7 +37,7 @@
         id: "cost",
         name: "careCostsForDP",
         label: {
-          text: "How much do you pay for childcare a " + data['howOftenPayForChildcare'] + " if you take off the TFC amount?",
+          text: "How much do you pay " + data['nameOfPerson'] + " for childcare a " + data['howOftenPayForChildcare'] + " if you take off the TFC amount?",
           classes: "govuk-label--l",
           isPageHeading: true
         },

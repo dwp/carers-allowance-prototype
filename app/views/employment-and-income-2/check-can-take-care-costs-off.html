@@ -10,23 +10,10 @@
 {% endblock %}
 
 {% block beforeContent %}
-
-  {{ govukBreadcrumbs({
-    items: [
-      {
-        text: "Home",
-        href: "#"
-      },
-      {
-        text: "Section",
-        href: "#"
-      },
-      {
-        text: "Subsection"
-      }
-    ]
-  }) }}
-
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
 {% endblock %}
 
 {% block content %}
@@ -35,10 +22,10 @@
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-l">
-        Check you can take these care costs off
+        Check you can take these childcare costs off
       </h1>
 
-      <p class="govuk-body">You cannot take off care costs if the person you pay is closely related to you.</p>
+      <p class="govuk-body">You cannot take off childcare costs if the person you pay is closely related to you or James Brown. </p>
 
       <p class="govuk-body">By closely related we mean husband, wife, partner, parent, child, brother or sister.</p>
 
@@ -50,7 +37,7 @@
         name: "checkCanTakeCareCostsOff",
         fieldset: {
           legend: {
-            text: "Who do you pay to care for Joe Bloggs?",
+            text: "Who do you pay to care for your child?",
             classes: "govuk-fieldset__legend--m"
           }
         },

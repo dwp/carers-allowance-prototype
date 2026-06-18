@@ -20,13 +20,13 @@
 
         {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
-        <h1 class="govuk-heading-l">AA 12 34 56 B not found</h1>
+        <h1 class="govuk-heading-l">{{ data['nationalInsuranceNumber'] }} not found</h1>
 
         {{ govukRadios({
           name: "niNumberNotFound",
           fieldset: {
             legend: {
-              text: "Do you want to add a break in care for AA 12 34 56 B?",
+              text: "Do you want to add a break in care for " + data['nationalInsuranceNumber'] + "?",
               classes: "govuk-fieldset__legend--m"
             }
           },

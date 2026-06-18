@@ -10,23 +10,10 @@
 {% endblock %}
 
 {% block beforeContent %}
-
-  {{ govukBreadcrumbs({
-    items: [
-      {
-        text: "Home",
-        href: "#"
-      },
-      {
-        text: "Section",
-        href: "#"
-      },
-      {
-        text: "Subsection"
-      }
-    ]
-  }) }}
-
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
 {% endblock %}
 
 {% block content %}
@@ -41,14 +28,14 @@
       <p class="govuk-body">We will:</p>
       <ul class="govuk-list govuk-list--bullet">
         <li>get your salary information from HMRC </li>
-        <li>work out how much of your childcare costs we can take off your income</li>
+        <li>work out how much of your childcare costs we can take off your earnings</li>
       </ul>
 
-      <p class="govuk-body">We can take off up to 50% of your net wage.</p>
+      <p class="govuk-body">We can take off up to 50% of your net pay. That is the amount left after taking off tax and National Insurance. </p>
 
-      <p class="govuk-body">For example, if your net wage is £1,000 a month and you pay £600 in care costs, we could take off up to £500. </p>
+      <p class="govuk-body">For example, if your net pay is £1,000 a month and you pay £600 in care costs, we could take off up to £500.  </p>
 
-      <form class="form" action="childcare-costs-summary" method="post">
+      <form class="form" action="/childcare-costs-no-input-answer" method="post">
 
       {% from "govuk/components/input/macro.njk" import govukInput %}
 
@@ -56,7 +43,7 @@
         id: "cost",
         name: "careCostsForDP",
         label: {
-          text: "What are you total childcare costs?",
+          text: "How much do you pay " + data['nameOfPerson'] + " for child care a " + data['howOftenPayForChildcare'] + "?",
           classes: "govuk-label--m"
         },
         prefix: {

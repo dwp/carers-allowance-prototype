@@ -798,9 +798,9 @@ router.post('/do-you-know-trading-year-answer', function(request, response) {
 
 	var doYouKnowTradingYear = request.session.data['doYouKnowTradingYear']
 	if (doYouKnowTradingYear == "Yes"){
-		response.redirect("/employment-and-income-with-expenses/when-did-you-start-trading")
+		response.redirect("/employment-and-income-2/when-did-you-start-trading")
 	} else {
-		response.redirect("/employment-and-income-with-expenses/we-need-more-information")
+		response.redirect("/employment-and-income-2/we-need-more-information")
 	}
 })
 // END DO YOU KNOW TRADING YEAR START DATE
@@ -901,10 +901,10 @@ router.post('/main-source-of-income-answer', function(request, response) {
 
 	var mainSourceOfIncome = request.session.data['mainSourceOfIncome']
 	if (mainSourceOfIncome == "Employment"){
-		response.redirect("/employment-and-income-2/name-of-employer")
+		response.redirect("/employment-and-income-2/threshold")
 	} else if (mainSourceOfIncome == "Self-employment"){
         response.redirect("/employment-and-income-2/type-of-business")
-    } else if (mainSourceOfIncome == "Cash in hand"){
+    } else if (mainSourceOfIncome == "Get paid cash"){
         response.redirect("/employment-and-income-2/we-need-more-information-earnings")
     } else if (mainSourceOfIncome == "Direct payments"){
         response.redirect("/employment-and-income-2/we-need-more-information-earnings")
@@ -917,6 +917,20 @@ router.post('/main-source-of-income-answer', function(request, response) {
 	}
 })
 // END SOURCE OF INCOME INCOME
+
+// ABOVE OR BELOW THRESHOLD ANSWER
+router.post('/above-below-threshold-answer', function(request, response) {
+
+	var moreThanOneIncome = request.session.data['moreThanOneIncome']
+
+	if (moreThanOneIncome == "Yes") {
+		response.redirect("/employment-and-income-2/name-of-employer")
+	} else {
+		response.redirect("/employment-and-income-2/do-you-receive-these")
+	}
+
+})
+// END ABOVE OR BELOW THRESHOLD ANSWER
 
 // EXPECT TO EARN LESS THAN £196?
 router.post('/threshold-answer', function(request, response) {
@@ -954,6 +968,72 @@ router.post('/do-you-pay-for-expenses-answer', function(request, response) {
 
 })
 // END DO YOU PAY FOR THINGS TO DO YOUR JOB?
+
+// STATUTORY ANSWER
+router.post('/statutory-answer', function(request, response) {
+
+	var doYouReceiveThesePayments = request.session.data['doYouReceiveThesePayments']
+    var moreThanOneIncome = request.session.data['moreThanOneIncome']
+    var thresholdAnswer = request.session.data['thresholdAnswer']
+
+	if (doYouReceiveThesePayments == "Statutory sick pay") {
+		response.redirect("/employment-and-income-2/we-need-more-info_sick-pay")
+	} else if (doYouReceiveThesePayments == "Statutory Maternity, Paternity or Adoption Pay") {
+		response.redirect("/employment-and-income-2/we-need-more-info_maternity-paternity-adoption")
+	} else if (doYouReceiveThesePayments == "None of these" && thresholdAnswer == "No" && moreThanOneIncome == "Yes") {
+		response.redirect("/employment-and-income-2/expenses-may-be-eligible")
+	} else if (doYouReceiveThesePayments == "None of these" && thresholdAnswer == "Yes" && moreThanOneIncome == "No") {
+		response.redirect("/employment-and-income-2/do-you-have-expenses_one-income")
+	} else if (doYouReceiveThesePayments == "None of these" && thresholdAnswer == "No" && moreThanOneIncome == "No") {
+		response.redirect("/employment-and-income-2/expenses-may-be-eligible")
+	} else {
+		response.redirect("/employment-and-income-2/do-you-have-expenses_more-than-one-income")
+	}
+
+})
+// END STATUTORY ANSWER
+
+// EXPENSES MAY BE ELIGIBLE
+router.post('/expenses-may-be-eligible-answer', function(request, response) {
+
+    var moreThanOneIncome = request.session.data['moreThanOneIncome']
+
+	if (moreThanOneIncome == "Yes") {
+		response.redirect("/employment-and-income-2/do-you-have-expenses_more-than-one-income")
+	} else {
+		response.redirect("/employment-and-income-2/do-you-have-expenses_one-income")
+	}
+
+})
+// END EXPENSES MAY BE ELIGIBLE
+
+// DO YOU HAVE EXPENSES?
+router.post('/do-you-have-expenses-answer', function(request, response) {
+
+    var doYouHaveExpenses = request.session.data['doYouHaveExpenses']
+
+	if (doYouHaveExpenses == "Yes") {
+		response.redirect("/employment-and-income-2/work-expenses")
+	} else {
+		response.redirect("/employment-and-income-2/income-summary")
+	}
+
+})
+// END DO YOU HAVE EXPENSES?
+
+// DO YOU HAVE EXPENSES?
+router.post('/work-expenses-answer', function(request, response) {
+
+    var moreThanOneIncome = request.session.data['moreThanOneIncome']
+
+	if (moreThanOneIncome == "Yes") {
+		response.redirect("/employment-and-income-2/income-summary-more-than-one-income")
+	} else {
+		response.redirect("/employment-and-income-2/income-summary-one-income")
+	}
+
+})
+// END DO YOU HAVE EXPENSES?
 
 // ADD EXPENSE 1
 router.post('/add-an-expense-1-answer', function(request, response) {
@@ -1036,19 +1116,35 @@ router.post('/fostering-answer', function(request, response) {
 	var fosteringAgencyOrLocalAuthority = request.session.data['fosteringAgencyOrLocalAuthority']
 
 	if (fosteringAgencyOrLocalAuthority == "Fostering agency"){
-		response.redirect("/employment-and-income-2/how-often-paid-fostering-agency")
+		response.redirect("/employment-and-income-2/name-of-fostering-agency")
 	} else {
 		response.redirect("/employment-and-income-2/income-summary")
 	}
 })
 // END PAID BY FOSTERING AGENCY OR LOCAL AUTHORITY
 
+// PAID BY FOSTERING AGENCY OR LOCAL AUTHORITY
+router.post('/check-details-cash-payments-rental-answer', function(request, response) {
+
+	var mainSourceOfIncome = request.session.data['mainSourceOfIncome']
+    var moreThanOneIncome = request.session.data['moreThanOneIncome']
+
+	if (mainSourceOfIncome == "Get paid cash" && moreThanOneIncome == "No"){
+		response.redirect("/employment-and-income-2/do-you-have-expenses_one-income")
+	} else if (mainSourceOfIncome == "Get paid cash" && moreThanOneIncome == "Yes") {
+		response.redirect("/employment-and-income-2/do-you-have-expenses_more-than-one-income")
+	} else {
+		response.redirect("/employment-and-income-2/private-pensions")
+	}
+})
+// END PAID BY FOSTERING AGENCY OR LOCAL AUTHORITY
+
 // DO YOU PAY FOR CARE FOR DP
-router.post('/do-you-pay-for-care-for-dp-answer', function(request, response) {
+router.post('/care-costs-answer', function(request, response) {
 
-	var doYouPayForCareForDP = request.session.data['doYouPayForCareForDP']
+	var careCosts = request.session.data['careCosts']
 
-	if (doYouPayForCareForDP == "Yes"){
+	if (careCosts == "Yes"){
 		response.redirect("/employment-and-income-2/check-can-take-care-costs-off")
 	} else {
 		response.redirect("/employment-and-income-2/childcare-costs")
@@ -1069,6 +1165,19 @@ router.post('/check-can-take-care-costs-off-answer', function(request, response)
 })
 // END CHECK CAN TAKE CARE COSTS OFF
 
+// IS PERSON CLOSELY RELATED TO YOU
+router.post('/is-person-closely-related-answer', function(request, response) {
+
+	var isPersonCloselyRelatedToYou = request.session.data['isPersonCloselyRelatedToYou']
+
+	if (isPersonCloselyRelatedToYou == "No"){
+		response.redirect("/employment-and-income-2/tax-free-childcare")
+	} else {
+		response.redirect("/employment-and-income-2/cannot-add-someone-closely-related")
+	}
+})
+// END IS PERSON CLOSELY RELATED TO YOU
+
 // ANY CHILDREN GET CHILD BENEFIT?
 router.post('/any-children-get-child-benefit-answer', function(request, response) {
 
@@ -1082,6 +1191,19 @@ router.post('/any-children-get-child-benefit-answer', function(request, response
 })
 // END ANY CHILDREN GET CHILD BENEFIT?
 
+// PAY ANYONE ELSE CARE FOR CHILD?
+router.post('/pay-someone-else-care-answer', function(request, response) {
+
+	var paySomeoneElseCare = request.session.data['paySomeoneElseCare']
+
+	if (paySomeoneElseCare == "Yes"){
+		response.redirect("/employment-and-income-2/check-can-take-care-costs-off")
+	} else {
+		response.redirect("/employment-and-income-2/private-pensions")
+	}
+})
+// END PAY ANYONE ELSE CARE FOR CHILD?
+
 // CHECK CAN TAKE CHILDCARE COSTS OFF
 router.post('/check-can-take-childcare-costs-off-answer', function(request, response) {
 
@@ -1094,6 +1216,21 @@ router.post('/check-can-take-childcare-costs-off-answer', function(request, resp
 	}
 })
 // END CHECK CAN TAKE CHILDCARE COSTS OFF
+
+// CHILDCARE COSTS NO INPUT ROUTING
+router.post('/childcare-costs-no-input-answer', function(request, response) {
+
+	var careCosts = request.session.data['careCosts']
+    var doYouGetChildBenefit = request.session.data['doYouGetChildBenefit']
+    var taxFreeChildcare = request.session.data['taxFreeChildcare']
+
+	if (doYouGetChildBenefit == "Yes"){
+		response.redirect("/employment-and-income-2/childcare-costs-summary-2")
+	} else if (careCosts == "Yes"){
+		response.redirect("/employment-and-income-2/childcare-costs-summary")
+	}
+})
+// END CHILDCARE COSTS NO INPUT ROUTING
 
 // DO YOU GET TAX FREE CHILDCARE
 router.post('/tax-free-childcare-answer', function(request, response) {
@@ -1121,6 +1258,45 @@ router.post('/how-often-pay-childcare-answer', function(request, response) {
 })
 // END HOW OFTEN DO YOU PAY FOR CHILDCARE?
 
+// HOW OFTEN DO YOU PAY FOR CHILDCARE?
+router.post('/chidlcare-costs-answer', function(request, response) {
+
+	var childcareCosts = request.session.data['childcareCosts']
+
+	if (childcareCosts == "Yes"){
+		response.redirect("/employment-and-income-2/child-name")
+	} else {
+		response.redirect("/employment-and-income-2/private-pensions")
+	}
+})
+// END HOW OFTEN DO YOU PAY FOR CHILDCARE?
+
+// HOW OFTEN DO YOU PAY FOR CHILDCARE?
+router.post('/do-you-get-child-benefit-answer', function(request, response) {
+
+	var doYouGetChildBenefit = request.session.data['doYouGetChildBenefit']
+
+	if (doYouGetChildBenefit == "Yes"){
+		response.redirect("/employment-and-income-2/child-benefit-number")
+	} else {
+		response.redirect("/employment-and-income-2/cannot-take-childcare-off")
+	}
+})
+// END HOW OFTEN DO YOU PAY FOR CHILDCARE?
+
+// PAY FOR CHILDCARE FOR OTHER CHILDREN?
+router.post('/cannot-take-childcare-off-answer', function(request, response) {
+
+	var childcareOtherChildren = request.session.data['childcareOtherChildren']
+
+	if (childcareOtherChildren == "Yes"){
+		response.redirect("/employment-and-income-2/child-name")
+	} else {
+		response.redirect("/employment-and-income-2/private-pensions")
+	}
+})
+// END PAY FOR CHILDCARE FOR OTHER CHILDREN?
+
 // DO YOU PAY INTO PRIVATE PENSION?
 router.post('/do-you-pay-private-pension-answer', function(request, response) {
 
@@ -1129,7 +1305,7 @@ router.post('/do-you-pay-private-pension-answer', function(request, response) {
 	if (doYouPayIntoPrivatePension == "Yes"){
 		response.redirect("/employment-and-income-2/how-often-pay-private-pension")
 	} else {
-		response.redirect("/employment-and-income-2/previous-income")
+		response.redirect("/employment-and-income-2/previous-employment")
 	}
 })
 // END DO YOU PAY INTO PRIVATE PENSION?
@@ -1146,6 +1322,19 @@ router.post('/paid-between-dates-answer', function(request, response) {
 	}
 })
 // END WERE YOU PAID BETWEEN THESE DATES?
+
+// MORE THAN ONE INCOME
+router.post('/do-you-have-more-than-one-source-of-income-answer', function(request, response) {
+
+	var moreThanOneIncome = request.session.data['moreThanOneIncome']
+
+	if (moreThanOneIncome == "I do not receive any income"){
+		response.redirect("/employment-and-income-2/previous-employment")
+	} else {
+        response.redirect("/employment-and-income-2/what-is-source-of-income")
+    }
+})
+// END MORE THAN ONE INCOME
 
 // END EMPLOYMENT & INCOME 2
 
@@ -1293,8 +1482,10 @@ router.post('/carer-arrive-england-wales-answer', function(request, response) {
 router.post('/carers-ni-number-answer', function(request, response) {
 
 	var nationalInsuranceNumber = request.session.data['nationalInsuranceNumber']
-	if (nationalInsuranceNumber == "AA 12 34 56 A"){
+	if (nationalInsuranceNumber == "AA123456A"){
 		response.redirect("/breaks-in-care/jane-doe")
+	} else if (nationalInsuranceNumber == "RM000000C") {
+		response.redirect("/breaks-in-care/jane")
 	} else {
 		response.redirect("/breaks-in-care/ni-number-not-found")
 	}
@@ -1325,6 +1516,21 @@ router.post('/qualifying-benefit-answer', function(request, response) {
 })
 // QUALIFYING BENEFIT
 
+// IS QUALIFYING BENEFIT SUSPENDED?
+router.post('/is-qb-suspended-answer', function(request, response) {
+
+	var suspendQB = request.session.data['suspendQB']
+    var sourceOfInformation = request.session.data['sourceOfInformation']
+	if (suspendQB == "Yes"){
+		response.redirect("/breaks-in-care/when-did-suspension-start")
+	} else if (sourceOfInformation == "Revision"){
+		response.redirect("/breaks-in-care/effective-decision-start-date_revision")
+	} else {
+		response.redirect("/breaks-in-care/consider-decision-from-date_supersession")
+	}
+})
+// IS QUALIFYING BENEFIT SUSPENDED?
+
 // WHEN DID SUSPENSION END
 router.post('/suspension-end-answer', function(request, response) {
 
@@ -1349,6 +1555,97 @@ router.post('/when-did-break-start-answer', function(request, response) {
 		response.redirect("/breaks-in-care/is-qualifying-benefit-suspended")
 	}
 })
-// WHEN DID BREAK END
+// WHEN DID BREAK START
+
+// ADD ANOTHER BREAK
+router.post('/add-another-break-answer', function(request, response) {
+
+	var addAnotherBreak = request.session.data['addAnotherBreak']
+    var nationalInsuranceNumber = request.session.data['nationalInsuranceNumber']
+	if (addAnotherBreak == "No" && nationalInsuranceNumber == "RM111111A"){
+		response.redirect("/breaks-in-care/decision_helen")
+	} else if (addAnotherBreak == "No" && nationalInsuranceNumber == "RN000000B"){
+		response.redirect("/breaks-in-care/decision_lisa")
+	} else if (addAnotherBreak == "No" && nationalInsuranceNumber == "RM000000C"){
+		response.redirect("/breaks-in-care/decision_jane")
+	} else if (addAnotherBreak == "No"){
+		response.redirect("/breaks-in-care/decision_no-existing-record")
+	} else {
+		response.redirect("/breaks-in-care/source-of-information")
+	}
+})
+// ADD ANOTHER BREAK
+
+// ADD ANOTHER BREAK _ ADD NEW
+router.post('/add-another-break_add-new-answer', function(request, response) {
+
+	var addAnotherBreakAddNew = request.session.data['addAnotherBreakAddNew']
+    var nationalInsuranceNumber = request.session.data['nationalInsuranceNumber']
+	if (addAnotherBreakAddNew == "No" && nationalInsuranceNumber == "RM000000C"){
+		response.redirect("/breaks-in-care/decision_lisa")
+	} else if (addAnotherBreakAddNew == "No") {
+		response.redirect("/breaks-in-care/decision_existing-record")
+	} else {
+		response.redirect("/breaks-in-care/source-of-information_update-break")
+	}
+})
+// ADD ANOTHER BREAK _ ADD NEW
+
+// WHEN DID SUSPENSION END - ADD NEW
+router.post('/when-did-suspension-end_add-new-answer', function(request, response) {
+
+    var sourceOfInformationUpdateBreak = request.session.data['sourceOfInformationUpdateBreak']
+	if (sourceOfInformationUpdateBreak == "Revision"){
+		response.redirect("/breaks-in-care/effective-decision-start-date_revision_add-new")
+	} else if (sourceOfInformationUpdateBreak == "Supersession") {
+		response.redirect("/breaks-in-care/consider-decision-from-date_supersession_add-new")
+	} else {
+		response.redirect("/breaks-in-care/check-details_add-new")
+	}
+})
+// WHEN DID SUSPENSION END - ADD NEW
+
+// IS QUALIFYING BENEFIT SUSPENDED - ADD NEW
+router.post('/qualifying-benefit-suspended-answer', function(request, response) {
+
+    var isQualifyingBenefitSuspended = request.session.data['isQualifyingBenefitSuspended']
+    var sourceOfInformationUpdateBreak = request.session.data['sourceOfInformationUpdateBreak']
+	if (isQualifyingBenefitSuspended == "Yes"){
+		response.redirect("/breaks-in-care/when-did-suspension-end_add-new")
+	} else if(sourceOfInformationUpdateBreak == "Revision") {
+		response.redirect("/breaks-in-care/effective-decision-start-date_revision_add-new")
+	} else if(sourceOfInformationUpdateBreak == "Supersession") {
+		response.redirect("/breaks-in-care/consider-decision-from-date_supersession_add-new")
+	} else {
+		response.redirect("/breaks-in-care/check-details_add-new")
+	}
+})
+// IS QUALIFYING BENEFIT SUSPENDED - ADD NEW
+
+// EFFECTIVE DECISION START DATE
+router.post('/effective-decision-start-date-supersession-answer', function(request, response) {
+
+    var nationalInsuranceNumber = request.session.data['nationalInsuranceNumber']
+	if (nationalInsuranceNumber == "RM000000C"){
+		response.redirect("/breaks-in-care/check-details_add-new")
+	} 
+})
+// EFFECTIVE DECISION START DATE
+
+// DO YOU PAY INTO PRIVATE PENSION?
+router.post('/is-qb-suspended-update-answer', function(request, response) {
+
+	var isQualifyingBenefitSuspended = request.session.data['isQualifyingBenefitSuspended']
+    var sourceOfInformationUpdateBreak = request.session.data['sourceOfInformationUpdateBreak']
+
+	if (isQualifyingBenefitSuspended == "Yes"){
+		response.redirect("/breaks-in-care/when-did-suspension-start_add-new")
+	} else if (isQualifyingBenefitSuspended == "No" && sourceOfInformationUpdateBreak == "Supersession") {
+		response.redirect("/breaks-in-care/consider-decision-from-date_supersession")
+	} else {
+        response.redirect("/breaks-in-care/effective-decision-start-date_revision_add-new")
+    }
+})
+// END DO YOU PAY INTO PRIVATE PENSION?
 
 // END BREAKS IN CARE

@@ -1,0 +1,40 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">We may need more information</h1>
+
+      <p>We may contact you by phone or letter to get details about your Statutory Maternity, Paternity or Adoption Pay. </p>
+
+      <p>You may need to send in copies of your payslips.</p>
+
+      <h2 class="govuk-heading-m">Report changes as soon as possible</h2>
+      <p>You must tell us when you go back to work or your earnings go over the current limit of £204. You can report changes by: </p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>using the Carer's Allowance online service</li>
+        <li>contacting the Carer's Allowance Unit by phone or post</li>
+      </ul>
+
+      <a href="check-details-maternity" class="govuk-button" data-module="govuk-button">
+        Continue
+      </a>
+
+    </div>
+  </div>
+
+{% endblock %}

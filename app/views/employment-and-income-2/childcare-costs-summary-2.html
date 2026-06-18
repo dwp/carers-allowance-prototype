@@ -1,0 +1,241 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">Check your answers for childcare</h1>
+
+      <form class="form" action="private-pensions" method="post">
+
+        {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+        {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+{{ govukSummaryList({
+  card: {
+            title: {
+              text: "Care details"
+            }
+          },
+  rows: [
+    {
+      key: {
+        text: "Pay for care"
+      },
+      value: {
+        text: data['childcareCosts']
+      },
+      actions: {
+        items: [
+          {
+            href: "childcare-costs",
+            text: "Change",
+            visuallyHiddenText: "name"
+          }
+        ]
+      }
+    }
+  ]
+}) }}
+
+{{ govukSummaryList({
+  card: {
+            title: {
+              text: data['nameOfChild']
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Remove income"
+                }
+              ]
+            }
+          },
+  rows: [
+    {
+      key: {
+        text: "Child name"
+      },
+      value: {
+        text: data['nameOfChild']
+      },
+      actions: {
+        items: [
+          {
+            href: "child-name",
+            text: "Change",
+            visuallyHiddenText: "date of birth"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Get Child Benefit for Tim"
+      },
+      value: {
+        text: data['doYouGetChildBenefit']
+      },
+      actions: {
+        items: [
+          {
+            href: "do-you-get-child-benefit",
+            text: "Change",
+            visuallyHiddenText: "date of birth"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Child Benefit number"
+      },
+      value: {
+        text: data['childBenefitNumber']
+      },
+      actions: {
+        items: [
+          {
+            href: "child-benefit-number",
+            text: "Change",
+            visuallyHiddenText: "date of birth"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Who do you pay for childcare?"
+      },
+      value: {
+        text: data['checkCanTakeCareCostsOff']
+      },
+      actions: {
+        items: [
+          {
+            href: "check-can-take-childcare-costs-off",
+            text: "Change",
+            visuallyHiddenText: "date of birth"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "You pay"
+      },
+      value: {
+        text: data['nameOfPerson']
+      },
+      actions: {
+        items: [
+          {
+            href: "name-of-person-childcare",
+            text: "Change",
+            visuallyHiddenText: "date of birth"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Closely related"
+      },
+      value: {
+        text: data['isPersonCloselyRelatedToYou']
+      },
+      actions: {
+        items: [
+          {
+            href: "is-person-closely-related-to-you-childcare",
+            text: "Change",
+            visuallyHiddenText: "date of birth"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Get Tax Free Childcare"
+      },
+      value: {
+        text: data['taxFreeChildcare']
+      },
+      actions: {
+        items: [
+          {
+            href: "tax-free-childcare",
+            text: "Change",
+            visuallyHiddenText: "date of birth"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "How often you pay for childcare?"
+      },
+      value: {
+        text: data['howOftenPayForChildcare']
+      },
+      actions: {
+        items: [
+          {
+            href: "how-often-pay-for-childcare",
+            text: "Change",
+            visuallyHiddenText: "date of birth"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "How much you pay for childcare a month if you take off TFC"
+      },
+      value: {
+        text: data['careCostsForDP']
+      },
+      actions: {
+        items: [
+          {
+            href: "check-amount-you-pay-for-childcare",
+            text: "Change",
+            visuallyHiddenText: "date of birth"
+          }
+        ]
+      }
+    }
+  ]
+}) }}
+
+        <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Add another child",
+          classes: "govuk-button--secondary",
+          href: "child-name"
+        }) }}
+        
+          {{ govukButton({
+          text: "Continue"
+        }) }}
+      </div>
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -25,13 +25,13 @@
           name: "mainSourceOfIncome",
           fieldset: {
             legend: {
-              text: "What is your main source of income?",
+               text: "Add an income" if data['moreThanOneIncome'] == 'Yes' else "What is the source of your income?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--l"
             }
           },
           hint: {
-            text: "You can add more income later"
+            text: "You can add more sources of income later." if data['moreThanOneIncome'] == 'Yes' else ""
           },
           items: [
             {
@@ -43,8 +43,8 @@
               text: "Self-employment"
             },
             {
-              value: "Cash in hand",
-              text: "Cash in hand"
+              value: "Get paid cash",
+              text: "Get paid cash"
             },
             {
               value: "Direct payments",
@@ -57,13 +57,6 @@
             {
               value: "Rental property",
               text: "Rental property"
-            },
-            {
-              divider: "or"
-            },
-            {
-              value: "I do not receive an income",
-              text: "I do not receive an income"
             }
           ]
         }) }}

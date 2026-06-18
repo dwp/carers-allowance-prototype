@@ -10,23 +10,10 @@
 {% endblock %}
 
 {% block beforeContent %}
-
-  {{ govukBreadcrumbs({
-    items: [
-      {
-        text: "Home",
-        href: "#"
-      },
-      {
-        text: "Section",
-        href: "#"
-      },
-      {
-        text: "Subsection"
-      }
-    ]
-  }) }}
-
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
 {% endblock %}
 
 {% block content %}
@@ -35,25 +22,27 @@
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-l">
-        Check the amount you pay for childcare 
+        Childcare costs
       </h1>
+
+      <form class="form" action="/childcare-costs-no-input-answer" method="post">
 
       <p class="govuk-body">We will:</p>
       <ul class="govuk-list govuk-list--bullet">
-        <li>get your salary information from HMRC</li>
-        <li>work out how much of your childcare costs we can take off your income</li>
+        <li>get the amount you were paid from HMRC</li>
+        <li>work out how much of your childcare costs we can take off your earnings</li>
       </ul>
 
-      <p class="govuk-body">We can take off up to 50% of your net wage. </p>
+      <p class="govuk-body">We can take off up to 50% of your net pay. That is the amount left after taking off tax and National Insurance. </p>
 
-      <p class="govuk-body">For example, if your net wage is £1,000 a month and you pay £600 in care costs, we could take off up to £500. </p>
+      <p class="govuk-body">For example, if your net pay is £1,000 a month and you pay £600 in care costs, we could take off up to £500. </p>
 
       {% from "govuk/components/button/macro.njk" import govukButton %}
 
       {{ govukButton({
-        text: "Continue",
-        href: "childcare-costs-summary"
+        text: "Continue"
       }) }}
+    </form>
 
     </div>
 

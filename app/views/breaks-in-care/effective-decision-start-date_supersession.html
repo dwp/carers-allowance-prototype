@@ -20,7 +20,7 @@
 
         <p class="govuk-body">We auto calculate the date from the effective decision start date</p>
 
-      <form class="form" action="check-details" method="post">
+      <form class="form" action="/effective-decision-start-date-supersession-answer" method="post">
 
         {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
 
@@ -32,15 +32,6 @@
               },
               value: {
                 text: "27 Feb 2026"
-              },
-              actions: {
-                items: [
-                  {
-                    href: "#",
-                    text: "Change",
-                    visuallyHiddenText: "name"
-                  }
-                ]
               }
             }
           ]

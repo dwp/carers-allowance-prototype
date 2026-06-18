@@ -16,9 +16,11 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-l">Check claim details</h1>
+      <h1 class="govuk-heading-l">Check claim</h1>
 
       <p class="govuk-body govuk-!-margin-bottom-8">Check everything is correct before you continue.</p>
+
+      <h2 class="govuk-heading-m">Claim details</h2>
 
         {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
 
@@ -46,7 +48,7 @@
                 text: "Disabled person's NINO"
               },
               value: {
-                text: "AA 12 34 56 A"
+                text: "AA123456A"
               },
               actions: {
                 items: [
@@ -116,7 +118,7 @@
 
         {{ govukButton({
           text: "Continue",
-          href: "source-of-information_add-new"
+          href: "why-not-care-35-hours_add-new"
         }) }}
 
     </div>

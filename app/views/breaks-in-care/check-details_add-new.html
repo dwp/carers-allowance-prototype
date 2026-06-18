@@ -49,7 +49,7 @@
                 text: "Disabled person's NINO"
               },
               value: {
-                text: "AA 12 34 56 A"
+                text: "AA123456A"
               },
               actions: {
                 items: [
@@ -129,12 +129,12 @@
                 text: "What is the source of the information?"
               },
               value: {
-                text: "Claim"
+                text: data['sourceOfInformationUpdateBreak']
               },
               actions: {
                 items: [
                   {
-                    href: "#",
+                    href: "source-of-information_update-break",
                     text: "Change",
                     visuallyHiddenText: "name"
                   }
@@ -143,15 +143,15 @@
             },
             {
               key: {
-                text: "Why is carer not able to care for 35 hours a week?"
+                text: "Why is the carer not providing care for 35 hours a week?"
               },
               value: {
-                text: "Disabled person in hospital or state funded care home"
+                text: data['whyNotCare35Hours']
               },
               actions: {
                 items: [
                   {
-                    href: "#",
+                    href: "why-not-care-35-hours_add-new",
                     text: "Change",
                     visuallyHiddenText: "date of birth"
                   }
@@ -163,12 +163,12 @@
                 text: "Is this a permanent break?"
               },
               value: {
-                text: "No"
+                text: data['permanentBreak']
               },
               actions: {
                 items: [
                   {
-                    href: "#",
+                    href: "is-this-permanent-break",
                     text: "Change",
                     visuallyHiddenText: "date of birth"
                   }
@@ -180,12 +180,12 @@
                 text: "Break started"
               },
               value: {
-                html: "11 Dec 2025"
+                text: data['break-start-day'] + " - " + data['break-start-month'] + " - " + data['break-start-year']
               },
               actions: {
                 items: [
                   {
-                    href: "#",
+                    href: "when-did-break-start_add-new",
                     text: "Change",
                     visuallyHiddenText: "address"
                   }
@@ -197,12 +197,12 @@
                 text: "Break ended"
               },
               value: {
-                text: "11 Dec 2026"
+                text: data['break-end-day'] + " - " + data['break-end-month'] + " - " + data['break-end-year']
               },
               actions: {
                 items: [
                   {
-                    href: "#",
+                    href: "when-did-break-end_add-new",
                     text: "Change",
                     visuallyHiddenText: "address"
                   }
@@ -214,12 +214,12 @@
                 text: "Is the qualifying benefit suspended?"
               },
               value: {
-                text: "Yes"
+                text: data['isQualifyingBenefitSuspended']
               },
               actions: {
                 items: [
                   {
-                    href: "#",
+                    href: "is-qualifying-benefit-suspended",
                     text: "Change",
                     visuallyHiddenText: "name"
                   }
@@ -231,12 +231,12 @@
                 text: "Suspension start"
               },
               value: {
-                text: "11 Dec 2026"
+                text: data['suspension-start-day'] + " - " + data['suspension-start-month'] + " - " + data['suspension-start-year']
               },
               actions: {
                 items: [
                   {
-                    href: "#",
+                    href: "when-did-suspension-start_add-new",
                     text: "Change",
                     visuallyHiddenText: "name"
                   }
@@ -248,12 +248,46 @@
                 text: "Suspension end"
               },
               value: {
-                text: "10 Jan 2026"
+                text: data['suspension-end-day'] + " - " + data['suspension-end-month'] + " - " + data['suspension-end-year']
               },
               actions: {
                 items: [
                   {
-                    href: "#",
+                    href: "when-did-suspension-end_add-new",
+                    text: "Change",
+                    visuallyHiddenText: "name"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Effective decision from date"
+              },
+              value: {
+                text: data['effective-decision-start-date-day'] + " - " + data['effective-decision-start-date-month'] + " - " + data['effective-decision-start-date-year']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "effective-decision-start-date_revision_add-new",
+                    text: "Change",
+                    visuallyHiddenText: "name"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Consider decision from date"
+              },
+              value: {
+                text: "27 Feb 2026"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "consider-decision-from-date_revision_add-new",
                     text: "Change",
                     visuallyHiddenText: "name"
                   }
@@ -267,7 +301,7 @@
 
         {{ govukButton({
           text: "Continue",
-          href: "decision_add-new"
+          href: "add-another-break_add-new"
         }) }}
 
     </div>

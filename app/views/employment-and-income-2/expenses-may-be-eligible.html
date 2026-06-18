@@ -1,0 +1,56 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">You may be able to get Carer's Allowance</h1>
+
+      <form class="form" action="/expenses-may-be-eligible-answer" method="post">
+
+      <p class="govuk-body">You told us you earn more than £204 a week. This usually means you would not be eligible.</p>
+
+      <p class="govuk-body">You could still be eligible if you have certain costs, such as:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+      <li>
+        expenses from your job at <job name>
+      </li>
+      <li>
+        paying someone else to care for <dp name>
+      </li>
+      <li>
+        paying for childcare
+      </li>
+      <li>
+        making contributions into a private pension
+      </li>
+    </ul>
+
+      <h1 class="govuk-heading-m">If your earnings vary</h1>
+      <p class="govuk-body">You may be eligible if some weeks you get more than £204. If this is the case, we will work this out for you if you continue.</p>
+
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

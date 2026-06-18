@@ -16,44 +16,18 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form class="form" action="how-often-pay-for-care" method="post">
+      <form class="form" action="is-person-closely-related-to-you" method="post">
 
         {% from "govuk/components/input/macro.njk" import govukInput %}
 
         {{ govukInput({
           label: {
-            text: "What is the name of the person?",
+            text: "What is the full name of the person?",
             classes: "govuk-label--l",
             isPageHeading: true
           },
           id: "nameOfPerson",
           name: "nameOfPerson"
-        }) }}
-
-        {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
-
-        {{ govukCheckboxes({
-          name: "confirmNotRelated",
-          fieldset: {
-            legend: {
-              text: "I confirm they are not closely related to me or my child",
-              classes: "govuk-body d-none"
-            }
-          },
-          items: [
-            {
-              value: "I confirm",
-              text: "I confirm they are not closely related to me or my children"
-            }
-          ]
-        }) }}
-
-        {% from "govuk/components/button/macro.njk" import govukButton %}
-
-        {{ govukButton({
-          text: "Add another person",
-          classes: "govuk-button--secondary d-block",
-          href: "name-of-person-2"
         }) }}
 
         {{ govukButton({

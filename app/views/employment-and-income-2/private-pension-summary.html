@@ -16,16 +16,38 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-l">Private pensions summary</h1>
+      <h1 class="govuk-heading-l">Check your answers for private pensions</h1>
 
-      <form class="form" action="previous-income" method="post">
+      <form class="form" action="previous-employment" method="post">
 
         {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
 
         {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
 
 {{ govukSummaryList({
+  card: {
+            title: {
+              text: "Private pension"
+            }
+          },
   rows: [
+    {
+      key: {
+        text: "Pay into a private pension"
+      },
+      value: {
+        text: data['doYouPayIntoPrivatePension']
+      },
+      actions: {
+        items: [
+          {
+            href: "private-pensions",
+            text: "Change",
+            visuallyHiddenText: "name"
+          }
+        ]
+      }
+    },
     {
       key: {
         text: "How often do you pay into your private pension?"
@@ -45,7 +67,7 @@
     },
     {
       key: {
-        text: "How much do you pay into your private pension?"
+        text: "How much pay into a private pension"
       },
       value: {
         text: data['howMuchPayIntoPension']
@@ -55,17 +77,38 @@
           {
             href: "how-much-pay-into-private-pension",
             text: "Change",
-            visuallyHiddenText: "date of birth"
+            visuallyHiddenText: "name"
           }
         ]
+      }
+    },
+    {
+      key: {
+        text: "Amount we can take off income"
+      },
+      value: {
+        text: "£5"
       }
     }
   ]
 }) }}
 
-        {{ govukButton({
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+<div class="govuk-button-group">
+
+  {{ govukButton({
+    text: "Add another private pension",
+    classes: "govuk-button--secondary",
+    href: "how-often-pay-private-pension"
+  }) }}
+
+  {{ govukButton({
           text: "Continue"
         }) }}
+</div>
+
+        
       </form>
 
     </div>

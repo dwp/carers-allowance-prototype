@@ -15,23 +15,17 @@
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-xl">
-        Record breaks in care
+        Breaks in care
       </h1>
       
-      <p class="govuk-body"><b>At the start of the journey you will be asked to enter a Carers National Insurance Number.</b></p>
+      <p class="govuk-body">Use this service to record breaks in care and get accurate and consistent decisions about paying carers when they do not care for 35 hours in a week.</p>
+
+      <p class="govuk-body">You can enter a carer's NINO to: </p>
 
       <ul class="govuk-list govuk-list--bullet">
-        <li>Enter AA 12 34 56 A to find an existing record.</li>
-        <li>Enter anything else to find a record that doesn't exist.</li>
+        <li>add details about a break in care</li>
+        <li>see any other breaks that have been added for a carer</li>
       </ul>
-
-      <!-- <p>Use this service to record dates when the: </p>
-
-      <ul class="govuk-list govuk-list--bullet">
-        <li>do something</li>
-        <li>update your name, address or other details</li>
-        <li>do something else</li>
-      </ul> -->
 
       {{ govukButton({
         text: "Start now",
@@ -39,38 +33,59 @@
         isStartButton: true
       }) }}
 
-      
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <h3 class="govuk-heading-s govuk-!-margin-top-9">For User Reearch</h3>
+
+      {% from "govuk/components/table/macro.njk" import govukTable %}
+
+      {{ govukTable({
+        head: [
+          {
+            text: "Name"
+          },
+          {
+            text: "National Insurance number"
+          }
+        ],
+        rows: [
+          [
+            {
+              text: "Helen"
+            },
+            {
+              text: "RM111111A"
+            }
+          ],
+          [
+            {
+              text: "Lisa Test"
+            },
+            {
+              text: "RN000000B"
+            }
+          ],
+          [
+            {
+              text: "Jane"
+            },
+            {
+              text: "RM000000C"
+            }
+          ],
+          [
+            {
+              text: "Jane Doe"
+            },
+            {
+              text: "AA123456A"
+            }
+          ]
+        ]
+      }) }}
+
+        <p>Enter any other National Insurance number to find a record that doesn't exist.</p
 
     </div>
-
-    <!-- <div class="govuk-grid-column-one-third">
-
-      <aside class="govuk-prototype-kit-common-templates-related-items" role="complementary">
-        <h2 class="govuk-heading-m" id="subsection-title">
-          Subsection
-        </h2>
-        <nav role="navigation" aria-labelledby="subsection-title">
-          <ul class="govuk-list govuk-!-font-size-16">
-            <li>
-              <a href="#">
-                Related link
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                Related link
-              </a>
-            </li>
-            <li>
-              <a href="#" class="govuk-!-font-weight-bold">
-                More <span class="govuk-visually-hidden">in Subsection</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </aside>
-
-    </div>
-  </div> -->
 
 {% endblock %}
