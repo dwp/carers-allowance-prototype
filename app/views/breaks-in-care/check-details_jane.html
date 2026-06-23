@@ -29,15 +29,15 @@
           rows: [
             {
               key: {
-                text: "Carer's NINO"
+                text: "Started receiving Carer's Allowance"
               },
               value: {
-                text: data['nationalInsuranceNumber']
+                text: "12 May 2025"
               },
               actions: {
                 items: [
                   {
-                    href: "carers-full-name",
+                    href: "#",
                     text: "Change",
                     visuallyHiddenText: "name"
                   }
@@ -46,51 +46,17 @@
             },
             {
               key: {
-                text: "Carer's name"
+                text: "Started caring for the disabled person"
               },
               value: {
-                text: data['carersFullName']
+                html: "12 May 2025"
               },
               actions: {
                 items: [
                   {
-                    href: "carers-full-name",
-                    text: "Change",
-                    visuallyHiddenText: "date of birth"
-                  }
-                ]
-              }
-            },
-            {
-              key: {
-                text: "Carer's Allowance started"
-              },
-              value: {
-                text: data['carer-start-carers-allowance-day'] + " - " + data['carer-start-carers-allowance-month'] + " - " + data['carer-start-carers-allowance-year']
-              },
-              actions: {
-                items: [
-                  {
-                    href: "carer-start-carers-allowance",
+                    href: "#",
                     text: "Change",
                     visuallyHiddenText: "address"
-                  }
-                ]
-              }
-            },
-            {
-              key: {
-                text: "Caring started"
-              },
-              value: {
-                text: data['carer-start-caring-dp-day'] + " - " + data['carer-start-caring-dp-month'] + " - " + data['carer-start-caring-dp-year']
-              },
-              actions: {
-                items: [
-                  {
-                    href: "carer-start-caring-for-disabled-person",
-                    text: "Change",
-                    visuallyHiddenText: "name"
                   }
                 ]
               }
@@ -100,29 +66,29 @@
                 text: "Disabled person's NINO"
               },
               value: {
-                text: data['dpNationalInsuranceNumber']
+                text: "RN111111A"
               },
               actions: {
                 items: [
                   {
-                    href: "disabled-person-ni-number",
+                    href: "#",
                     text: "Change",
-                    visuallyHiddenText: "address"
+                    visuallyHiddenText: "date of birth"
                   }
                 ]
               }
             },
             {
               key: {
-                text: "Qualifying benefit started"
+                text: "Disabled Person started receiving Qualifying Benefit"
               },
               value: {
-                text: data['dp-start-qb-day'] + " - " + data['dp-start-qb-month'] + " - " + data['dp-start-qb-year']
+                text: "12 May 2025"
               },
               actions: {
                 items: [
                   {
-                    href: "dp-start-receiving-qualifying-benefit",
+                    href: "#",
                     text: "Change",
                     visuallyHiddenText: "name"
                   }
@@ -143,15 +109,15 @@
           rows: [
             {
               key: {
-                text: "Source"
+                text: "What is the source of the information?"
               },
               value: {
-                text: data['sourceOfInformation']
+                text: data['sourceOfInformationUpdateBreak']
               },
               actions: {
                 items: [
                   {
-                    href: "source-of-information",
+                    href: "source-of-information_update-break",
                     text: "Change",
                     visuallyHiddenText: "name"
                   }
@@ -160,7 +126,7 @@
             },
             {
               key: {
-                text: "Not caring for 35 hours"
+                text: "Why is the carer not providing care for 35 hours a week?"
               },
               value: {
                 text: data['whyNotCare35Hours']
@@ -168,7 +134,7 @@
               actions: {
                 items: [
                   {
-                    href: "why-not-care-35-hours",
+                    href: "why-not-care-35-hours_add-new",
                     text: "Change",
                     visuallyHiddenText: "date of birth"
                   }
@@ -177,7 +143,7 @@
             },
             {
               key: {
-                text: "Permanent break"
+                text: "Is this a permanent break?"
               },
               value: {
                 text: data['permanentBreak']
@@ -185,7 +151,7 @@
               actions: {
                 items: [
                   {
-                    href: "permanent-break",
+                    href: "is-this-permanent-break",
                     text: "Change",
                     visuallyHiddenText: "date of birth"
                   }
@@ -202,7 +168,7 @@
               actions: {
                 items: [
                   {
-                    href: "when-did-break-start",
+                    href: "when-did-break-start_add-new",
                     text: "Change",
                     visuallyHiddenText: "address"
                   }
@@ -219,7 +185,7 @@
               actions: {
                 items: [
                   {
-                    href: "when-did-break-end",
+                    href: "when-did-break-end_add-new",
                     text: "Change",
                     visuallyHiddenText: "address"
                   }
@@ -228,15 +194,15 @@
             },
             {
               key: {
-                text: "Qualifying benefit suspended"
+                text: "Is the qualifying benefit suspended?"
               },
               value: {
-                text: data['suspendQB']
+                text: data['isQualifyingBenefitSuspended']
               },
               actions: {
                 items: [
                   {
-                    href: "suspend-qualifying-benefit",
+                    href: "is-qualifying-benefit-suspended",
                     text: "Change",
                     visuallyHiddenText: "name"
                   }
@@ -253,7 +219,7 @@
               actions: {
                 items: [
                   {
-                    href: "when-did-suspension-start",
+                    href: "when-did-suspension-start_add-new",
                     text: "Change",
                     visuallyHiddenText: "name"
                   }
@@ -270,7 +236,7 @@
               actions: {
                 items: [
                   {
-                    href: "when-did-suspension-end",
+                    href: "when-did-suspension-end_add-new",
                     text: "Change",
                     visuallyHiddenText: "name"
                   }
@@ -279,7 +245,7 @@
             },
             {
               key: {
-                text: "Effective decision start date"
+                text: "Effective decision from date"
               },
               value: {
                 text: data['effective-decision-start-date-day'] + " - " + data['effective-decision-start-date-month'] + " - " + data['effective-decision-start-date-year']
@@ -287,7 +253,7 @@
               actions: {
                 items: [
                   {
-                    href: "effective-decision-start-date_revision",
+                    href: "effective-decision-start-date_revision_add-new",
                     text: "Change",
                     visuallyHiddenText: "name"
                   }
@@ -299,12 +265,12 @@
                 text: "Consider decision from date"
               },
               value: {
-                text: "10 Dec 2025"
+                text: "27 Feb 2026"
               },
               actions: {
                 items: [
                   {
-                    href: "consider-decision-from-date_revision",
+                    href: "consider-decision-from-date_revision_add-new",
                     text: "Change",
                     visuallyHiddenText: "name"
                   }
@@ -318,7 +284,7 @@
 
         {{ govukButton({
           text: "Continue",
-          href: "add-another-break"
+          href: "add-another-break_add-new"
         }) }}
 
     </div>

@@ -1,7 +1,12 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+  Start page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+  {{ govukHeader() }}
 {% endblock %}
 
 {% block beforeContent %}
@@ -16,38 +21,42 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form class="form" action="why-not-care-35-hours_add-new" method="post">
+      <form class="form" action="what-work-did-you-do" method="post">
 
         {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
         {{ govukRadios({
-          name: "sourceOfInformationUpdateBreak",
+          name: "previousSelfEmployment",
           fieldset: {
             legend: {
-              text: "What is the source of this information?",
+              text: "Have you been self-employed at any time since week before claim start date?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--l"
             }
           },
           items: [
             {
-              value: "Revision",
-              text: "Revision (Original decision is now wrong, we need to give a whole new decision based on new information)"
+              value: "Yes",
+              text: "Yes"
             },
             {
-              value: "Supersession",
-              text: "Supersession (Original decision was correct, but there is new information so we need to give an updated decision)"
+              value: "No",
+              text: "No"
             }
           ]
         }) }}
 
-        {{ govukButton({
-          text: "Continue"
-        }) }}
-
       </form>
 
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      {{ govukButton({
+        text: "Continue",
+        href: "what-work-did-you-do"
+      }) }}
+
     </div>
+
   </div>
 
 {% endblock %}

@@ -80,23 +80,6 @@
             },
             {
               key: {
-                text: "Disabled person's NINO"
-              },
-              value: {
-                text: data['dpNationalInsuranceNumber']
-              },
-              actions: {
-                items: [
-                  {
-                    href: "disabled-person-ni-number",
-                    text: "Change",
-                    visuallyHiddenText: "address"
-                  }
-                ]
-              }
-            },
-            {
-              key: {
                 text: "Caring started"
               },
               value: {
@@ -114,17 +97,17 @@
             },
             {
               key: {
-                text: "Qualifying benefit"
+                text: "Disabled person's NINO"
               },
               value: {
-                text: data['qualifyingBenefit']
+                text: data['dpNationalInsuranceNumber']
               },
               actions: {
                 items: [
                   {
-                    href: "qualifying-benefit",
+                    href: "disabled-person-ni-number",
                     text: "Change",
-                    visuallyHiddenText: "name"
+                    visuallyHiddenText: "address"
                   }
                 ]
               }

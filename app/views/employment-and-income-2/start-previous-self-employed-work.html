@@ -16,29 +16,28 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form class="form" action="consider-decision-from-date_revision_add-new" method="post">
+      <form class="form" action="stop-previous-self-employed-work" method="post">
 
         {% from "govuk/components/date-input/macro.njk" import govukDateInput %}
 
         {{ govukDateInput({
-          id: "effeciveDecisionStart",
-          namePrefix: "effective-decision-start-date",
+          id: "when-did-you-start-self-employed-work",
+          namePrefix: "when-did-you-start-self-employed-work",
           fieldset: {
             legend: {
-              text: "What is the effective decision start date?",
+              text: "When did you start self-employed work?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--l"
             }
           },
           hint: {
-            text: "For example, 1 10 2026"
+            text: "For example, 27 3 2007"
           }
         }) }}
 
         {{ govukButton({
           text: "Continue"
         }) }}
-
       </form>
 
     </div>

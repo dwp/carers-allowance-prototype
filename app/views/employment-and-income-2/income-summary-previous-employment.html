@@ -1,0 +1,148 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">Check your answers for previous employment</h1>
+
+      <form class="form" action="previous-self-employment" method="post">
+
+        {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+        {{ govukSummaryList({
+          rows: [
+            {
+              key: {
+                text: "Income source"
+              },
+              value: {
+                text: "Employment"
+              }
+            },
+            {
+              key: {
+                text: "Paid by a previous employer between 11 September and 21 October 2025"
+              },
+              value: {
+                html: data['wereYouPaidByAPreviousEmployer']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "threshold",
+                    text: "Change",
+                    visuallyHiddenText: "nationality"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Employer"
+              },
+              value: {
+                html: data['nameOfPreviousEmployer']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "do-you-receive-these",
+                    text: "Change",
+                    visuallyHiddenText: "nationality"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Included in last pay"
+              },
+              value: {
+                text: "Compensation"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "do-you-have-expenses_one-income",
+                    text: "Change",
+                    visuallyHiddenText: "nationality"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Compensation"
+              },
+              value: {
+                text: data['lastPayCompensation']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "work-expenses",
+                    text: "Change",
+                    visuallyHiddenText: "nationality"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Work expenses"
+              },
+              value: {
+                html: data['workExpensesPreviousEmployment']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "work-expenses",
+                    text: "Change",
+                    visuallyHiddenText: "nationality"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Expenses"
+              },
+              value: {
+                html: data['workExpensesPreviousEmploymentDetails']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "work-expenses",
+                    text: "Change",
+                    visuallyHiddenText: "nationality"
+                  }
+                ]
+              }
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

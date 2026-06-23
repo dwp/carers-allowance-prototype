@@ -1336,6 +1336,32 @@ router.post('/do-you-have-more-than-one-source-of-income-answer', function(reque
 })
 // END MORE THAN ONE INCOME
 
+// WERE YOU PAID BY A PREVIOUS EMPLOYER?
+router.post('/were-you-paid-by-a-previous-employer-answer', function(request, response) {
+
+	var wereYouPaidByAPreviousEmployer = request.session.data['wereYouPaidByAPreviousEmployer']
+
+	if (wereYouPaidByAPreviousEmployer == "Yes"){
+		response.redirect("/employment-and-income-2/name-of-previous-employer")
+	} else {
+        response.redirect("/employment-and-income-2/previous-self-employed-income")
+    }
+})
+// END WERE YOU PAID BY A PREVIOUS EMPLOYER?
+
+// WORK EXPENSES PREVIOUS INCOME
+router.post('/work-expenses-previous-employment-answer', function(request, response) {
+
+	var workExpensesPreviousEmployment = request.session.data['workExpensesPreviousEmployment']
+
+	if (workExpensesPreviousEmployment == "Yes"){
+		response.redirect("/employment-and-income-2/work-expenses-previous-employment")
+	} else {
+        response.redirect("/employment-and-income-2/income-summary-previous-employment")
+    }
+})
+// END WORK EXPENSES PREVIOUS INCOME
+
 // END EMPLOYMENT & INCOME 2
 
 
@@ -1525,8 +1551,10 @@ router.post('/is-qb-suspended-answer', function(request, response) {
 		response.redirect("/breaks-in-care/when-did-suspension-start")
 	} else if (sourceOfInformation == "Revision"){
 		response.redirect("/breaks-in-care/effective-decision-start-date_revision")
-	} else {
+	} else if (sourceOfInformation == "Supersession") {
 		response.redirect("/breaks-in-care/consider-decision-from-date_supersession")
+	} else {
+		response.redirect("/breaks-in-care/check-details")
 	}
 })
 // IS QUALIFYING BENEFIT SUSPENDED?
@@ -1582,8 +1610,10 @@ router.post('/add-another-break_add-new-answer', function(request, response) {
 	var addAnotherBreakAddNew = request.session.data['addAnotherBreakAddNew']
     var nationalInsuranceNumber = request.session.data['nationalInsuranceNumber']
 	if (addAnotherBreakAddNew == "No" && nationalInsuranceNumber == "RM000000C"){
-		response.redirect("/breaks-in-care/decision_lisa")
-	} else if (addAnotherBreakAddNew == "No") {
+		response.redirect("/breaks-in-care/decision_jane")
+	} else if (addAnotherBreakAddNew == "No" && nationalInsuranceNumber == "RN000000B") {
+        response.redirect("/breaks-in-care/decision_lisa")
+    } else if (addAnotherBreakAddNew == "No") {
 		response.redirect("/breaks-in-care/decision_existing-record")
 	} else {
 		response.redirect("/breaks-in-care/source-of-information_update-break")
@@ -1626,9 +1656,11 @@ router.post('/qualifying-benefit-suspended-answer', function(request, response) 
 router.post('/effective-decision-start-date-supersession-answer', function(request, response) {
 
     var nationalInsuranceNumber = request.session.data['nationalInsuranceNumber']
-	if (nationalInsuranceNumber == "RM000000C"){
+	if (nationalInsuranceNumber == "RN000000B"){
 		response.redirect("/breaks-in-care/check-details_add-new")
-	} 
+	} else {
+        response.redirect("/breaks-in-care/check-details_jane")
+    }
 })
 // EFFECTIVE DECISION START DATE
 

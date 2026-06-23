@@ -1,0 +1,103 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Start page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "#"
+      },
+      {
+        text: "Section",
+        href: "#"
+      },
+      {
+        text: "Subsection"
+      }
+    ]
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Your last pay from {{ data['nameOfPreviousEmployer']}}
+      </h1>
+
+      <p class="govuk-body">The last pay from an employer can include extra payments. We need to know what these are. Some may affect how we work out your earnings.</p>
+
+      <form class="form" action="last-pay-compensation" method="post">
+
+      {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+      {{ govukRadios({
+        name: "includedInlastPay",
+        fieldset: {
+          legend: {
+            text: "What was included in your last pay?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+          {
+            value: "Compensation",
+            text: "Compensation"
+          },
+          {
+            value: "Holiday pay",
+            text: "Holiday pay"
+          },
+          {
+            value: "Payment instead of notice",
+            text: "Payment instead of notice"
+          },
+          {
+            value: "Redundancy pay",
+            text: "Redundancy pay"
+          },
+          {
+            value: "Statutory sick pay",
+            text: "Statutory sick pay"
+          },
+          {
+            value: "Statutory Maternity, Paternity or Adoption pay",
+            text: "Statutory Maternity, Paternity or Adoption pay"
+          },
+          {
+            divider: "or"
+          },
+          {
+            value: "None of these",
+            text: "None of these"
+          }
+        ]
+      }) }}
+
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+      </form>
+
+    </div>
+
+  </div>
+
+{% endblock %}
