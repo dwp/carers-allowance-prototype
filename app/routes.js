@@ -1169,8 +1169,11 @@ router.post('/check-can-take-care-costs-off-answer', function(request, response)
 router.post('/is-person-closely-related-answer', function(request, response) {
 
 	var isPersonCloselyRelatedToYou = request.session.data['isPersonCloselyRelatedToYou']
+    var checkCanTakeChildcareCostsOff = request.session.data['checkCanTakeChildcareCostsOff']
 
-	if (isPersonCloselyRelatedToYou == "No"){
+	if (isPersonCloselyRelatedToYou == "No" && checkCanTakeChildcareCostsOff == "A person"){
+		response.redirect("/employment-and-income-2/tax-free-childcare-child-benefit")
+	} else if (isPersonCloselyRelatedToYou == "No"){
 		response.redirect("/employment-and-income-2/tax-free-childcare")
 	} else {
 		response.redirect("/employment-and-income-2/cannot-add-someone-closely-related")
@@ -1344,7 +1347,7 @@ router.post('/were-you-paid-by-a-previous-employer-answer', function(request, re
 	if (wereYouPaidByAPreviousEmployer == "Yes"){
 		response.redirect("/employment-and-income-2/name-of-previous-employer")
 	} else {
-        response.redirect("/employment-and-income-2/previous-self-employed-income")
+        response.redirect("/employment-and-income-2/previous-self-employment")
     }
 })
 // END WERE YOU PAID BY A PREVIOUS EMPLOYER?
@@ -1361,6 +1364,19 @@ router.post('/work-expenses-previous-employment-answer', function(request, respo
     }
 })
 // END WORK EXPENSES PREVIOUS INCOME
+
+// BEEN SELF EMPLOYED?
+router.post('/been-self-employed-answer', function(request, response) {
+
+	var previousSelfEmployment = request.session.data['previousSelfEmployment']
+
+	if (previousSelfEmployment == "Yes"){
+		response.redirect("/employment-and-income-2/what-work-did-you-do")
+	} else {
+        response.redirect("/employment-and-income-2/end-journey")
+    }
+})
+// END BEEN SELF EMPLOYED?
 
 // END EMPLOYMENT & INCOME 2
 
@@ -1656,13 +1672,33 @@ router.post('/qualifying-benefit-suspended-answer', function(request, response) 
 router.post('/effective-decision-start-date-supersession-answer', function(request, response) {
 
     var nationalInsuranceNumber = request.session.data['nationalInsuranceNumber']
-	if (nationalInsuranceNumber == "RN000000B"){
-		response.redirect("/breaks-in-care/check-details_add-new")
-	} else {
+	if (nationalInsuranceNumber == "RM111111A"){
+		response.redirect("/breaks-in-care/check-details_helen")
+	} else if (nationalInsuranceNumber == "RN000000B") {
+        response.redirect("/breaks-in-care/check-details_lisa")
+    } else if (nationalInsuranceNumber == "RM000000C") {
         response.redirect("/breaks-in-care/check-details_jane")
+    } else {
+        response.redirect("/breaks-in-care/check-details")
     }
 })
 // EFFECTIVE DECISION START DATE
+
+// CONSIDER DECISION FROM DATE
+router.post('/consider-decision-from-date_revision-answer', function(request, response) {
+
+    var nationalInsuranceNumber = request.session.data['nationalInsuranceNumber']
+	if (nationalInsuranceNumber == "RM111111A"){
+		response.redirect("/breaks-in-care/check-details_helen")
+	} else if (nationalInsuranceNumber == "RN000000B") {
+        response.redirect("/breaks-in-care/check-details_lisa")
+    } else if (nationalInsuranceNumber == "RM000000C") {
+        response.redirect("/breaks-in-care/check-details_jane")
+    } else {
+        response.redirect("/breaks-in-care/check-details")
+    }
+})
+// CONSIDER DECISION FROM DATE
 
 // DO YOU PAY INTO PRIVATE PENSION?
 router.post('/is-qb-suspended-update-answer', function(request, response) {

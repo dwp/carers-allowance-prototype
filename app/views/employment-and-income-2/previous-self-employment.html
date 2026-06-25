@@ -21,7 +21,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form class="form" action="what-work-did-you-do" method="post">
+      <form class="form" action="/been-self-employed-answer" method="post">
 
         {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
@@ -29,7 +29,7 @@
           name: "previousSelfEmployment",
           fieldset: {
             legend: {
-              text: "Have you been self-employed at any time since week before claim start date?",
+              text: "Have you been self-employed at any time since 25 December 2025?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--l"
             }
@@ -46,14 +46,13 @@
           ]
         }) }}
 
-      </form>
-
-      {% from "govuk/components/button/macro.njk" import govukButton %}
+        {% from "govuk/components/button/macro.njk" import govukButton %}
 
       {{ govukButton({
-        text: "Continue",
-        href: "what-work-did-you-do"
+        text: "Continue"
       }) }}
+
+      </form>
 
     </div>
 

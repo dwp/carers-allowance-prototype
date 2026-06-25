@@ -60,7 +60,7 @@
               items: [
                 {
                   href: "#",
-                  text: "Remove income"
+                  text: "Remove person"
                 }
               ]
             }
@@ -180,7 +180,7 @@
               items: [
                 {
                   href: "#",
-                  text: "Remove income"
+                  text: "Remove person"
                 }
               ]
             }
@@ -274,17 +274,19 @@
   ]
 }) }}
 
-        <div class="govuk-button-group">
+        
         {{ govukButton({
           text: "Add another person or business",
           classes: "govuk-button--secondary",
           href: "check-can-take-care-costs-off"
         }) }}
+
+        <br />
         
           {{ govukButton({
           text: "Continue"
         }) }}
-      </div>
+      
       </form>
 
     </div>

@@ -10,23 +10,10 @@
 {% endblock %}
 
 {% block beforeContent %}
-
-  {{ govukBreadcrumbs({
-    items: [
-      {
-        text: "Home",
-        href: "#"
-      },
-      {
-        text: "Section",
-        href: "#"
-      },
-      {
-        text: "Subsection"
-      }
-    ]
-  }) }}
-
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
 {% endblock %}
 
 {% block content %}
@@ -42,15 +29,15 @@
 
       <form class="form" action="last-pay-compensation" method="post">
 
-      {% from "govuk/components/radios/macro.njk" import govukRadios %}
+      {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
 
-      {{ govukRadios({
+      {{ govukCheckboxes({
         name: "includedInlastPay",
         fieldset: {
           legend: {
             text: "What was included in your last pay?",
             isPageHeading: true,
-            classes: "govuk-fieldset__legend--m"
+            classes: "govuk-fieldset__legend--l"
           }
         },
         items: [

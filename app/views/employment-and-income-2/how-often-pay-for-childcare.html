@@ -13,6 +13,18 @@
 
 {% block content %}
 
+{% set careProviderName = "" %}
+
+{% if data['checkCanTakeChildcareCostsOff'] == "A person" %}
+  {% set careProviderName = data['nameOfPersonChildcare'] %}
+{% elif data['checkCanTakeCareCostsOff'] == "A person" %}
+  {% set careProviderName = data['nameOfPerson'] %}
+{% else %}
+  {% set careProviderName = data['nameOfBusiness'] %}
+{% endif %}
+
+
+
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
@@ -25,7 +37,7 @@
           name: "howOftenPayForChildcare",
           fieldset: {
             legend: {
-              text: "How often do you pay " + data['nameOfPerson'] + " for childcare?",
+              text: "How often do you pay " + (careProviderName or "them") + " for childcare?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--l"
             }

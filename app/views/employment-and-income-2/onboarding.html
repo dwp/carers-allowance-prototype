@@ -10,23 +10,10 @@
 {% endblock %}
 
 {% block beforeContent %}
-
-  {{ govukBreadcrumbs({
-    items: [
-      {
-        text: "Home",
-        href: "#"
-      },
-      {
-        text: "Section",
-        href: "#"
-      },
-      {
-        text: "Subsection"
-      }
-    ]
-  }) }}
-
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
 {% endblock %}
 
 {% block content %}
@@ -43,7 +30,7 @@
       <p>To understand if you are eligible we will ask about your:</p>
       <ul class="govuk-list govuk-list--bullet">
         <li>current earnings</li>
-        <li>earnings from any jobs that ended since <CLAIM DATE>, the date you want CA to start</li>
+        <li>earnings from any jobs that ended since 1 Jan 2026, the date you want CA to start</li>
         <li>other sources of income</li>
       </ul>
 

@@ -1,0 +1,206 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">Break started 6 Oct 2025</h1>
+
+      {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+      {{ govukSummaryList({
+        card: {
+          title: {
+            text: "Details"
+          }
+        },
+        rows: [
+          {
+            key: {
+              text: "Name"
+            },
+            value: {
+              text: "Jane"
+            }
+          },
+          {
+            key: {
+              text: "National Insurance number"
+            },
+            value: {
+              text: "RM000000C"
+            }
+          },
+          {
+            key: {
+              text: "Version"
+            },
+            value: {
+              text: "4"
+            }
+          }
+        ]
+      }) }}
+
+        {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+        {{ govukSummaryList({
+          card: {
+          title: {
+            text: "Break information"
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Edit break"
+              }
+            ]
+          }
+        },
+          rows: [
+            {
+              key: {
+                text: "Source"
+              },
+              value: {
+                text: "Supersession"
+              }
+            },
+            {
+              key: {
+                text: "Not caring for 35 hours"
+              },
+              value: {
+                text: "Other reason like disabled person or carer in a privately funded care home, on holiday or needs respite care"
+              }
+            },
+            {
+              key: {
+                text: "Break started"
+              },
+              value: {
+                html: "6 Oct 2025"
+              }
+            },
+            {
+              key: {
+                text: "Break ended"
+              },
+              value: {
+                text: "26 Oct 2025"
+              }
+            },
+            {
+              key: {
+                text: "Qualifying benefit suspended"
+              },
+              value: {
+                text: "No"
+              }
+            },
+            {
+              key: {
+                text: "Consider decision from date"
+              },
+              value: {
+                text: "6 Oct 2025"
+              }
+            },
+            {
+              key: {
+                text: "Effective decision start date"
+              },
+              value: {
+                text: "5 Oct 2025"
+              }
+            },
+            {
+              key: {
+                text: "Decision"
+              },
+              value: {
+                text: "249NC"
+              }
+            }
+          ]
+        }) }}
+
+        <h2 class="govuk-heading-l">Audit history</h2>
+        
+        {% from "govuk/components/table/macro.njk" import govukTable %}
+
+        {{ govukTable({
+          captionClasses: "govuk-table__caption--m",
+          head: [
+            {
+              text: "Date of change"
+            },
+            {
+              text: "Who made the change?"
+            },
+            {
+              text: "What changed?"
+            }
+          ],
+          rows: [
+            [
+              {
+                text: "5 Jun 2026"
+              },
+              {
+                text: "Thomas Grey"
+              },
+              {
+                html: '<a href="#" class="govuk-link">View version 3</a>'
+              }
+            ],[
+              {
+                text: "5 Jun 2026"
+              },
+              {
+                text: "Thomas Grey"
+              },
+              {
+                html: '<a href="#" class="govuk-link">View version 2</a>'
+              }
+            ],[
+              {
+                text: "5 Jun 2026"
+              },
+              {
+                text: "Thomas Grey"
+              },
+              {
+                html: '<a href="#" class="govuk-link">View version 1</a>'
+              }
+            ],[
+              {
+                text: "5 Jun 2026"
+              },
+              {
+                text: "Thomas Grey"
+              },
+              {
+                html: 'New break added'
+              }
+            ]
+          ]
+        }) }}
+
+    </div>
+  </div>
+
+{% endblock %}
