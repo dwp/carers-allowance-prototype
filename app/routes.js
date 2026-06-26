@@ -1669,6 +1669,22 @@ router.post('/qualifying-benefit-suspended-answer', function(request, response) 
 // IS QUALIFYING BENEFIT SUSPENDED - ADD NEW
 
 // EFFECTIVE DECISION START DATE
+router.post('/effective-decision-start-date_supersession-answer', function(request, response) {
+
+    var nationalInsuranceNumber = request.session.data['nationalInsuranceNumber']
+	if (nationalInsuranceNumber == "RM111111A"){
+		response.redirect("/breaks-in-care/effective-decision-start-date_supersession-helen")
+	} else if (nationalInsuranceNumber == "RN000000B") {
+        response.redirect("/breaks-in-care/effective-decision-start-date_supersession-lisa")
+    } else if (nationalInsuranceNumber == "RM000000C") {
+        response.redirect("/breaks-in-care/effective-decision-start-date_supersession-jane")
+    } else {
+        response.redirect("/breaks-in-care/effective-decision-start-date_supersession")
+    }
+})
+// EFFECTIVE DECISION START DATE
+
+// EFFECTIVE DECISION START DATE
 router.post('/effective-decision-start-date-supersession-answer', function(request, response) {
 
     var nationalInsuranceNumber = request.session.data['nationalInsuranceNumber']
