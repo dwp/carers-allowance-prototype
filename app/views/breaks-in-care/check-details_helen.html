@@ -66,7 +66,7 @@
                 text: "Carer's Allowance started"
               },
               value: {
-                text: data['carer-start-carers-allowance-day'] + " - " + data['carer-start-carers-allowance-month'] + " - " + data['carer-start-carers-allowance-year']
+                text: data['carer-start-carers-allowance-day'] + " " + data['carer-start-carers-allowance-month'] | monthName + " " + data['carer-start-carers-allowance-year']
               },
               actions: {
                 items: [
@@ -83,7 +83,7 @@
                 text: "Caring started"
               },
               value: {
-                text: data['carer-start-caring-dp-day'] + " - " + data['carer-start-caring-dp-month'] + " - " + data['carer-start-caring-dp-year']
+                text: data['carer-start-caring-dp-day'] + " " + data['carer-start-caring-dp-month']  | monthName + " " + data['carer-start-caring-dp-year']
               },
               actions: {
                 items: [
@@ -117,7 +117,7 @@
                 text: "Qualifying benefit started"
               },
               value: {
-                text: data['dp-start-qb-day'] + " - " + data['dp-start-qb-month'] + " - " + data['dp-start-qb-year']
+                text: data['dp-start-qb-day'] + " " + data['dp-start-qb-month']  | monthName + " " + data['dp-start-qb-year']
               },
               actions: {
                 items: [
@@ -197,7 +197,7 @@
                 text: "Break started"
               },
               value: {
-                text: data['break-start-day'] + " - " + data['break-start-month'] + " - " + data['break-start-year']
+                text: data['break-start-day'] + " " + data['break-start-month']  | monthName + " " + data['break-start-year']
               },
               actions: {
                 items: [
@@ -214,7 +214,7 @@
                 text: "Break ended"
               },
               value: {
-                text: data['break-end-day'] + " - " + data['break-end-month'] + " - " + data['break-end-year']
+                text: data['break-end-day'] + " " + data['break-end-month']  | monthName + " " + data['break-end-year']
               },
               actions: {
                 items: [
@@ -248,7 +248,7 @@
                 text: "Suspension start"
               },
               value: {
-                text: data['suspension-start-day'] + " - " + data['suspension-start-month'] + " - " + data['suspension-start-year']
+                text: data['suspension-start-day'] + " " + data['suspension-start-month']  | monthName + " " + data['suspension-start-year']
               },
               actions: {
                 items: [
@@ -265,7 +265,7 @@
                 text: "Suspension end"
               },
               value: {
-                text: data['suspension-end-day'] + " - " + data['suspension-end-month'] + " - " + data['suspension-end-year']
+                text: data['suspension-end-day'] + " " + data['suspension-end-month']  | monthName + " " + data['suspension-end-year']
               },
               actions: {
                 items: [

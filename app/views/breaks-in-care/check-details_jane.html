@@ -163,7 +163,7 @@
                 text: "Break started"
               },
               value: {
-                text: data['break-start-day'] + " - " + data['break-start-month'] + " - " + data['break-start-year']
+                text: data['break-start-day'] + " " + data['break-start-month'] | monthName + " " + data['break-start-year']
               },
               actions: {
                 items: [
@@ -180,7 +180,7 @@
                 text: "Break ended"
               },
               value: {
-                text: data['break-end-day'] + " - " + data['break-end-month'] + " - " + data['break-end-year']
+                text: data['break-end-day'] + " " + data['break-end-month'] | monthName + " " + data['break-end-year']
               },
               actions: {
                 items: [

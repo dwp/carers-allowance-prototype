@@ -107,7 +107,7 @@
               text: "What is your date of birth?"
             },
             value: {
-              text: data['birthday-day'] + " - " + data['birthday-month'] + " - " + data['birthday-year']
+              text: data['birthday-day'] + " " + data['birthday-month'] | monthName + " " + data['birthday-year']
             },
             actions: {
               items: [
