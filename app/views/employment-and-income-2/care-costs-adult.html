@@ -16,39 +16,41 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form class="form" action="/check-details-answer" method="post">
-        {% from "govuk/components/input/macro.njk" import govukInput %}
-        {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
-        {% from "govuk/components/date-input/macro.njk" import govukDateInput %}
+        <h1 class="govuk-heading-l">Care for Joe Bloggs</h1>
 
-        {{ govukDateInput({
-          id: "expect-to-receive-money",
-          namePrefix: "expect-to-receive-money",
+        <p>If you pay someone else to care for Joe Bloggs while you work, you can take some of the costs off your earnings.</p>
+
+        <p>This could reduce your earnings and allow you to get Carer's Allowance. </p>
+
+      <form class="form" action="/care-costs-adult-answer" method="post">
+
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+        {{ govukRadios({
+          name: "careCosts",
           fieldset: {
             legend: {
-              text: "When do you expect to receive this money?",
+              text: "Do you pay someone else to care for Joe Bloggs while you work?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--l"
             }
           },
-          hint: {
-            text: "For example, 27 3 2007"
-          }
-        }) }}
-
-        {{ govukCheckboxes({
-          name: "iDoNotKnow",
           items: [
             {
-              value: "I do not know",
-              text: "I do not know"
+              value: "Yes",
+              text: "Yes"
+            },
+            {
+              value: "No",
+              text: "No"
             }
           ]
         }) }}
-        
+
         {{ govukButton({
           text: "Continue"
         }) }}
+
       </form>
 
     </div>

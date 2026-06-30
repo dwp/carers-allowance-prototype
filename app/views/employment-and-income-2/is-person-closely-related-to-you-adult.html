@@ -16,36 +16,35 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form class="form" action="/check-details-answer" method="post">
-        {% from "govuk/components/input/macro.njk" import govukInput %}
-        {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
-        {% from "govuk/components/date-input/macro.njk" import govukDateInput %}
+      <form class="form" action="/is-person-closely-related-adult-answer" method="post">
 
-        {{ govukDateInput({
-          id: "expect-to-receive-money",
-          namePrefix: "expect-to-receive-money",
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+        {{ govukRadios({
+          classes: "govuk-radios",
+          name: "isPersonCloselyRelatedToYou",
           fieldset: {
             legend: {
-              text: "When do you expect to receive this money?",
+              text: "Is " + data['nameOfPerson'] + " closely related to you?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--l"
             }
           },
           hint: {
-            text: "For example, 27 3 2007"
-          }
-        }) }}
-
-        {{ govukCheckboxes({
-          name: "iDoNotKnow",
+            text: "By closely related we mean husband, wife, partner, parent, child, brother or sister."
+          },
           items: [
             {
-              value: "I do not know",
-              text: "I do not know"
+              value: "Yes",
+              text: "Yes"
+            },
+            {
+              value: "No",
+              text: "No"
             }
           ]
         }) }}
-        
+
         {{ govukButton({
           text: "Continue"
         }) }}

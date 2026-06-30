@@ -1139,7 +1139,20 @@ router.post('/check-details-cash-payments-rental-answer', function(request, resp
 })
 // END PAID BY FOSTERING AGENCY OR LOCAL AUTHORITY
 
-// DO YOU PAY FOR CARE FOR DP
+// PAID BY FOSTERING AGENCY OR LOCAL AUTHORITY
+router.post('/check-details-answer', function(request, response) {
+
+	var careForChildOrAdult = request.session.data['careForChildOrAdult']
+
+	if (careForChildOrAdult == "Child"){
+		response.redirect("/employment-and-income-2/care-costs")
+	} else {
+		response.redirect("/employment-and-income-2/care-costs-adult")
+	}
+})
+// END PAID BY FOSTERING AGENCY OR LOCAL AUTHORITY
+
+// DO YOU PAY FOR CARE FOR DP - CHILD
 router.post('/care-costs-answer', function(request, response) {
 
 	var careCosts = request.session.data['careCosts']
@@ -1150,7 +1163,20 @@ router.post('/care-costs-answer', function(request, response) {
 		response.redirect("/employment-and-income-2/childcare-costs")
 	}
 })
-// END DO YOU PAY FOR CARE FOR DP
+// END DO YOU PAY FOR CARE FOR DP - CHILD
+
+// DO YOU PAY FOR CARE FOR DP - ADULT
+router.post('/care-costs-adult-answer', function(request, response) {
+
+	var careCosts = request.session.data['careCosts']
+
+	if (careCosts == "Yes"){
+		response.redirect("/employment-and-income-2/check-can-take-care-costs-off-adult")
+	} else {
+		response.redirect("/employment-and-income-2/childcare-costs")
+	}
+})
+// END DO YOU PAY FOR CARE FOR DP - ADULT
 
 // CHECK CAN TAKE CARE COSTS OFF
 router.post('/check-can-take-care-costs-off-answer', function(request, response) {
@@ -1161,6 +1187,19 @@ router.post('/check-can-take-care-costs-off-answer', function(request, response)
 		response.redirect("/employment-and-income-2/name-of-business")
 	} else {
 		response.redirect("/employment-and-income-2/name-of-person")
+	}
+})
+// END CHECK CAN TAKE CARE COSTS OFF
+
+// CHECK CAN TAKE CARE COSTS OFF
+router.post('/check-can-take-care-costs-off-adult-answer', function(request, response) {
+
+	var checkCanTakeCareCostsOff = request.session.data['checkCanTakeCareCostsOff']
+
+	if (checkCanTakeCareCostsOff == "A business"){
+		response.redirect("/employment-and-income-2/name-of-business-adult")
+	} else {
+		response.redirect("/employment-and-income-2/name-of-person-adult")
 	}
 })
 // END CHECK CAN TAKE CARE COSTS OFF
@@ -1177,6 +1216,22 @@ router.post('/is-person-closely-related-answer', function(request, response) {
 		response.redirect("/employment-and-income-2/tax-free-childcare")
 	} else {
 		response.redirect("/employment-and-income-2/cannot-add-someone-closely-related")
+	}
+})
+// END IS PERSON CLOSELY RELATED TO YOU
+
+// IS PERSON CLOSELY RELATED TO YOU
+router.post('/is-person-closely-related-adult-answer', function(request, response) {
+
+	var isPersonCloselyRelatedToYou = request.session.data['isPersonCloselyRelatedToYou']
+    var checkCanTakeChildcareCostsOff = request.session.data['checkCanTakeChildcareCostsOff']
+
+	if (isPersonCloselyRelatedToYou == "No" && checkCanTakeChildcareCostsOff == "A person"){
+		response.redirect("/employment-and-income-2/how-often-pay-for-care")
+	} else if (isPersonCloselyRelatedToYou == "No"){
+		response.redirect("/employment-and-income-2/how-often-pay-for-care")
+	} else {
+		response.redirect("/employment-and-income-2/cannot-add-someone-closely-related-adult")
 	}
 })
 // END IS PERSON CLOSELY RELATED TO YOU
@@ -1206,6 +1261,19 @@ router.post('/pay-someone-else-care-answer', function(request, response) {
 	}
 })
 // END PAY ANYONE ELSE CARE FOR CHILD?
+
+// PAY ANYONE ELSE CARE FOR ADULT?
+router.post('/pay-someone-else-care-adult-answer', function(request, response) {
+
+	var paySomeoneElseCare = request.session.data['paySomeoneElseCare']
+
+	if (paySomeoneElseCare == "Yes"){
+		response.redirect("/employment-and-income-2/check-can-take-care-costs-off-adult")
+	} else {
+		response.redirect("/employment-and-income-2/private-pensions")
+	}
+})
+// END PAY ANYONE ELSE CARE FOR ADULT?
 
 // CHECK CAN TAKE CHILDCARE COSTS OFF
 router.post('/check-can-take-childcare-costs-off-answer', function(request, response) {

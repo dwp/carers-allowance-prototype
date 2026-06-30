@@ -16,7 +16,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-l">Income Summary</h1>
+      <h1 class="govuk-heading-l">Check your answers for care costs</h1>
 
       <form class="form" action="childcare-costs" method="post">
 
@@ -25,27 +25,50 @@
         {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
 
 {{ govukSummaryList({
+  card: {
+            title: {
+              text: "Care details"
+            }
+          },
   rows: [
     {
       key: {
-        text: "Do you pay someone?"
+        text: "Pay for care"
       },
       value: {
-        text: data['doYouPayForCareForDP']
+        text: data['careCosts']
       },
       actions: {
         items: [
           {
-            href: "do-you-pay-someone-to-care-for-dp",
+            href: "childcare-costs",
             text: "Change",
             visuallyHiddenText: "name"
           }
         ]
       }
-    },
+    }
+  ]
+}) }}
+
+{{ govukSummaryList({
+  card: {
+            title: {
+              text: data['nameOfPerson']
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Remove person"
+                }
+              ]
+            }
+          },
+  rows: [
     {
       key: {
-        text: "Who do you pay?"
+        text: "Who you pay"
       },
       value: {
         text: data['checkCanTakeCareCostsOff']
@@ -53,7 +76,7 @@
       actions: {
         items: [
           {
-            href: "check-can-take-care-costs-off",
+            href: "check-can-take-childcare-costs-off",
             text: "Change",
             visuallyHiddenText: "date of birth"
           }
@@ -62,7 +85,7 @@
     },
     {
       key: {
-        text: "Name of the person"
+        text: "You pay"
       },
       value: {
         text: data['nameOfPerson']
@@ -70,7 +93,7 @@
       actions: {
         items: [
           {
-            href: "name-of-person",
+            href: "name-of-person-childcare",
             text: "Change",
             visuallyHiddenText: "date of birth"
           }
@@ -79,7 +102,24 @@
     },
     {
       key: {
-        text: "How often do you pay for childcare?"
+        text: "Closely related"
+      },
+      value: {
+        text: data['isPersonCloselyRelatedToYou']
+      },
+      actions: {
+        items: [
+          {
+            href: "name-of-person-childcare",
+            text: "Change",
+            visuallyHiddenText: "date of birth"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "How often you pay for childcare?"
       },
       value: {
         text: data['howOftenPayForCare']
@@ -87,7 +127,7 @@
       actions: {
         items: [
           {
-            href: "name-of-person",
+            href: "how-often-pay-for-childcare",
             text: "Change",
             visuallyHiddenText: "date of birth"
           }
@@ -96,7 +136,7 @@
     },
     {
       key: {
-        text: "Total care costs each week"
+        text: "How much you pay for childcare a month if you take off TFC"
       },
       value: {
         text: data['careCostsForDP']
@@ -104,7 +144,7 @@
       actions: {
         items: [
           {
-            href: "care-costs-for-dp",
+            href: "check-amount-you-pay-for-childcare",
             text: "Change",
             visuallyHiddenText: "date of birth"
           }
@@ -114,9 +154,105 @@
   ]
 }) }}
 
+{{ govukSummaryList({
+  card: {
+            title: {
+              text: data['nameOfBusiness']
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Remove person"
+                }
+              ]
+            }
+          },
+  rows: [
+    {
+      key: {
+        text: "Who you pay"
+      },
+      value: {
+        text: data['checkCanTakeCareCostsOff']
+      },
+      actions: {
+        items: [
+          {
+            href: "check-can-take-childcare-costs-off",
+            text: "Change",
+            visuallyHiddenText: "date of birth"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "You pay"
+      },
+      value: {
+        text: data['nameOfBusiness']
+      },
+      actions: {
+        items: [
+          {
+            href: "name-of-person-childcare",
+            text: "Change",
+            visuallyHiddenText: "date of birth"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "How often you pay for childcare?"
+      },
+      value: {
+        text: data['howOftenPayForCare']
+      },
+      actions: {
+        items: [
+          {
+            href: "how-often-pay-for-childcare",
+            text: "Change",
+            visuallyHiddenText: "date of birth"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "How much you pay for childcare a month if you take off TFC"
+      },
+      value: {
+        text: data['careCostsForDP']
+      },
+      actions: {
+        items: [
+          {
+            href: "check-amount-you-pay-for-childcare",
+            text: "Change",
+            visuallyHiddenText: "date of birth"
+          }
+        ]
+      }
+    }
+  ]
+}) }}
+
+        
         {{ govukButton({
+          text: "Add another person or business",
+          classes: "govuk-button--secondary",
+          href: "check-can-take-care-costs-off"
+        }) }}
+
+        <br />
+        
+          {{ govukButton({
           text: "Continue"
         }) }}
+      
       </form>
 
     </div>
