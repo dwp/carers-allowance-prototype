@@ -13,6 +13,14 @@
 
 {% block content %}
 
+{% set careProviderName = "" %}
+
+{% if data['careForChildOrAdult'] == "Child" %}
+  {% set careProviderName = "James Brown" %}
+{% else %}
+  {% set careProviderName = "Joe Bloggs" %}
+{% endif %}
+
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
@@ -26,10 +34,10 @@
 
       <ul class="govuk-list govuk-list--bullet">
       <li>
-        expenses from your job at <job name>
+        expenses from your job
       </li>
       <li>
-        paying someone else to care for <dp name>
+        paying someone else to care for {{ careProviderName }}
       </li>
       <li>
         paying for childcare
