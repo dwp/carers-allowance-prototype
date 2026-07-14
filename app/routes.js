@@ -1800,4 +1800,17 @@ router.post('/is-qb-suspended-update-answer', function(request, response) {
 })
 // END DO YOU PAY INTO PRIVATE PENSION?
 
+// SOURCE OF INFORMATION
+router.post('/source-of-information-answer', function(request, response) {
+
+	var sourceOfInformation = request.session.data['sourceOfInformation']
+
+	if (sourceOfInformation == "Claim"){
+		response.redirect("/breaks-in-care/carer-start-carers-allowance")
+	} else {
+        response.redirect("/breaks-in-care/why-not-care-35-hours")
+    }
+})
+// END SOURCE OF INFORMATION
+
 // END BREAKS IN CARE
