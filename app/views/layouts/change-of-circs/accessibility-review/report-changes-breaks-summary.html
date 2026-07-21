@@ -1,0 +1,398 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+
+
+      <form action="" method="post" autocomplete="off" novalidate="" class="casa-journey-form">
+        <input type="hidden" name="_csrf"
+          value="2a24397c5e7e6aa0e12905d704b47ed4e0843b1546126fd6cf6c53c32cb8524489f6b73509e499ddab20a0b4423c0879ea853098900da8f96f9e9e443b2125290f7fc6e187a262171976fc3763a4261c0dee612c423114044e79d70ccb0b6bac7dabc8b1a9df4f777623698a01c668563397f8e0295ab9e24c7b9dfed597d1e6">
+
+
+
+
+
+
+
+
+
+        <input type="hidden" name="breaksLength" id="breaksLength" value="1">
+
+        <h1 class="govuk-heading-l">Temporarily stop providing care</h1>
+
+
+
+
+        <h2 class="govuk-heading-m" id="label-breaksSummary">Summary</h2>
+        <table class="govuk-table" id="table-breaks-summary">
+          <thead id="govuk-table__head">
+            <tr id="table-breaks-summary-row" class="govuk-table__row">
+              <th class="govuk-table__header" id="table-breaks-summary-header-who">Who</th>
+              <th class="govuk-table__header" id="table-breaks-summary-header-where">Where</th>
+              <th class="govuk-table__header" id="table-breaks-summary-header-from">From</th>
+              <th class="govuk-table__header" id="table-breaks-summary-header-to">To</th>
+              <td class="govuk-table__header" id="table-breaks-summary-header-1"></td>
+              <td class="govuk-table__header" id="table-breaks-summary-header-2"></td>
+            </tr>
+          </thead>
+          <tbody id="table-breaks-summary-body" class="govuk-table__body">
+
+            <tr id="breaksRow0" class="govuk-table__row">
+              <td id="breaksRow0-data" class="govuk-table__cell">
+
+
+
+                You
+
+              </td>
+              <td id="breakType0" class="govuk-table__cell">
+
+                Other
+
+              </td>
+              <td id="breakStart0" class="govuk-table__cell">
+
+
+
+                1 July 2026
+              </td>
+              <td id="breakEnd0" class="govuk-table__cell">
+
+
+                15 July 2026
+
+
+              </td>
+              
+              <td class="govuk-table__cell">
+                <a id="Change" aria-controls="Change" href="#Change"
+                  class="toggle delete-row govuk-link govuk-link--no-visited-state">Change</a>
+              </td>
+              <td class="govuk-table__cell">
+                <a id="askDeleteBreak0" aria-controls="deleteRow0" href="delete-break"
+                  class="toggle delete-row govuk-link govuk-link--no-visited-state">Delete</a>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="govuk-form-group">
+
+          <fieldset class="govuk-fieldset" aria-describedby="f-breaksHospitalOrRespite-hint">
+
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+
+              Have there been any other times you or Ad W have been in hospital, respite or care home?
+
+            </legend>
+
+
+            <div id="f-breaksHospitalOrRespite-hint" class="govuk-hint">
+              Select all that apply
+            </div>
+
+
+            <div class="govuk-checkboxes" id="f-breaksHospitalOrRespite-wrapper" data-module="govuk-checkboxes"
+              data-govuk-checkboxes-init="">
+
+
+
+
+
+
+
+
+
+
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="f-breaksHospitalOrRespite" name="breaksHospitalOrRespite[]"
+                  type="checkbox" value="Hospital">
+                <label class="govuk-label govuk-checkboxes__label" for="f-breaksHospitalOrRespite">
+                  Hospital
+                </label>
+
+              </div>
+
+
+
+
+
+
+
+
+
+
+
+
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="f-breaksHospitalOrRespite-2" name="breaksHospitalOrRespite[]"
+                  type="checkbox" value="Respite">
+                <label class="govuk-label govuk-checkboxes__label" for="f-breaksHospitalOrRespite-2">
+                  Respite or care home
+                </label>
+
+              </div>
+
+
+
+
+
+
+
+
+
+
+
+
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="f-breaksHospitalOrRespite-3" name="breaksHospitalOrRespite[]"
+                  type="checkbox" value="None">
+                <label class="govuk-label govuk-checkboxes__label" for="f-breaksHospitalOrRespite-3">
+                  None
+                </label>
+
+              </div>
+
+
+
+
+
+            </div>
+
+          </fieldset>
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="govuk-form-group">
+
+          <fieldset class="govuk-fieldset" aria-describedby="f-otherBreaks-hint">
+
+            <legend class="govuk-fieldset__legend govuk-!-font-weight-bold">
+
+              Have there been any other times you've not provided care for Ad W for 35 hours a week?
+
+            </legend>
+
+
+            <div id="f-otherBreaks-hint" class="govuk-hint">
+              This includes times on holiday
+            </div>
+
+
+            <div class="govuk-radios" data-module="govuk-radios" data-govuk-radios-init="">
+
+
+
+
+
+
+
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="f-otherBreaks" name="otherBreaks" type="radio" value="Yes">
+                <label class="govuk-label govuk-radios__label" for="f-otherBreaks">
+                  Yes
+                </label>
+
+              </div>
+
+
+
+
+
+
+
+
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="f-otherBreaks-2" name="otherBreaks" type="radio" value="No">
+                <label class="govuk-label govuk-radios__label" for="f-otherBreaks-2">
+                  No
+                </label>
+
+              </div>
+
+
+
+
+            </div>
+
+          </fieldset>
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="govuk-form-group govuk-character-count" data-module="govuk-character-count" data-maxlength="3000"
+          data-i18n.characters-under-limit.one="You have 1 character remaining"
+          data-i18n.characters-under-limit.two="You have 2 characters remaining"
+          data-i18n.characters-under-limit.few="You have 3 characters remaining"
+          data-i18n.characters-under-limit.many="You have %{count} characters remaining"
+          data-i18n.characters-under-limit.other="You have %{count} characters remaining"
+          data-i18n.characters-at-limit="You have 0 characters remaining"
+          data-i18n.characters-over-limit.one="You have 1 character too many"
+          data-i18n.characters-over-limit.two="You have 2 characters too many"
+          data-i18n.characters-over-limit.few="You have 3 characters too many"
+          data-i18n.characters-over-limit.many="You have %{count} characters too many"
+          data-i18n.characters-over-limit.other="You have %{count} characters too many"
+          data-govuk-character-count-init="">
+          <label class="govuk-label govuk-!-font-weight-bold" for="f-additionalInformation">
+            Tell us more about your changes (optional)
+          </label>
+
+
+
+          <div id="f-additionalInformation-hint" class="govuk-hint">
+            If you did not tell us about any of your changes as soon as they happened, we need you to tell us why.
+          </div>
+
+
+
+          <textarea class="govuk-textarea govuk-js-character-count" id="f-additionalInformation"
+            name="additionalInformation" rows="5"
+            aria-describedby="f-additionalInformation-info f-additionalInformation-hint"></textarea>
+          <div id="f-additionalInformation-info"
+            class="govuk-hint govuk-character-count__message govuk-visually-hidden">
+            You can enter up to 3000 characters
+          </div>
+          <div class="govuk-hint govuk-character-count__message govuk-character-count__status" aria-hidden="true">You
+            have 3,000 characters remaining</div>
+          <div class="govuk-character-count__sr-status govuk-visually-hidden" aria-live="polite">You have 3,000
+            characters remaining</div>
+
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+        <div class="govuk-button-group casa-form-control-block">
+
+
+
+
+
+          <button type="submit" data-prevent-double-click="true" class="govuk-button" data-module="govuk-button"
+            id="continue-button" data-govuk-button-init="">
+            Continue
+          </button>
+
+
+
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}
