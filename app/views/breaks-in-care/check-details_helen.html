@@ -20,53 +20,53 @@
 
         {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
 
-        {{ govukSummaryList({
-          card: {
-            title: {
-              text: "Claim details"
+        {% set claimDetailsRows = [
+          {
+            key: {
+              text: "Carer's NINO"
+            },
+            value: {
+              text: data['nationalInsuranceNumber']
+            },
+            actions: {
+              items: [
+                {
+                  href: "carers-full-name",
+                  text: "Change",
+                  visuallyHiddenText: "name"
+                }
+              ]
             }
           },
-          rows: [
-            {
-              key: {
-                text: "Carer's NINO"
-              },
-              value: {
-                text: data['nationalInsuranceNumber']
-              },
-              actions: {
-                items: [
-                  {
-                    href: "carers-full-name",
-                    text: "Change",
-                    visuallyHiddenText: "name"
-                  }
-                ]
-              }
+          {
+            key: {
+              text: "Carer's name"
             },
-            {
-              key: {
-                text: "Carer's name"
-              },
-              value: {
-                text: data['carersFullName']
-              },
-              actions: {
-                items: [
-                  {
-                    href: "carers-full-name",
-                    text: "Change",
-                    visuallyHiddenText: "date of birth"
-                  }
-                ]
-              }
+            value: {
+              text: data['carersFullName']
             },
+            actions: {
+              items: [
+                {
+                  href: "carers-full-name",
+                  text: "Change",
+                  visuallyHiddenText: "date of birth"
+                }
+              ]
+            }
+          }
+        ] %}
+
+        {% if data['sourceOfInformation'] == 'Claim' %}
+          {% set claimDetailsRows = claimDetailsRows.concat([
             {
               key: {
                 text: "Carer's Allowance started"
               },
               value: {
-                text: data['carer-start-carers-allowance-day'] + " " + data['carer-start-carers-allowance-month'] | monthName + " " + data['carer-start-carers-allowance-year']
+                text: data['carer-start-carers-allowance-day'] + " " +
+                      data['carer-start-carers-allowance-month'] + " " +
+                      data['carer-start-carers-allowance-year']
               },
               actions: {
                 items: [
@@ -77,59 +77,75 @@
                   }
                 ]
               }
-            },
-            {
-              key: {
-                text: "Caring started"
-              },
-              value: {
-                text: data['carer-start-caring-dp-day'] + " " + data['carer-start-caring-dp-month']  | monthName + " " + data['carer-start-caring-dp-year']
-              },
-              actions: {
-                items: [
-                  {
-                    href: "carer-start-caring-for-disabled-person",
-                    text: "Change",
-                    visuallyHiddenText: "name"
-                  }
-                ]
-              }
-            },
-            {
-              key: {
-                text: "Disabled person's NINO"
-              },
-              value: {
-                text: data['dpNationalInsuranceNumber']
-              },
-              actions: {
-                items: [
-                  {
-                    href: "disabled-person-ni-number",
-                    text: "Change",
-                    visuallyHiddenText: "address"
-                  }
-                ]
-              }
-            },
-            {
-              key: {
-                text: "Qualifying benefit started"
-              },
-              value: {
-                text: data['dp-start-qb-day'] + " " + data['dp-start-qb-month']  | monthName + " " + data['dp-start-qb-year']
-              },
-              actions: {
-                items: [
-                  {
-                    href: "dp-start-receiving-qualifying-benefit",
-                    text: "Change",
-                    visuallyHiddenText: "name"
-                  }
-                ]
-              }
             }
-          ]
+          ]) %}
+        {% endif %}
+
+        {% set claimDetailsRows = claimDetailsRows.concat([
+          {
+            key: {
+              text: "Caring started"
+            },
+            value: {
+              text: data['carer-start-caring-dp-day'] + " " +
+                    (data['carer-start-caring-dp-month'] | monthName) + " " +
+                    data['carer-start-caring-dp-year']
+            },
+            actions: {
+              items: [
+                {
+                  href: "carer-start-caring-for-disabled-person",
+                  text: "Change",
+                  visuallyHiddenText: "name"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Disabled person's NINO"
+            },
+            value: {
+              text: data['dpNationalInsuranceNumber']
+            },
+            actions: {
+              items: [
+                {
+                  href: "disabled-person-ni-number",
+                  text: "Change",
+                  visuallyHiddenText: "address"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Qualifying benefit started"
+            },
+            value: {
+              text: data['dp-start-qb-day'] + " " +
+                    (data['dp-start-qb-month'] | monthName) + " " +
+                    data['dp-start-qb-year']
+            },
+            actions: {
+              items: [
+                {
+                  href: "dp-start-receiving-qualifying-benefit",
+                  text: "Change",
+                  visuallyHiddenText: "name"
+                }
+              ]
+            }
+          }
+        ]) %}
+
+        {{ govukSummaryList({
+          card: {
+            title: {
+              text: "Claim details"
+            }
+          },
+          rows: claimDetailsRows
         }) }}
 
         {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
@@ -197,7 +213,7 @@
                 text: "Break started"
               },
               value: {
-                text: data['break-start-day'] + " " + data['break-start-month']  | monthName + " " + data['break-start-year']
+                text: data['break-start-day'] + " " + (data['break-start-month']  | monthName) + " " + data['break-start-year']
               },
               actions: {
                 items: [
@@ -214,7 +230,7 @@
                 text: "Break ended"
               },
               value: {
-                text: data['break-end-day'] + " " + data['break-end-month']  | monthName + " " + data['break-end-year']
+                text: data['break-end-day'] + " " + (data['break-end-month']  | monthName) + " " + data['break-end-year']
               },
               actions: {
                 items: [
@@ -248,7 +264,7 @@
                 text: "Suspension start"
               },
               value: {
-                text: data['suspension-start-day'] + " " + data['suspension-start-month']  | monthName + " " + data['suspension-start-year']
+                text: data['suspension-start-day'] + " " + (data['suspension-start-month']  | monthName) + " " + data['suspension-start-year']
               },
               actions: {
                 items: [
@@ -265,7 +281,7 @@
                 text: "Suspension end"
               },
               value: {
-                text: data['suspension-end-day'] + " " + data['suspension-end-month']  | monthName + " " + data['suspension-end-year']
+                text: data['suspension-end-day'] + " " + (data['suspension-end-month']  | monthName) + " " + data['suspension-end-year']
               },
               actions: {
                 items: [
