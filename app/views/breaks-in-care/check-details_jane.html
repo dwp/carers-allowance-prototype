@@ -18,124 +18,7 @@
 
       <h1 class="govuk-heading-l">Check details</h1>
 
-        {% set claimDetailsRows = [
-          {
-            key: {
-              text: "Carer's NINO"
-            },
-            value: {
-              text: data['nationalInsuranceNumber']
-            },
-            actions: {
-              items: [
-                {
-                  href: "carers-full-name",
-                  text: "Change",
-                  visuallyHiddenText: "name"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Carer's name"
-            },
-            value: {
-              text: data['carersFullName']
-            },
-            actions: {
-              items: [
-                {
-                  href: "carers-full-name",
-                  text: "Change",
-                  visuallyHiddenText: "date of birth"
-                }
-              ]
-            }
-          }
-        ] %}
-
-        {% if data['sourceOfInformation'] == 'Claim' %}
-          {% set claimDetailsRows = claimDetailsRows.concat([
-            {
-              key: {
-                text: "Carer's Allowance started"
-              },
-              value: {
-                text: data['carer-start-carers-allowance-day'] + " " +
-                      data['carer-start-carers-allowance-month'] + " " +
-                      data['carer-start-carers-allowance-year']
-              },
-              actions: {
-                items: [
-                  {
-                    href: "carer-start-carers-allowance",
-                    text: "Change",
-                    visuallyHiddenText: "address"
-                  }
-                ]
-              }
-            }
-          ]) %}
-        {% endif %}
-
-        {% set claimDetailsRows = claimDetailsRows.concat([
-          {
-            key: {
-              text: "Caring started"
-            },
-            value: {
-              text: data['carer-start-caring-dp-day'] + " " +
-                    (data['carer-start-caring-dp-month'] | monthName) + " " +
-                    data['carer-start-caring-dp-year']
-            },
-            actions: {
-              items: [
-                {
-                  href: "carer-start-caring-for-disabled-person",
-                  text: "Change",
-                  visuallyHiddenText: "name"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Disabled person's NINO"
-            },
-            value: {
-              text: data['dpNationalInsuranceNumber']
-            },
-            actions: {
-              items: [
-                {
-                  href: "disabled-person-ni-number",
-                  text: "Change",
-                  visuallyHiddenText: "address"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Qualifying benefit started"
-            },
-            value: {
-              text: data['dp-start-qb-day'] + " " +
-                    (data['dp-start-qb-month'] | monthName) + " " +
-                    data['dp-start-qb-year']
-            },
-            actions: {
-              items: [
-                {
-                  href: "dp-start-receiving-qualifying-benefit",
-                  text: "Change",
-                  visuallyHiddenText: "name"
-                }
-              ]
-            }
-          }
-        ]) %}
+        {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
 
         {{ govukSummaryList({
           card: {
@@ -143,7 +26,76 @@
               text: "Claim details"
             }
           },
-          rows: claimDetailsRows
+          rows: [
+            {
+              key: {
+                text: "Started receiving Carer's Allowance"
+              },
+              value: {
+                text: "12 May 2025"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "#",
+                    text: "Change",
+                    visuallyHiddenText: "name"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Started caring for the disabled person"
+              },
+              value: {
+                html: "12 May 2025"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "#",
+                    text: "Change",
+                    visuallyHiddenText: "address"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Disabled person's NINO"
+              },
+              value: {
+                text: "RN111111A"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "#",
+                    text: "Change",
+                    visuallyHiddenText: "date of birth"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Disabled Person started receiving Qualifying Benefit"
+              },
+              value: {
+                text: "12 May 2025"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "#",
+                    text: "Change",
+                    visuallyHiddenText: "name"
+                  }
+                ]
+              }
+            }
+          ]
         }) }}
 
         {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}

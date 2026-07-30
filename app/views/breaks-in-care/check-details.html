@@ -18,6 +18,8 @@
 
       <h1 class="govuk-heading-l">Check details</h1>
 
+        {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
         {% set claimDetailsRows = [
           {
             key: {
@@ -63,7 +65,7 @@
               },
               value: {
                 text: data['carer-start-carers-allowance-day'] + " " +
-                      data['carer-start-carers-allowance-month'] + " " +
+                      (data['carer-start-carers-allowance-month'] | monthName) + " " +
                       data['carer-start-carers-allowance-year']
               },
               actions: {
@@ -148,121 +150,119 @@
 
         {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
 
-        {{ govukSummaryList({
-          card: {
-            title: {
-              text: "Break in care"
+        {% set breakInCareRows = [
+          {
+            key: {
+              text: "Source"
+            },
+            value: {
+              text: data['sourceOfInformation']
+            },
+            actions: {
+              items: [
+                {
+                  href: "source-of-information",
+                  text: "Change",
+                  visuallyHiddenText: "name"
+                }
+              ]
             }
           },
-          rows: [
-            {
-              key: {
-                text: "Source"
-              },
-              value: {
-                text: data['sourceOfInformation']
-              },
-              actions: {
-                items: [
-                  {
-                    href: "source-of-information",
-                    text: "Change",
-                    visuallyHiddenText: "name"
-                  }
-                ]
-              }
+          {
+            key: {
+              text: "Not caring for 35 hours"
             },
-            {
-              key: {
-                text: "Not caring for 35 hours"
-              },
-              value: {
-                text: data['whyNotCare35Hours']
-              },
-              actions: {
-                items: [
-                  {
-                    href: "why-not-care-35-hours",
-                    text: "Change",
-                    visuallyHiddenText: "date of birth"
-                  }
-                ]
-              }
+            value: {
+              text: data['whyNotCare35Hours']
             },
-            {
-              key: {
-                text: "Permanent break"
-              },
-              value: {
-                text: data['permanentBreak']
-              },
-              actions: {
-                items: [
-                  {
-                    href: "permanent-break",
-                    text: "Change",
-                    visuallyHiddenText: "date of birth"
-                  }
-                ]
-              }
+            actions: {
+              items: [
+                {
+                  href: "why-not-care-35-hours",
+                  text: "Change",
+                  visuallyHiddenText: "date of birth"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Permanent break"
             },
-            {
-              key: {
-                text: "Break started"
-              },
-              value: {
-                text: data['break-start-day'] + " " + data['break-start-month'] | monthName + " " + data['break-start-year']
-              },
-              actions: {
-                items: [
-                  {
-                    href: "when-did-break-start",
-                    text: "Change",
-                    visuallyHiddenText: "address"
-                  }
-                ]
-              }
+            value: {
+              text: data['permanentBreak']
             },
-            {
-              key: {
-                text: "Break ended"
-              },
-              value: {
-                text: data['break-end-day'] + " " + data['break-end-month'] | monthName + " " + data['break-end-year']
-              },
-              actions: {
-                items: [
-                  {
-                    href: "when-did-break-end",
-                    text: "Change",
-                    visuallyHiddenText: "address"
-                  }
-                ]
-              }
+            actions: {
+              items: [
+                {
+                  href: "permanent-break",
+                  text: "Change",
+                  visuallyHiddenText: "date of birth"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Break started"
             },
-            {
-              key: {
-                text: "Qualifying benefit suspended"
-              },
-              value: {
-                text: data['suspendQB']
-              },
-              actions: {
-                items: [
-                  {
-                    href: "suspend-qualifying-benefit",
-                    text: "Change",
-                    visuallyHiddenText: "name"
-                  }
-                ]
-              }
+            value: {
+              text: data['break-start-day'] + " " + (data['break-start-month'] | monthName) + " " + data['break-start-year']
             },
+            actions: {
+              items: [
+                {
+                  href: "when-did-break-start",
+                  text: "Change",
+                  visuallyHiddenText: "address"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Break ended"
+            },
+            value: {
+              text: data['break-end-day'] + " " + (data['break-end-month'] | monthName) + " " + data['break-end-year']
+            },
+            actions: {
+              items: [
+                {
+                  href: "when-did-break-end",
+                  text: "Change",
+                  visuallyHiddenText: "address"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Qualifying benefit suspended"
+            },
+            value: {
+              text: data['suspendQB']
+            },
+            actions: {
+              items: [
+                {
+                  href: "suspend-qualifying-benefit",
+                  text: "Change",
+                  visuallyHiddenText: "name"
+                }
+              ]
+            }
+          }
+        ] %}
+
+        {% if data['suspendQB'] == 'Yes' %}
+          {% set breakInCareRows = breakInCareRows.concat([
             {
               key: {
                 text: "Suspension start"
               },
               value: {
-                text: data['suspension-start-day'] + " " + data['suspension-start-month'] | monthName + " " + data['suspension-start-year']
+                text: data['suspension-start-day'] + " " + (data['suspension-start-month'] | monthName) + " " + data['suspension-start-year']
               },
               actions: {
                 items: [
@@ -279,7 +279,7 @@
                 text: "Suspension end"
               },
               value: {
-                text: data['suspension-end-day'] + " " + data['suspension-end-month'] | monthName + " " + data['suspension-end-year']
+                text: data['suspension-end-day'] + " " + (data['suspension-end-month'] | monthName) + " " + data['suspension-end-year']
               },
               actions: {
                 items: [
@@ -290,42 +290,54 @@
                   }
                 ]
               }
-            },
-            {
-              key: {
-                text: "Effective decision start date"
-              },
-              value: {
-                text: data['effective-decision-start-date-day'] + " " + data['effective-decision-start-date-month'] | monthName + " " + data['effective-decision-start-date-year']
-              },
-              actions: {
-                items: [
-                  {
-                    href: "effective-decision-start-date_revision",
-                    text: "Change",
-                    visuallyHiddenText: "name"
-                  }
-                ]
-              }
-            },
-            {
-              key: {
-                text: "Consider decision from date"
-              },
-              value: {
-                text: "10 Dec 2025"
-              },
-              actions: {
-                items: [
-                  {
-                    href: "consider-decision-from-date_revision",
-                    text: "Change",
-                    visuallyHiddenText: "name"
-                  }
-                ]
-              }
             }
-          ]
+          ]) %}
+        {% endif %}
+
+        {% set breakInCareRows = breakInCareRows.concat([
+          {
+            key: {
+              text: "Consider decision from date"
+            },
+            value: {
+              text: "5 Jan 2026"
+            },
+            actions: {
+              items: [
+                {
+                  href: "consider-decision-from-date_revision",
+                  text: "Change",
+                  visuallyHiddenText: "name"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Effective decision start date"
+            },
+            value: {
+              text: "4 Jan 2026"
+            },
+            actions: {
+              items: [
+                {
+                  href: "effective-decision-start-date_revision",
+                  text: "Change",
+                  visuallyHiddenText: "name"
+                }
+              ]
+            }
+          }
+        ]) %}
+
+        {{ govukSummaryList({
+          card: {
+            title: {
+              text: "Break in care"
+            }
+          },
+          rows: breakInCareRows
         }) }}
 
         {% from "govuk/components/button/macro.njk" import govukButton %}
